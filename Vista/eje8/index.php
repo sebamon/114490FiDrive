@@ -19,12 +19,21 @@ Agregar un botón para limpiar el formulario y volver a consultar.
 </p>
 
 <!---->
-<form  id="eje8" name="eje8"class="form-group" method="POST" action="accion.php">
+<form  id="eje8" name="eje8" class="form-group" method="POST" action="accion.php" onSubmit="return VerificarEdad();">
 
-<p>Edad: <input type="text" class="form-control" name="edad" size="100" ></p>
-<input type="checkbox"  class="form-check-input" name="estudiante" value='true'>Soy Estudiante
+<!--<p>Edad: <input type="text" class="form-control" name="edad" size="100" required></p>-->
 
-<input id="btn_eje7"  name="btn_eje7" class="btn btn-primary" type="submit" value="Enviar">
+<div class="form-group">
+    <label>Edad:</label>
+    <input type="text" class="form-control" id='edad'name="edad" placeholder="Ingrese Edad" required>
+</div>
+<div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="estudiante"  name="estudiante"  value="true">
+    <label class="form-check-label">Soy Estudiante</label>
+  </div>
+  <div class="form-group">
+      <button type="submit" class="btn btn-primary">Calcular</button>
+  </div>
 
 </form >
 

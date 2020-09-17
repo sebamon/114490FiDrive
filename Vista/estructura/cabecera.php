@@ -4,6 +4,7 @@
 
 <link rel="stylesheet" href="../css/bootstrap.min.css" >
 <link rel="stylesheet" href="../css/style.css" >
+<script type="text/javascript" src="../JS/verificacion.js"></script>
 </header>
 <body>
 <div style="height: 80px; width: 100%; border: 2px solid red; border-radius: 5px;"> 
