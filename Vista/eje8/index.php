@@ -29,7 +29,7 @@ Agregar un botón para limpiar el formulario y volver a consultar.
 </div>
 <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="estudiante"  name="estudiante"  value="true">
-    <label class="form-check-label">Soy Estudiante</label>
+    <label class="form-check-label">Soy Estudiante:</label>
   </div>
   <div class="form-group">
       <button type="submit" class="btn btn-primary">Calcular</button>
