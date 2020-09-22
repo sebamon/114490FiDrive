@@ -4,8 +4,8 @@ include_once("../estructura/cabecera.php");
 ?>
 
 
-<!--<div id="contenido" style="height: 400px; width: 89%; border: 2px solid red; border-radius: 5px;margin-left:10.5%;" >-->
-<div class=container-fluid>
+<div id="contenido" style="height: 400px; width: 89%; border: 2px solid red; border-radius: 5px;margin-left:10.5%;" >
+<!--<div class="contenido">-->
 <p>
 La empresa de Cine Cinem@s tiene establecidas diferentes tarifas para las entradas, en
 función de la edad y de la condición de estudiante del cliente. Desea que sean los propios
@@ -25,7 +25,7 @@ Agregar un botón para limpiar el formulario y volver a consultar.
 
 <div class="form-group">
     <label>Edad:</label>
-    <input type="text" class="form-control" id='edad'name="edad" placeholder="Ingrese Edad" required>
+    <input type="number" class="form-control" id='edad'name="edad" placeholder="Ingrese Edad" required>
 </div>
 <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="estudiante"  name="estudiante"  value="true">

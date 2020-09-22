@@ -8,7 +8,6 @@ class control_eje3  {
         $edad = $datos['edad'];
         $direccion = $datos['direccion'];
         $texto = "Hola yo soy ".$nombre.", ".$apellido." tengo ".$edad." y vivo en ".$direccion;
-     // print_r($datos);
      return $texto;
     }
 
