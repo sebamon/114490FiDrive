@@ -1,9 +1,8 @@
-<div
-style="height: 400px; width: 10%; border: 2px solid red; border-radius: 5px; float: left;" >
+<div style="border: 2px solid red; border-radius: 5px; float: left;" >
 
-<div class="container">
+<!-- <div class="container"> -->
   <h4>Vertical Menu</h4>
-  <ul class="nav flex-column">
+  <ul class="nav flex-column float">
     <li class="nav-item">
       <a class="nav-link" href="../eje1/index.php">Ejercicio 1</a>
     </li>
@@ -32,7 +31,7 @@ style="height: 400px; width: 10%; border: 2px solid red; border-radius: 5px; flo
 </div>
 
 
-</div>
+<!-- </div> -->
 
 
 

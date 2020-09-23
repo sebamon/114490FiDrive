@@ -41,7 +41,7 @@ Agregar un botón para limpiar el formulario y volver a consultar.
 </div>
 
 
-</body>
+
 <?php 
 
 include_once("../estructura/pie.php");
