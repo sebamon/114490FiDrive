@@ -4,7 +4,7 @@ include_once("../estructura/cabecera.php");
 ?>
 
 <!-- <div id="contenido" style="height: 400px; width: 89%; border: 2px solid red; border-radius: 5px;margin-left:10.5%;" > -->
-<div class="container-fluid"> <!-- no puedo ponerlo a la derecha-->
+<!-- <div class="container-fluid"> no puedo ponerlo a la derecha -->
     <div class="row">
         <!-- <div class="col-12 mb-3"> -->
         <p>

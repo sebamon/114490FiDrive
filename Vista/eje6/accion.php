@@ -1,14 +1,14 @@
 <?php 
-$Titulo = " Ejercicio 4"; 
+$Titulo = " Ejercicio 6"; 
 include_once("../estructura/cabecera.php");
 ?>
 <div class="row">
 <!-- <div id="contenido" style="height: 400px; width: 89%; border: 2px solid red; border-radius: 5px;margin-left:10.5%;" > -->
 <?php 
 $datos = data_submitted();
-$obj = new control_eje4();
+$obj = new control_eje6();
 
-$respuesta= $obj->verificarEdad($datos);
+$respuesta= $obj->verificarFormulario($datos);
 
 
 
@@ -21,7 +21,7 @@ $respuesta= $obj->verificarEdad($datos);
 </p>
 
 </div>
-
+</div>
 
 </body>
 <?php 

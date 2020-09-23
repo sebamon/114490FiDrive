@@ -2,10 +2,16 @@
 <title><?PHP $Titulo?></title>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="../css/bootstrap.min.css" >
-<link rel="stylesheet" href="../css/style.css" >
+ <!-- <link rel="stylesheet" href="../css/bootstrap.min.css" >  -->
+ <link rel="stylesheet" href="../js/bootstrap-4.5.2/dist/css/bootstrap.min.css"> 
+<!-- <link rel="stylesheet" href="../css/style.css" > -->
 <link rel="stylesheet" href="../css/bootstrapValidator.min.css">
-<script type="text/javascript" src="../JS/verificacion.js"></script>
+<link rel="stylesheet" href="../css/all.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<!-- <script type="text/javascript" src="../JS/verificacion.js"></script> -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"></link> <!-- Si saco esta se ve mal-->
+<!-- vista\JS\bootstrap-4.5.2\dist\css\bootstrap.css -->
+<link href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet"></link>
 </head>
 <body>
     <!-- ESTA ES LA CABECERA  -->
@@ -74,11 +80,11 @@
                 </ul>
             </div>
         </nav>
-</div>
+<!-- </div> -->
+<div class="container-fluid">
 
-
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"> </div>
+<!-- <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"> </div> -->
 <!-- <div style="height: 80px; width: 100%; border: 2px solid red; border-radius: 5px;"> 
     <h1>Programacion Web Dinamica 2020</h1> </div>
 </div> -->

@@ -3,7 +3,6 @@ $Titulo = " Ejercicio 2";
 include_once("../estructura/cabecera.php");
 ?>
 
-<div class="container">
 <!-- <div id="contenedor" style="height: 500px; width: 89%; border: 2px solid red; border-radius: 5px;margin-left:10.5%;" > -->
     <div class="row">
         <p>
@@ -16,7 +15,7 @@ include_once("../estructura/cabecera.php");
         </p>
     </div>
 
-
+    <div class="row ml-3">
     <form id="formulario2" name="formulario2" method="POST" action="accion.php" data-toggle="validator" role="form">
 
         <div class="form-group"> 
@@ -25,7 +24,7 @@ include_once("../estructura/cabecera.php");
             <div class="invalid-feedback">
 
             </div> 
-         </div>
+        </div>
 
         <div class="form-group"> 
             <label for="">Martes:</label>
@@ -63,11 +62,11 @@ include_once("../estructura/cabecera.php");
             <input id="btn_enviar" class="btn btn-primary btn-block" name="btn_enviar" type="submit" value="Enviar">
         </div>
     </form>
+    </div>
 
 
 </div>
 
-<script type="text/javascript" src="validar.js"></script>
 </body>
 <?php 
 

@@ -1,5 +1,5 @@
 
-<div class="row"> 
+<div class="footer"> 
 <p>Sebastian MON</br> 
 Legajo: 114490</br>
 Email: sebastian.mon@est.fi.uncoma.edu.ar</p>

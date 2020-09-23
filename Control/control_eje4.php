@@ -11,9 +11,9 @@ class control_eje4  {
         $direccion = $datos['direccion'];
         $texto ="";
         if ($edad >=18)
-                $texto =  "Hola yo soy ".$nombre.", ".$apellido." y soy mayor de edad;";
+                $texto =  "Hola yo soy ".$nombre." ".$apellido." mi direccion es ".$direccion." y soy mayor de edad";
         else
-                $texto = "Hola yo soy ".$nombre.", ".$apellido." y NO soy mayor de edad;";
+                $texto = "Hola yo soy ".$nombre." ".$apellido." mi direccion es ".$direccion." y NO soy mayor de edad";
      // print_r($datos);
 
      return $texto;
