@@ -2,7 +2,8 @@
 $Titulo = " Ejercicio 8"; 
 include_once("../estructura/cabecera.php");
 ?>
-<div id="contenido" style="height: 400px; width: 89%; border: 2px solid red; border-radius: 5px;margin-left:10.5%;" >
+<!-- <div id="contenido" style="height: 400px; width: 89%; border: 2px solid red; border-radius: 5px;margin-left:10.5%;" > -->
+
 <?php 
 
 $datos = data_submitted();
@@ -18,12 +19,15 @@ $respuesta = $obj->CalcularValor($datos);
 <b>Respuesta: </b> 
 <?php echo $respuesta ?>
 </p>
-<a href="index.php">Volver Atras</a>
+<!-- <a href="index.php">Volver Atras</a> -->
+<div class="form-group">
+<a class="btn btn-primary" href="index.php" role="button">Atras</a>
+
+</div>
 
 </div>
 
 
-</body>
 <?php 
 
 include_once("../estructura/pie.php");

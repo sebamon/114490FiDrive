@@ -3,19 +3,31 @@
 class control_eje7  {
 
     public function Procesar($datos){
-        $valor1 = $datos['valor1'];
-        $valor2 = $datos['valor2'];
-        $operacion=$datos['operacion'];
+        $valor1 = $datos['primervalor'];
+        $valor2 = $datos['segundovalor'];
+        $operacion=$datos['operador'];
     
-        switch($operacion)
+        if($operacion=="dividir")
         {
-            case ('Suma'): $resultado=$valor1+$valor2;break;
-            case ('Resta'): $resultado=$valor1-$valor2;break;
-            case ('Multiplica'): $resultado=$valor1*$valor2;
+            if($valor2==0)
+            {
+                $texto="Imposible dividir por 0";
+            }
+            else{
+                $resultado=$valor1/$valor2;
+                    $texto="Hola la operacion ".$operacion.", de el valor ".$valor1." y el valor ".$valor2." da como resultado ".$resultado;
+                }
         }
-
-        $texto = "Hola la operacion ".$operacion.", de el valor ".$valor1." y el valor ".$valor2." da como resultado ".$resultado;
-     // print_r($datos);
+        else
+        {
+            switch($operacion)
+            {
+                case ('sumar'): $resultado=$valor1+$valor2;break;
+                case ('restar'): $resultado=$valor1-$valor2;break;
+                case ('multiplicar'): $resultado=$valor1*$valor2;                   
+            }
+            $texto = "Hola la operacion ".$operacion.", de el valor ".$valor1." y el valor ".$valor2." da como resultado ".$resultado;
+        }
      return $texto;
     }
 
