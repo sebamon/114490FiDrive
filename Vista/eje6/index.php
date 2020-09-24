@@ -92,19 +92,19 @@ que procesa el formulario la cantidad de deportes que practica.
     <div class="form-group">
         <label for="deportes">Deportes que Practica:</label>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="chkFutbol" value="futbol">
+            <input class="form-check-input" type="checkbox" id="chkFutbol" value="futbol" name="chkFutbol">
             <label class="form-check-label" for="inlineCheckbox1">Futbol</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="chkBasket" value="basket">
+            <input class="form-check-input" type="checkbox" id="chkBasket" value="basket" name="chkBasket">
             <label class="form-check-label" for="inlineCheckbox2">Basket</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="chkTenis" value="tenis">
+            <input class="form-check-input" type="checkbox" id="chkTenis" value="tenis" name="chkTenis">
             <label class="form-check-label" for="inlineCheckbox3">Tenis</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="chkVolley" value="volley">
+            <input class="form-check-input" type="checkbox" id="chkVolley" value="volley" name="chkVolley">
             <label class="form-check-label" for="inlineCheckbox3">Volley</label>
         </div>
     </div>
