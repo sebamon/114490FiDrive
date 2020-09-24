@@ -391,6 +391,11 @@ $('#formulario5').bootstrapValidator({
                 stringLength: {
                     max: 3,
                     message: 'La edad no puede tener mas de 3 cifras'
+                },
+                between: {
+                    min: 1,
+                    max: 110,
+                    message: 'La edad debe ser menor a 110 Años'
                 }
 
 
@@ -623,7 +628,15 @@ $('#formularioCinema').bootstrapValidator({
 
                     message: 'Ingrese Actores'
 
+                },
+                regexp: {
+
+                    regexp: /[a-zA-Z ]{2,254}/, //de la a la z, de la A a la Z, minimo 2 maximo 15
+ 
+                    message: 'El nombre de los Actores debe ser Alfabetico'
+ 
                 }
+                
 
             }
 
@@ -636,6 +649,13 @@ $('#formularioCinema').bootstrapValidator({
 
                     message: 'Ingrese Diretor'
 
+                },
+                regexp: {
+
+                    regexp: /[a-zA-Z ]{2,254}/, //de la a la z, de la A a la Z, minimo 2 maximo 15
+ 
+                    message: 'El del director debe ser Alfabetico'
+ 
                 }
 
             }
@@ -650,6 +670,14 @@ $('#formularioCinema').bootstrapValidator({
                     message: 'Ingrese Guión'
 
                 }
+                ,
+                regexp: {
+
+                    regexp: /[a-zA-Z ]{2,254}/, //de la a la z, de la A a la Z, minimo 2 maximo 15
+ 
+                    message: 'El nombre del Guion debe ser Alfabetico'
+ 
+                }
 
             }
 
@@ -662,6 +690,13 @@ $('#formularioCinema').bootstrapValidator({
 
                     message: 'Ingrese Produccion'
 
+                },
+                regexp: {
+
+                    regexp: /[a-zA-Z ]{2,254}/, //de la a la z, de la A a la Z, minimo 2 maximo 15
+ 
+                    message: 'El nombre de Produccion debe ser Alfabetico'
+ 
                 }
 
             }
@@ -684,9 +719,18 @@ $('#formularioCinema').bootstrapValidator({
                 },
                 stringLength:
                 {
+                    message: 'Utilice 4 digitos para el Año',
                     min:4,
                     max:4
+                    
+                },
+                between:
+                {
+                    min: 1900,
+                    max: 2021,
+                    message: 'Rango de Año Permitido 1900-2021'
                 }
+
 
             }
 
@@ -699,6 +743,13 @@ $('#formularioCinema').bootstrapValidator({
 
                     message: 'Ingrese Nacionalidad'
 
+                },
+                regexp: {
+
+                    regexp: /[a-zA-Z ]{2,254}/, //de la a la z, de la A a la Z, minimo 2 maximo 15
+ 
+                    message: 'La Nacionalidad debe ser Alfabetico'
+ 
                 }
 
             }
