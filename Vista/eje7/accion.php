@@ -26,7 +26,7 @@ $respuesta= $obj->Procesar($datos);
 </div>
 
 
-</body>
+
 <?php 
 
 include_once("../estructura/pie.php");

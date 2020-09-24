@@ -54,6 +54,9 @@ $('#formulario2').bootstrapValidator({
 
                     message: 'Debe Ingresar un Número'
 
+                },
+                integer:{
+                        message: 'El valor debe ser numerico'
                 }
 
             }
@@ -63,11 +66,15 @@ $('#formulario2').bootstrapValidator({
 
             validators: {
 
+                integer:{
+                    message: 'El valor debe ser numerico'
+            },
                 notEmpty: {
 
                     message: 'Debe Ingresar un Número'
 
                 }
+                
 
             }
 
@@ -80,6 +87,9 @@ $('#formulario2').bootstrapValidator({
 
                     message: 'Debe Ingresar un Número'
 
+                },
+                integer:{
+                        message: 'El valor debe ser numerico'
                 }
 
             }
@@ -93,6 +103,9 @@ $('#formulario2').bootstrapValidator({
 
                     message: 'Debe Ingresar un Número'
 
+                },
+                integer:{
+                        message: 'El valor debe ser numerico'
                 }
 
             }
@@ -106,6 +119,9 @@ $('#formulario2').bootstrapValidator({
 
                     message: 'Debe Ingresar un Número'
 
+                },
+                integer:{
+                        message: 'El valor debe ser numerico'
                 }
 
             }

@@ -73,11 +73,11 @@ include_once("../estructura/cabecera.php");
         <label for="genero" class="control-label">Genero</label>
             <select class="form-control" name='genero'>
                 <option selected value="comedia">Comedia</option>
-                <option value="drama">Drama</option>
-                <option value="terror">Terror</option>
-                <option value="romantica">Romantica</option>
-                <option value="suspenso">Suspenso</option>
-                <option value="otras">Otras</option>
+                <option value="Drama">Drama</option>
+                <option value="Terro">Terror</option>
+                <option value="Romantica">Romantica</option>
+                <option value="Suspenso">Suspenso</option>
+                <option value="Otras">Otras</option>
             </select>
             <div class="help-block with-errors">
 
@@ -100,7 +100,7 @@ include_once("../estructura/cabecera.php");
         </div>
             <div class="custom-control custom-radio custom-control-inline">
                  <input type="radio" id="radioATP" name="radioEdad" class="custom-control-input" value='ATP'>
-                 <label class="custom-control-label" for="radioATP">Sin Estudios</label>
+                 <label class="custom-control-label" for="radioATP">Apta todo Publico</label>
             </div>
         <div class="custom-control custom-radio custom-control-inline">
             <input type="radio" id="radioMas7" name="radioEdad" class="custom-control-input" value='Mas7'>

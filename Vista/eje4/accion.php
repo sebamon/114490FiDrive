@@ -19,11 +19,14 @@ $respuesta= $obj->verificarEdad($datos);
 <b>Respuesta: </b> 
 <?php echo $respuesta ?>
 </p>
+<div class="form-group">
+<a class="btn btn-primary" href="index.php" role="button">Atras</a>
 
+</div>
 </div>
 
 
-</body>
+
 <?php 
 
 include_once("../estructura/pie.php");

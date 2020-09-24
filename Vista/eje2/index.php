@@ -67,7 +67,7 @@ include_once("../estructura/cabecera.php");
 
 </div>
 
-</body>
+
 <?php 
 
 include_once("../estructura/pie.php");

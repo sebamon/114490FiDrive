@@ -25,7 +25,7 @@ $respuesta = $obj->CalcularPositivo($datos);
 
 </div>
 
-</body>
+
 <?php 
 
 include_once("../estructura/pie.php");

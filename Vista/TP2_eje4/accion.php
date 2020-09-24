@@ -12,10 +12,17 @@ $respuesta = $obj->AgregarPelicula($datos);
 ?>
 
 
-<p>
+<!-- <p>
 <b>Respuesta: </b> 
+
+
+
+</p> -->
+<div class="row alert alert-success" role="alert">
+<h3>La pelicula ingresada es:</h3>
+</br>
 <?php echo $respuesta ?>
-</p>
+</div>
 <div class="row">
 <a class="btn btn-primary" href="index.php" role="button">Atras</a>
 </div>
