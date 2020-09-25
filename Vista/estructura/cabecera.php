@@ -101,7 +101,7 @@
 </div> -->
 <?php  
 include_once("../../configuracion.php");
-//include_once("../estructura/lateral.php");
+//include_once("../estructura/menu.php");
 ?>
 
 
