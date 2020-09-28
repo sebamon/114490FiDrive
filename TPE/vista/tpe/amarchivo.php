@@ -1,12 +1,13 @@
 <?php 
 $Titulo = " AM Archivo"; 
 include_once("../estructura/cabecera.php");
+include_once("../estructura/menu.php");
 ?>
-<div class="container-fluid border float:right">Este el main
-<form id="amarchivo" name="amarchivo" method="POST" action="accion.php" data-toggle="validator" role="form" enctype="multipart/formdata">
+<div class="container-fluid border">Este el main
+<form id="amarchivo" name="amarchivo" method="POST" action="accion.php" data-toggle="validator" role="form" enctype="multipart/form-data">
 <div class="row">
-    <label for="fileArchivo">Seleccione un archivo</label>
-    <input type="file" name='fileArchivo' id='fileArchivo'>
+    <label for="archivo">Seleccione un archivo</label>
+    <input type="file" name='archivo' id='archivo'>
     <div class="text-danger">
 
     </div>

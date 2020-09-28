@@ -16,5 +16,5 @@
 <?php  
 
 include_once("../../configuracion.php");
-include_once("../estructura/menu.php");
+
 ?>
