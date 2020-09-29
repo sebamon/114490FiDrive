@@ -17,7 +17,7 @@ $respuesta = $obj->UploadFile($datos);
 <?php echo $respuesta ?>
 </p>
 <div class="form-group">
-<a class="btn btn-primary" href="index.php" role="button">Atras</a>
+<a class="btn btn-primary" href="amarchivo.php" role="button">Atras</a>
 
 </div>
 

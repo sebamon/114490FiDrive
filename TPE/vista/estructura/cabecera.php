@@ -13,6 +13,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 </nav>
+<div class="container-fluid">Este el main
 <?php  
 
 include_once("../../configuracion.php");
