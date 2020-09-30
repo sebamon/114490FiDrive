@@ -2,11 +2,12 @@
 $Titulo = "Compartir Archivo"; 
 include_once("../estructura/cabecera.php");
 
+// include_once("../../../vista/estructura/cabecera.php");
 include_once("../estructura/menu.php");
 ?>
 
 
-<div class="col">
+<div class="container-fluid">
 <form id="compartirarchivo" name="compartirarchivo" class="form-group" method="POST" action="accion.php" data-toggle="validator" role="form" enctype="multipart/form-data">
     <div class="row form-group">
         <label for="archivo">Nombre del Archivo:</label>

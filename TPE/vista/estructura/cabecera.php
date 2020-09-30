@@ -14,7 +14,8 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 </nav>
-<!-- <div class="container-fluid"> -->
+<div class="container-fluid">
+
 <?php  
 
 include_once("../../configuracion.php");

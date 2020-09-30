@@ -1,4 +1,5 @@
 
+</div>
 <footer class="footer"> 
 <p>Sebastian MON</br> 
 Legajo: 114490</br>
