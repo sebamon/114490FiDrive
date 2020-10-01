@@ -4,26 +4,26 @@ include_once("../estructura/cabecera.php");
 include_once("../estructura/menu.php");
 ?>
 <div class="col">
-<form id="amarchivo" name="amarchivo" method="POST" action="" class="form-group" data-toggle="validator" role="form" enctype="multipart/form-data">
+<form id="amarchivo" name="amarchivo" method="POST" action="" data-toggle="validator" role="form">
 
 <div class="form-group">
-    <label for="nombre">Nombre: </label>
+    <label for="nombre" class="control-label">Nombre: </label>
     <input type="text"  class="form-control" name='nombre' id='nombre' value="1234.png" readonly> 
     <div class="invalid-feedback">
 
     </div>
 </div>
 <div class="form-group">
-    <label for="descripcion">Descripcion: </label>
+    <label for="descripcion" class="control-label">Descripcion: </label>
     <input type="text"  class="form-control" name='descripcion' id='descripcion'>
-    <div class="invalid-feedback">
+    <div class="help-block with-errors">
 
     </div>
 </div>
 <div class="form-group">
 
    
-    <label class="input-group-text" for="usuario">Usuario</label>
+    <label class="control-label" for="usuario">Usuario</label>
   
     <select class="custom-select" name='usuario' id='usuario'>
         <option value='admin'>Admin</option>
@@ -40,23 +40,25 @@ include_once("../estructura/menu.php");
     <label for="icono" class="control-label" >Seleccione el Icono: </label>
     <div class="custom-control custom-radio custom-control-inline ">
         <input type="radio" id="radioImagen" name="radioIcono" class="custom-control-input" value='Imagen'>
-        <label class="custom-control-label" for="radioImagen">Imagen  </label>
+       
+        <label class="custom-control-label" for="radioImagen"><i class="far fa-image"></i> Imagen  </label>
+        
     </div>
     <div class="custom-control custom-radio custom-control-inline ">
         <input type="radio" id="radioZip" name="radioIcono" class="custom-control-input" value='Zip'>
-        <label class="custom-control-label" for="radioZip">Zip  </label>
+        <label class="custom-control-label" for="radioZip"><i class="far fa-file-archive"></i> Zip  </label>
     </div>
     <div class="custom-control custom-radio custom-control-inline ">
         <input type="radio" id="radioDoc" name="radioIcono" class="custom-control-input" value='Doc'>
-        <label class="custom-control-label" for="radioDoc">Doc  </label>
+        <label class="custom-control-label" for="radioDoc"><i class="far fa-file-word"></i> Doc  </label>
     </div>
     <div class="custom-control custom-radio custom-control-inline ">
         <input type="radio" id="radioPdf" name="radioIcono" class="custom-control-input" value='Pdf'>
-        <label class="custom-control-label" for="radioPdf">PDF  </label>
+        <label class="custom-control-label" for="radioPdf"><i class="far fa-file-pdf"></i> PDF  </label>
     </div>
     <div class="custom-control custom-radio custom-control-inline">
         <input type="radio" id="radioXls" name="radioIcono" class="custom-control-input" value='Xls'>
-        <label class="custom-control-label" for="radioXls">XLS</label>
+        <label class="custom-control-label" for="radioXls"><i class="far fa-file-excel"></i> XLS</label>
     </div>
     <div class="invalid-feedback">
 
@@ -64,7 +66,7 @@ include_once("../estructura/menu.php");
         
 </div>
 <div class="form-group">
-    <label for="clave">Clave: </label>
+    <label for="clave" class="control-label">Clave: </label>
     <input type="password" class="form-control" name='clave' id='clave'> 
     <div class="invalid-feedback">
 

@@ -7,7 +7,7 @@ include_once("../estructura/menu.php");
 
 
 <div class="col">
-<form id="compartirarchivo" name="compartirarchivo" class="form-group" method="POST" action="accion.php" data-toggle="validator" role="form" enctype="multipart/form-data">
+<form id="compartirarchivo" name="compartirarchivo" class="form-group" method="POST" action="" data-toggle="validator" role="form" enctype="multipart/form-data">
     <div class="form-group">
         <label for="archivo">Nombre del Archivo: 1234.png</label>
 
@@ -15,7 +15,7 @@ include_once("../estructura/menu.php");
     <div class="form-group">
         <label for="cantidad_compartido">Cantidad de Veces Compartido:</label>
         <input type="text" class="form-control" name="cantidad_compartido" disabled>
-        <div class="help-block with-errors">
+        <div class="invalid-feedback">
 
         </div>
     </div>
@@ -33,7 +33,7 @@ include_once("../estructura/menu.php");
         <option value='visitante'>Visitante</option>
         <option value='usted'>Usted</option>
         </select>
-        <div class="text-danger">
+        <div class="invalid-feedback">
 
         </div>
     </div>
