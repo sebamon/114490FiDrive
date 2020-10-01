@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="../css/all.min.css">
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/bootstrapValidator.min.css">
+<script type="text/javascript" src="../js/funciones.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"></link> <!-- Si saco esta se ve mal-->
 </head>
 <body>
