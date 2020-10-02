@@ -28,7 +28,8 @@ include_once("../estructura/menu.php");
     </div>
     <div class="form-group" >
         <label for="usuario">Usuario</label>
-        <select class="custom-select" name='usuario' id='usuario'>
+        <select class="form-control" name='usuario' id='usuario'>
+        <option value=''>Seleccione un Usuario</option>
         <option value='admin'>Admin</option>
         <option value='visitante'>Visitante</option>
         <option value='usted'>Usted</option>
@@ -38,7 +39,7 @@ include_once("../estructura/menu.php");
         </div>
     </div>
     <div class="form-group">
-        <input type="checkbox"  id="contraseña"  name="contraseña"  value="true" onclick="CheckPassword()">
+        <input type="checkbox"  id="pass"  name="pass"  value="true" onclick="CheckPassword()">
         <label class="form-check-label">Protegido con contraseña:</label>
         <div class="invalid-feedback">
 
@@ -46,7 +47,8 @@ include_once("../estructura/menu.php");
     </div>
     <div class="form-group">
         <label for="contraseña">Contraseña:</label>
-        <input type="password" class="form-control" name="txtcontraseña" id="txtcontraseña" disabled>
+        <input type="password" class="form-control" name="txtpassword" id="txtpassword" disabled>
+        <span id="passstrength"></span>
         <div class="invalid-feedback">
 
         </div>

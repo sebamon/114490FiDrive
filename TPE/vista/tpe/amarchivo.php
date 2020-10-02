@@ -8,14 +8,16 @@ include_once("../estructura/menu.php");
 
 <div class="form-group">
     <label for="nombre" class="control-label">Nombre: </label>
-    <input type="text"  class="form-control" name='nombre' id='nombre' value="1234.png" readonly> 
+    <input type="text"  class="form-control" name='nombre' id='nombre' value=""> 
     <div class="invalid-feedback">
 
     </div>
 </div>
 <div class="form-group">
     <label for="descripcion" class="control-label">Descripcion: </label>
-    <input type="text"  class="form-control" name='descripcion' id='descripcion'>
+    <textarea  id="descripcion" class="form-control" name='descripcion'>
+    Esta es una descripción generica, si lo necesita la puede cambiar.
+    </textarea>
     <div class="help-block with-errors">
 
     </div>
@@ -25,10 +27,11 @@ include_once("../estructura/menu.php");
    
     <label class="control-label" for="usuario">Usuario</label>
   
-    <select class="custom-select" name='usuario' id='usuario'>
+    <select class="form-control" name='usuario' id='usuario'>
+        <option value=''>Seleccion un Usuario</option>
         <option value='admin'>Admin</option>
         <option value='visitante'>Visitante</option>
-        <option value='usted' selected>Usted</option>
+        <option value='usted'>Usted</option>
     </select>
 
     <div class="invalid-feedback">
