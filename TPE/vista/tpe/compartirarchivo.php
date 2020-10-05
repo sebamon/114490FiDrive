@@ -7,9 +7,10 @@ include_once("../estructura/menu.php");
 
 
 <div class="col">
-<form id="compartirarchivo" name="compartirarchivo"  method="POST" action="" data-toggle="validator" role="form" enctype="multipart/form-data">
+<form id="compartirarchivo" name="compartirarchivo"  method="POST" action="accion-compartirarchivo.php" data-toggle="validator" role="form" enctype="multipart/form-data">
     <div class="form-group">
         <label for="archivo">Nombre del Archivo: 1234.png</label>
+        <input type="text" id='nombre' name='nombre' value="1234.png">
 
     </div>
     <div class="form-group">

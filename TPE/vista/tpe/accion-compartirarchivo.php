@@ -1,10 +1,17 @@
 <?php 
 include_once("../estructura/cabecera.php");
+include_once("../estructura/menu.php");
 ?>
 <?php 
 $datos = data_submitted();
 $obj = new control_amarchivo();
-$respuesta = $obj->UploadFile($datos);
+
+$obj->GenerarHash($datos);
+$datos['link']=$obj;
+//$respuesta = $obj->UploadFile($datos);
+//$respuesta=$obj->ListarArchivos2('../../archivos');
+//$obj->listFiles('../../archivos');
+//$obj->MostrarArchivos();
 
 
 
@@ -12,10 +19,10 @@ $respuesta = $obj->UploadFile($datos);
 ?>
 
 
-<p>
+<!-- <p>
 <b>Respuesta: </b> 
-<?php echo $respuesta ?>
-</p>
+<?php //echo $respuesta ?>
+</p> -->
 <div class="form-group">
 <a class="btn btn-primary" href="amarchivo.php" role="button">Atras</a>
 

@@ -19,6 +19,17 @@ function CheckPassword()
     }
 
 };
+function FortalezaPassword()
+{
+    $pass=document.getElementById('txtpassword');
+    if($pass.value.length()>6)
+    {
+        echo ('Fuerte');
+    }
+    else{
+        echo ('Debil');
+    }
+}
 function getFileExtension(filename) {
     return filename.slice((filename.lastIndexOf('.') - 1 >>> 0) + 2);
   };
@@ -57,17 +68,36 @@ function SugerirIcono()
     }
 
 }
+ 
 function ListarArchivos()
 {
     var $directorio='../archivos/';
-
-    var $archivos= $archivos = scandir($directorio, 1);
-   /* foreach($archivos as $1archivo)
+    var $arc;
+    var $archivos = array();
+    $archivos = scandir($directorio,1);
+  /*  foreach($archivos as $key=>$clave)
     {
-        
+        $arc=$directorio.$1archivo;
+        echo $arc;
     }*/
 }
-
+/*function ListarArchivos2()
+{
+$ruta="../../archivos/";
+ 
+$directorio = opendir($ruta); //ruta actual
+while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
+{
+    if (is_dir($archivo))//verificamos si es o no un directorio
+    {
+        echo "[".$archivo . "]<br />"; //de ser un directorio lo envolvemos entre corchetes
+    }
+    else
+    {
+        echo $archivo . "<br />";
+    }
+}
+}
 /*
 $('#txtpassword').keyup(function(e) {
     var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a7d95022-59b3-4cf7-bc18-2539b4d33e6b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/TPE/control/control_amarchivo.php" beforeDir="false" afterPath="$PROJECT_DIR$/TPE/control/control_amarchivo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TPE/vista/js/funciones.js" beforeDir="false" afterPath="$PROJECT_DIR$/TPE/vista/js/funciones.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TPE/vista/tpe/accion.php" beforeDir="false" afterPath="$PROJECT_DIR$/TPE/vista/tpe/accion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TPE/vista/tpe/contenido.php" beforeDir="false" afterPath="$PROJECT_DIR$/TPE/vista/tpe/contenido.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1iSsFmEBpg7DMLrDa6b4Ly8Jgtu" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.contenido.php">
+    <configuration name="contenido.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/114490FiDrive/TPE/vista/tpe/contenido.php" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="control_amarchivo.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/TPE/control/control_amarchivo.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.contenido.php" />
+        <item itemvalue="PHP Script.control_amarchivo.php" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a7d95022-59b3-4cf7-bc18-2539b4d33e6b" name="Default Changelist" comment="" />
+      <created>1601912226746</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601912226746</updated>
+      <workItem from="1601912228100" duration="367000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="390" y="26" key="#PHP" timestamp="1601912574208">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="390" y="26" key="#PHP/0.0.1366.768@0.0.1366.768" timestamp="1601912574208" />
+    <state width="1323" height="238" key="GridCell.Tab.0.bottom" timestamp="1601912595136">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="238" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1601912595136" />
+    <state width="1323" height="238" key="GridCell.Tab.0.center" timestamp="1601912595136">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="238" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1601912595136" />
+    <state width="1323" height="238" key="GridCell.Tab.0.left" timestamp="1601912595136">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="238" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1601912595136" />
+    <state width="1323" height="238" key="GridCell.Tab.0.right" timestamp="1601912595136">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="238" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1601912595136" />
+    <state width="1323" height="238" key="GridCell.Tab.1.bottom" timestamp="1601912595137">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="238" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1601912595137" />
+    <state width="1323" height="238" key="GridCell.Tab.1.center" timestamp="1601912595137">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="238" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1601912595137" />
+    <state width="1323" height="238" key="GridCell.Tab.1.left" timestamp="1601912595137">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="238" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1601912595137" />
+    <state width="1323" height="238" key="GridCell.Tab.1.right" timestamp="1601912595137">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="238" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1601912595137" />
+    <state width="1323" height="238" key="GridCell.Tab.2.bottom" timestamp="1601912595137">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="238" key="GridCell.Tab.2.bottom/0.0.1366.768@0.0.1366.768" timestamp="1601912595137" />
+    <state width="1323" height="238" key="GridCell.Tab.2.center" timestamp="1601912595137">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="238" key="GridCell.Tab.2.center/0.0.1366.768@0.0.1366.768" timestamp="1601912595137" />
+    <state width="1323" height="238" key="GridCell.Tab.2.left" timestamp="1601912595137">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="238" key="GridCell.Tab.2.left/0.0.1366.768@0.0.1366.768" timestamp="1601912595137" />
+    <state width="1323" height="238" key="GridCell.Tab.2.right" timestamp="1601912595137">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="238" key="GridCell.Tab.2.right/0.0.1366.768@0.0.1366.768" timestamp="1601912595137" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/TPE/control/control_amarchivo.php</url>
+          <line>52</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
