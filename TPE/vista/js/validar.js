@@ -52,10 +52,30 @@ $('#amarchivo').bootstrapValidator({
                    message: 'Seleccione un usuario'
                 }
              }
+        },
+        clave: {
+
+            validators: {
+
+                integer: {
+
+                    message: 'Ingrese: 0-Alta 1:Modificacion'
+                },
+                notEmpty: {
+
+                    message: 'Ingrese: 0-Alta 1:Modificacion'
+
+                         },
+                         between: {
+                             min: 0,
+                             max: 1,
+                             message: 'Ingrese: 0-Alta 1:Modificacion'
+                         }
         }
-    
-    }   
-});$('#compartirarchivo').bootstrapValidator({
+    }
+   }   
+});
+$('#compartirarchivo').bootstrapValidator({
     message: 'Este valor no es valido',
 
     feedbackIcons: {
@@ -83,6 +103,41 @@ $('#amarchivo').bootstrapValidator({
             }
 
         },
+        cantidad_dias: {
+
+            validators: {
+
+                notEmpty: {
+
+                    message: 'Debe Ingresar un valor'
+
+                },
+                integer:
+                {
+                    message: 'Debe ser valor numerico'
+                }
+
+            }
+
+        },
+        cantidad_descargas: {
+
+            validators: {
+
+                notEmpty: {
+
+                    message: 'Debe Ingresar un valor'
+
+                },
+                integer:
+                {
+                    message: 'Debe ser valor numerico'
+                }
+
+            }
+
+        },
+
         descripcion: {
 
             validators: {
@@ -112,4 +167,42 @@ $('#amarchivo').bootstrapValidator({
         }
     
     }   
+});
+$('#eliminararchivo').bootstrapValidator({
+
+    message: 'Este valor no es valido',
+
+    feedbackIcons: {
+
+        valid: 'fa fa-check',
+
+        invalid: 'fa fa-time',
+
+        validating: 'fa fa-refresh'
+
+    },
+   
+    fields: {
+        motivo: {
+            validators: {
+
+                notEmpty: {
+
+                    message: 'El Motivo no puede quedar vacío'
+
+                }
+
+            }
+
+        },
+        usuario: {
+            validators: {
+                notEmpty: { // <=== Use notEmpty instead of Callback validator
+                   message: 'Seleccione un usuario'
+                }
+             }
+        }
+        }
+
+
 });

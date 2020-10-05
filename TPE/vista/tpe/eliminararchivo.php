@@ -7,7 +7,7 @@ include_once("../estructura/menu.php");
 
 
 <div class="col">
-<form id="compartirarchivo" name="compartirarchivo" class="form-group" method="POST" action="" data-toggle="validator" role="form" enctype="multipart/form-data">
+<form id="eliminararchivo" name="eliminararchivo" method="POST" action="" data-toggle="validator" role="form">
     <div class="form-group">
         <label for="archivo">Nombre del Archivo: 1234.png</label>
 
@@ -28,7 +28,8 @@ include_once("../estructura/menu.php");
 </div>
     <div class="form-group" >
         <label for="usuario">Usuario</label>
-        <select class="custom-select" name='usuario' id='usuario'>
+        <select class="form-control" name='usuario' id='usuario'>
+        <option value=" ">Seleccion un Usuario</option>
         <option value='admin'>Admin</option>
         <option value='visitante'>Visitante</option>
         <option value='usted'>Usted</option>
@@ -40,7 +41,7 @@ include_once("../estructura/menu.php");
 
     <div class="form-group">
     <input id="btn_eliminar" class="btn btn-primary btn-block" name="btn_eliminar" type="submit" value="Elimiar Archivo">    
-</div>
+    </div>
 </form>
 </div>
 </div>

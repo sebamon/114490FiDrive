@@ -9,6 +9,7 @@
 <link href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet"></link>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"></link> <!-- Si saco esta se ve mal-->
 <link rel="stylesheet" href="../css/estilo.css"> 
+<script type="text/javascript" src="../js/validar.js"></script>
 </head> 
 
 <body>

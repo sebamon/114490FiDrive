@@ -8,7 +8,7 @@ include_once("../estructura/menu.php");
 
 <div class="form-group">
     <label for="nombre" class="control-label">Nombre: </label>
-    <input type="text"  class="form-control" name='nombre' id='nombre' value=""> 
+    <input type="text"  class="form-control" name='nombre' id='nombre' value="" onchange='SugerirIcono()'> 
     <div class="invalid-feedback">
 
     </div>
@@ -28,7 +28,7 @@ include_once("../estructura/menu.php");
     <label class="control-label" for="usuario">Usuario</label>
   
     <select class="form-control" name='usuario' id='usuario'>
-        <option value=''>Seleccion un Usuario</option>
+        <option value=" ">Seleccion un Usuario</option>
         <option value='admin'>Admin</option>
         <option value='visitante'>Visitante</option>
         <option value='usted'>Usted</option>
@@ -70,7 +70,7 @@ include_once("../estructura/menu.php");
 </div>
 <div class="form-group">
     <label for="clave" class="control-label">Clave: </label>
-    <input type="password" class="form-control" name='clave' id='clave'> 
+    <input type='number' class="form-control" name='clave' id='clave'> 
     <div class="invalid-feedback">
 
     </div>
