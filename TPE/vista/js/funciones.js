@@ -19,6 +19,12 @@ function CheckPassword()
     }
 
 };
+function SeleccionarArchivo()
+{
+    $seleccion=document.getElementById("seleccion");
+    seleccion="hola";
+
+}
 function FortalezaPassword()
 {
     $pass=document.getElementById('txtpassword');

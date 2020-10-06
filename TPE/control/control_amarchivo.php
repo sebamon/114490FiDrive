@@ -97,6 +97,13 @@ function listFiles($directorio){ //La función recibira como parametro un direct
     }				
 }//Fin de la Función	
 
+
+function SeleccionarArchivo()
+{
+$seleccion=document.getElementById("seleccion");
+$seleccion="hola";
+
+}
 function mostrarArchivos(){
 $directorio = '../../archivos';
 if ($dir = opendir($directorio)){
@@ -108,8 +115,10 @@ if ($dir = opendir($directorio)){
             {
                 echo "Carpeta: <strong>$archivo</strong><br />";
             }
+           
                // echo "Archivo: <strong>$archivo</strong><br />";
-                echo 'Archivo: <a href="'.$directorio.'/'.$archivo.'">'.$archivo.'</a>';
+              //  echo 'Archivo: <a href="'.$directorio.'/'.$archivo.' onClick("SeleccionarArchivo()")">'.$archivo.'</a>';
+                echo 'Archivo: <input type="button" onClick="SeleccionarArchivo()" value="'.$archivo.'">';
             echo '</div>';
         }
     }

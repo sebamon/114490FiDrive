@@ -9,6 +9,10 @@ include_once("../estructura/menu.php");
 <div class="col">
 
 <form action="accion-contenido.php">
+<div clas="row">
+        <label for="seleccion">Archivo Seleccionado:</label>
+        <input type="text" id="seleccion" name="seleccion" disabled>
+</div>
     <div class="form-group border border-primary">
         <h4>Crear Carpeta</h4>
         <label for="carpeta">Nombre de la Carpeta:</label>
