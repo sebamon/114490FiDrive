@@ -19,10 +19,11 @@ function CheckPassword()
     }
 
 };
-function SeleccionarArchivo()
+function SeleccionarArchivo(valor)
 {
-    $seleccion=document.getElementById("seleccion");
-    seleccion="hola";
+    document.getElementById("seleccion").value=valor;
+    
+    
 
 }
 function FortalezaPassword()

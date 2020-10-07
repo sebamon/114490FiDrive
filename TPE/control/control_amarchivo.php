@@ -98,19 +98,20 @@ function listFiles($directorio){ //La función recibira como parametro un direct
 }//Fin de la Función	
 
 
-function SeleccionarArchivo()
-{
-$seleccion=document.getElementById("seleccion");
-$seleccion="hola";
+// function SeleccionarArchivo($valor)
+// {
+// document.getElementById("seleccion")=$valor;
+// return;
 
-}
+// }
 function mostrarArchivos(){
 $directorio = '../../archivos';
 if ($dir = opendir($directorio)){
     while ($archivo = readdir($dir)) {
         if ($archivo != '.' && $archivo != '..'){
             //este div es para darle caché y que se vea bien en todos los dispositivos. son clases del nuevo bootstrap -> framewrok css
-            echo '<div class="col-sm-3 col-xs-12">';
+            echo "<div class='col-sm-3 col-xs-12'>";
+            
             if(is_dir($dir.'/'.$archivo))
             {
                 echo "Carpeta: <strong>$archivo</strong><br />";
@@ -118,8 +119,9 @@ if ($dir = opendir($directorio)){
            
                // echo "Archivo: <strong>$archivo</strong><br />";
               //  echo 'Archivo: <a href="'.$directorio.'/'.$archivo.' onClick("SeleccionarArchivo()")">'.$archivo.'</a>';
-                echo 'Archivo: <input type="button" onClick="SeleccionarArchivo()" value="'.$archivo.'">';
-            echo '</div>';
+             //   echo "Archivo: <input type='button' onClick='SeleccionarArchivo(".$archivo.")' value='".$archivo."'>";
+                echo "Archivo: <input type='button' id='".$archivo."'onClick='SeleccionarArchivo(value)' value='".$archivo."'>";
+            echo "</div>";
         }
     }
 }
