@@ -18,10 +18,10 @@ $obj->CrearCarpeta($datos);
 ?>
 
 
-<!-- <p>
+<p>
 <b>Respuesta: </b> 
-<?php //echo $respuesta ?>
-</p> -->
+<?php /*echo $respuesta*/?>
+</p>
 <div class="form-group">
 <a class="btn btn-primary" href="contenido.php" role="button">Atras</a>
 

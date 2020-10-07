@@ -8,10 +8,14 @@ include_once("../estructura/menu.php");
 
 <div class="col">
 
-<form action="accion-contenido.php">
+<form action="accion-contenido.php" method="POST" name='contenido' id='contenido' role='form'>
 <div clas="row">
         <label for="seleccion">Archivo Seleccionado:</label>
         <input type="text" id="seleccion" name="seleccion" disabled>
+</div>
+<div clas="row">
+        <label for="ruta">Ruta Seleccionada:</label>
+        <input type="text" id="ruta" name="ruta" value='../../archivos' >
 </div>
     <div class="form-group border border-primary">
         <h4>Crear Carpeta</h4>
@@ -31,7 +35,8 @@ include_once("../estructura/menu.php");
 <?php
 //listFiles('../../archivos')
  $obj = new control_amarchivo();
- $obj->mostrarArchivos();
+$obj->mostrarArchivos2('../../archivos');
+// $obj->mostrarCarpetas('../../archivos');
 //$obj->listFiles('../../archivos/');
 //$obj->ListarArchivos();
 ?>
