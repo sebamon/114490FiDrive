@@ -62,60 +62,65 @@ function CrearCarpeta($datos){
             echo 'El directorio ya existe';
         }
 }
+function mostrarArchivos($dir){
+    $listarArchivo=null;    
+    //$listarCarpeta=null;
+    $directorio = opendir($dir);
+    while(false !== ($archivo =readdir($directorio))){
+       //echo $dir.'/'.$archivo;
+       if ($archivo != '.' && $archivo != '..'){         
+            
+       // $nuevadir=$dir.'/'.$archivo;
+            if (is_dir($dir.'/'.$archivo)){
+            $listarCarpeta.="Carpeta: <input type='button' id='".$archivo."'onClick='SeleccionarArchivo(value)' value='".$archivo."/'>";
+           // mostrarArchivos($nuevadir); INTENTO DE RECURSIVIDAD PARA MOSTRAR SUBCARPETAS
+           // echo $dir.'/'.$archivo;
+           // echo $nuevadir;
+           echo 'entro';
+        }
+            else
+            $listarArchivo.="Archivo: <input type='button' id='".$dir.$archivo."'onClick='SeleccionarArchivo(id)' value='".$archivo."'>";
+            
+       
+    } 
+    }closedir($directorio);/*
+    echo "<div class='row'>";
+    echo "<div class='col'>";
+    echo $listarCarpeta;
+    echo '</div>';
+    echo "<div class='col'>";
+    echo $listarArchivo;
+    echo '</div>';
+    echo '</div>';*/
+    echo $listarCarpeta;
+    echo $listarArchivo;
+    //return $listarArchivo;
+    return;
+    }
 function mostrarCarpetas($dir){
 
     $listarCarpeta=null;
     $listarArchivo=null;
     $directorio = opendir($dir);
     while(false !== ($archivo =readdir($directorio))){
+        if ($archivo != '.' && $archivo != '..'){
         if (is_dir($dir.'/'.$archivo)){
             $listarCarpeta.="Carpeta: <input type='button' id='".$archivo."'onClick='SeleccionarArchivo(value)' value='".$archivo."/'>";   
-            //mostrarArchivos($dir.'/'.$archivo.'/');          
+            $nuevoDir=$dir.'/'.$archivo;
+            mostrarArchivos($archivo);          
         }
         else
         {
             echo $dir.'/'.$archivo;
            // mostrarArchivos($dir.'/'.$archivo);
         }
+    }
 
 }
 closedir($directorio);
 echo $listarCarpeta;
 }
-function mostrarArchivos($dir){
-$listarArchivo=null;    
-//$listarCarpeta=null;
-$directorio = opendir($dir);
-while(false !== ($archivo =readdir($directorio))){
-   //echo $dir.'/'.$archivo;
-   if ($archivo != '.' && $archivo != '..'){         
-        
-   // $nuevadir=$dir.'/'.$archivo;
-        if (is_dir($dir.'/'.$archivo)){
-        $listarCarpeta.="Carpeta: <input type='button' id='".$archivo."'onClick='SeleccionarArchivo(value)' value='".$archivo."/'>";
-       // mostrarArchivos($nuevadir); INTENTO DE RECURSIVIDAD PARA MOSTRAR SUBCARPETAS
-       // echo $dir.'/'.$archivo;
-       // echo $nuevadir;
-       echo 'entro';
-    }
-        else
-        $listarArchivo.="Archivo: <input type='button' id='".$dir.$archivo."'onClick='SeleccionarArchivo(id)' value='".$archivo."'>";
-        
-   
-} 
-}closedir($directorio);/*
-echo "<div class='row'>";
-echo "<div class='col'>";
-echo $listarCarpeta;
-echo '</div>';
-echo "<div class='col'>";
-echo $listarArchivo;
-echo '</div>';
-echo '</div>';*/
-echo $listarCarpeta;
-echo $listarArchivo;
-//return $listarArchivo;
-}
+
 function mostrarArchivos2($dir){
     $listarArchivo=null;    
     $listarCarpeta=null;
@@ -126,23 +131,24 @@ function mostrarArchivos2($dir){
             
         $nuevadir=$dir.'/'.$archivo;
             if (is_dir($dir.'/'.$archivo)){
-            $listarCarpeta.="Carpeta: <input type='button' id='".$archivo."'onClick='SeleccionarArchivo(value)' value='".$archivo."/'>";
+            $listarCarpeta.="+Carpeta: <input class='btn btn-primary' type='button' id='".$archivo."'onClick='SeleccionarArchivo(value)' value='".$archivo."/'></br>";
            // mostrarArchivos($nuevadir); INTENTO DE RECURSIVIDAD PARA MOSTRAR SUBCARPETAS
            // echo $dir.'/'.$archivo;
            // echo $nuevadir;
-           echo '+';
         }
             else
-            $listarArchivo.="-Archivo: <input type='button' id='".$dir.'/'.$archivo."'onClick='SeleccionarArchivo(id)' value='".$archivo."'>";
+            $listarArchivo.="-Archivo: <input class='btn btn-secondary' type='button' id='".$dir.'/'.$archivo."'onClick='SeleccionarArchivo(id)' value='".$archivo."'></br>";
             
        
     } 
     }closedir($directorio);
     echo "<div class='row'>";
     echo "<div class='col'>";
+    echo "<h4>Carpetas</h4>";
     echo $listarCarpeta;
     echo '</div>';
     echo "<div class='col'>";
+    echo "<h4>Archivos</h4>";
     echo $listarArchivo;
     echo '</div>';
     echo '</div>';

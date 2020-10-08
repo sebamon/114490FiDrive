@@ -221,3 +221,33 @@ $('#eliminararchivo').bootstrapValidator({
 
 
 });
+$('#contenido').bootstrapValidator({
+    message: 'Este valor no es valido',
+
+    feedbackIcons: {
+
+        valid: 'fa fa-check',
+
+        invalid: 'fa fa-time',
+
+        validating: 'fa fa-refresh'
+
+    },
+   
+    fields: {
+
+        carpeta: {
+
+            validators: {
+
+                notEmpty: {
+
+                    message: 'Debe Ingresar el Nombre de la Carpeta'
+
+                }
+
+            }
+
+        }
+   }   
+});

@@ -8,26 +8,24 @@ include_once("../estructura/menu.php");
 
 <div class="col">
 
-<form action="accion-contenido.php" method="POST" name='contenido' id='contenido' role='form'>
-<div clas="row">
-        <label for="seleccion">Archivo Seleccionado:</label>
-        <input type="text" id="seleccion" name="seleccion" disabled>
+<form name='contenido' id='contenido' action="accion-contenido.php" method="POST" data-toggle="validator"  role='form'>
+<div clas="form-group">
+        <label for="seleccion">Seleccion:</label>
+        <input class='form-control' type="text" id="seleccion" name="seleccion" disabled>
 </div>
-<div clas="row">
+<div clas="form-group">
         <label for="ruta">Ruta Seleccionada:</label>
-        <input type="text" id="ruta" name="ruta" value='../../archivos' >
+        <input class='form-control' type="text" id="ruta" name="ruta" value='../../archivos' >
 </div>
-    <div class="form-group border border-primary">
+    <div class="form-group">
         <h4>Crear Carpeta</h4>
         <label for="carpeta">Nombre de la Carpeta:</label>
-        <input type="text" id="carpeta" name="carpeta" placeholder="Nombre de la Carpeta">
+        <input type="text" class='form-control' id="carpeta" name="carpeta" placeholder="Nombre de la Carpeta">
         <input type="submit" class="btn btn-primary" value="Crear Carpeta">
         
     </div>
     <div class="row">
-    <!-- <label for="seleccion">Archivo Seleccionado:</label>
-        <input type="text" id="seleccion" name="seleccion" placeholder="Seleccione un archivo o directorio">
-        <input type="submit" class="btn btn-primary" value="Crear Carpeta"> -->
+
     </div>
     
 </form>
@@ -36,7 +34,7 @@ include_once("../estructura/menu.php");
 //listFiles('../../archivos')
  $obj = new control_amarchivo();
 $obj->mostrarArchivos2('../../archivos');
-// $obj->mostrarCarpetas('../../archivos');
+ //$obj->mostrarCarpetas('../../archivos');
 //$obj->listFiles('../../archivos/');
 //$obj->ListarArchivos();
 ?>
