@@ -4,8 +4,15 @@ include_once("../estructura/cabecera.php");
 include_once("../estructura/menu.php");
 ?>
 <div class="col">
-<form id="amarchivo" name="amarchivo" method="POST" action="" data-toggle="validator" role="form">
+<form id="amarchivo" name="amarchivo" method="POST" action="accion.php" data-toggle="validator" role="form">
 
+<div class="form-group">
+    <label for="archivo" class="control-label">Seleccione un archivo: </label>
+    <input type="file"  class="form-control" name='archivo' id='archivo'> 
+    <div class="invalid-feedback">
+
+    </div>
+</div>
 <div class="form-group">
     <label for="nombre" class="control-label">Nombre: </label>
     <input type="text"  class="form-control" name='nombre' id='nombre' value="" onchange='SugerirIcono()'> 
@@ -69,8 +76,7 @@ include_once("../estructura/menu.php");
         
 </div>
 <div class="form-group">
-    <label for="clave" class="control-label">Clave: </label>
-    <input type='number' class="form-control" name='clave' id='clave'> 
+    <input type='number' class="form-control" name='clave' id='clave' hidden> 
     <div class="invalid-feedback">
 
     </div>

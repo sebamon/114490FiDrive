@@ -7,7 +7,7 @@ include_once("../estructura/menu.php");
 
 
 <div class="col">
-<form id="compartirarchivo" name="compartirarchivo"  method="POST" action="accion-compartirarchivo.php" data-toggle="validator" role="form" enctype="multipart/form-data">
+<form id="compartirarchivo" name="compartirarchivo"  method="POST" action="accion.php" data-toggle="validator" role="form" enctype="multipart/form-data">
     <div class="form-group">
         <label for="archivo">Nombre del Archivo: 1234.png</label>
         <input type="text" id='nombre' name='nombre' value="1234.png">
@@ -62,7 +62,11 @@ include_once("../estructura/menu.php");
         </div>
     </div>
     <div class="form-group">
-        <input id="btn_hash" class="btn btn-primary btn-block" name="btn_hash" type="submit" value="Generar Hash">    
+        <!-- <input id="btn_hash" class="btn btn-primary btn-block" name="btn_hash" type="submit" value="Generar Hash">     -->
+        <input id="btn_hash" class="btn btn-primary btn-block" name="btn_hash" type="submit" onclick="AccionHash()" value="Generar Hash">    
+    </div>
+    <div class="row">
+    <input type="text" id='accion' name='accion' hidden value='sinaccion'>
     </div>
 </form>
 </div>

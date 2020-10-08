@@ -52,7 +52,7 @@ $('#amarchivo').bootstrapValidator({
                    message: 'Seleccione un usuario'
                 }
              }
-        },
+        }/*,
         clave: {
 
             validators: {
@@ -72,7 +72,7 @@ $('#amarchivo').bootstrapValidator({
                              message: 'Ingrese: 0-Alta 1:Modificacion'
                          }
         }
-    }
+    }*/
    }   
 });
 $('#compartirarchivo').bootstrapValidator({

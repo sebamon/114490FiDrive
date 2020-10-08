@@ -21,10 +21,35 @@ function CheckPassword()
 };
 function SeleccionarArchivo(valor)
 {
-    document.getElementById("seleccion").value=valor;
+    var nombre;
     
-    
-
+    document.getElementById("ruta").value=valor;
+    nombre=valor.split('/');
+    document.getElementById("seleccion").value=nombre[3];
+}
+// function SeleccionarCarpeta(valor)
+// {
+//     var nombre;
+//     var raiz='../../archivos/';
+//     document.getElementById("ruta").value=raiz+valor;
+//     nombre=valor.split('/');
+//     document.getElementById("seleccion").value=nombre[3];
+// }
+function NuevaCarpeta()
+{
+    document.getElementById("accion").value='nuevacarpeta';
+}
+function ModificarArchivo()
+{
+    document.getElementById("accion").value='modificararchivo';
+}
+function NuevoArchivo()
+{
+    document.getElementById("accion").value='nuevoarchivo';
+}
+function AccionHash()
+{
+    document.getElementById("accion").value='nuevohash';
 }
 function FortalezaPassword()
 {

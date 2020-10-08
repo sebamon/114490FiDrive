@@ -37,7 +37,7 @@ function GenerarHash($datos)
     $hash=$nombre;
     if(($dias==0) & ($dias==0))
     {
-        $hash.='9007199254740991';
+        $hash.=$nombre.'9007199254740991';
         $hash=hash('md5',$hash,false);
     }
     else
@@ -52,15 +52,30 @@ function CrearCarpeta($datos){
     $nombre = $datos["carpeta"];
     $ruta = $datos["ruta"];
    // echo $datos["ruta"];
-
+    $resultado='';
     $directorio = $ruta.'/'.$nombre;
     if (!file_exists($directorio)) {
         mkdir($directorio);
+        $resultado='Se creo la carpeta '.$datos['carpeta'];
         }
         else
         {
-            echo 'El directorio ya existe';
+            $resultado='El directorio ya existe';
         }
+        return $resultado;
+    
+}
+function MostrarMensaje($datos)
+{
+    $accion=$datos['accion'];
+    $resultado=null;
+    switch($accion)
+    {
+        case ('nuevacarpeta'): $resultado='Se creo la carpeta '.$datos['carpeta'];break;
+       // case ('nuevacarpeta'): $resultado='Se creo la carpeta '$datos['carpeta'];break;
+    }
+    return $resultado;
+
 }
 function mostrarArchivos($dir){
     $listarArchivo=null;    
@@ -72,7 +87,7 @@ function mostrarArchivos($dir){
             
        // $nuevadir=$dir.'/'.$archivo;
             if (is_dir($dir.'/'.$archivo)){
-            $listarCarpeta.="Carpeta: <input type='button' id='".$archivo."'onClick='SeleccionarArchivo(value)' value='".$archivo."/'>";
+            $listarCarpeta.="Carpeta: <input type='button' id='".$archivo."'onClick='SeleccionaCarpeta(value)' value='".$archivo."/'>";
            // mostrarArchivos($nuevadir); INTENTO DE RECURSIVIDAD PARA MOSTRAR SUBCARPETAS
            // echo $dir.'/'.$archivo;
            // echo $nuevadir;
@@ -131,7 +146,7 @@ function mostrarArchivos2($dir){
             
         $nuevadir=$dir.'/'.$archivo;
             if (is_dir($dir.'/'.$archivo)){
-            $listarCarpeta.="+Carpeta: <input class='btn btn-primary' type='button' id='".$archivo."'onClick='SeleccionarArchivo(value)' value='".$archivo."/'></br>";
+            $listarCarpeta.="+Carpeta: <input class='btn btn-primary' type='button' id='".$dir.'/'.$archivo.'/'."'onClick='SeleccionarArchivo(id)' value='".$archivo."/'></br>";
            // mostrarArchivos($nuevadir); INTENTO DE RECURSIVIDAD PARA MOSTRAR SUBCARPETAS
            // echo $dir.'/'.$archivo;
            // echo $nuevadir;

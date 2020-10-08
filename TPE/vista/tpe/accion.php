@@ -1,18 +1,31 @@
 <?php 
 include_once("../estructura/cabecera.php");
 include_once("../estructura/menu.php");
-?>
-<?php 
+
 $datos = data_submitted();
 $obj = new control_amarchivo();
+$accion=$datos['accion'];
 
-$ruta=$datos['ruta'];
-$obj->UploadFile($datos);
-/*
-
-$valor=$datos['clave'];
-if($datos['clave']==0)
+switch($accion)
 {
-    $resultado=$obj->UploadFile($datos);
+    case ('accionhash'): $respuesta=$obj->GenerarHash($datos);break;
+    case ('nuevacarpeta'): $respuesta=$obj->CrearCarpeta($datos);break;
+    case ('modificararchivo'): $respuesta=$obj->ModificarArchivo($datos);break;
 
-}*/
+}
+
+
+?>
+<div class="col alert alert-success" role="alert">
+<p>
+<b>Respuesta: </b> 
+<?php echo $respuesta?>
+</p>
+</br>
+<div class="row">
+<a class="btn btn-primary" href="contenido.php" role="button">Atras</a>
+
+</div>
+</div>
+
+
