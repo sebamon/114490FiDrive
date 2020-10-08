@@ -4,18 +4,18 @@ include_once("../estructura/cabecera.php");
 include_once("../estructura/menu.php");
 ?>
 <div class="col">
-<form id="amarchivo" name="amarchivo" method="POST" action="accion.php" data-toggle="validator" role="form">
-
+<form id="amarchivo" name="amarchivo" method="POST" action="accion.php" data-toggle="validator" role="form" enctype="multipart/form-data">
+ 
 <div class="form-group">
     <label for="archivo" class="control-label">Seleccione un archivo: </label>
-    <input type="file"  class="form-control" name='archivo' id='archivo'> 
+    <input type="file"  class="form-control" name='archivo' id='archivo' onchange='SugerirIcono()'> 
     <div class="invalid-feedback">
 
     </div>
 </div>
 <div class="form-group">
     <label for="nombre" class="control-label">Nombre: </label>
-    <input type="text"  class="form-control" name='nombre' id='nombre' value="" onchange='SugerirIcono()'> 
+    <input type="text"  class="form-control" name='nombre' id='nombre' value="" > 
     <div class="invalid-feedback">
 
     </div>
@@ -77,12 +77,13 @@ include_once("../estructura/menu.php");
 </div>
 <div class="form-group">
     <input type='number' class="form-control" name='clave' id='clave' hidden> 
+    <input type="text" id='accion' name='accion' hidden value=''>
     <div class="invalid-feedback">
 
     </div>
 </div>
 <div class="form-group">
-    <input id="btn_enviar" class="btn btn-primary btn-block" name="btn_enviar" type="submit" value="Enviar">    
+    <input id="btn_enviar" class="btn btn-primary btn-block" name="btn_enviar" type="submit" value="Enviar" onclick='NuevoArchivo()'>    
 </div>
 
 </form>

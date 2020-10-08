@@ -11,7 +11,7 @@ switch($accion)
     case ('accionhash'): $respuesta=$obj->GenerarHash($datos);break;
     case ('nuevacarpeta'): $respuesta=$obj->CrearCarpeta($datos);break;
     case ('modificararchivo'): $respuesta=$obj->ModificarArchivo($datos);break;
-
+    case ('nuevoarchivo'):$respuesta=$obj->UploadFile($datos);break;
 }
 
 

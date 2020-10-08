@@ -3,16 +3,18 @@
 class control_amarchivo{
     public function UploadFile($dato)
     {
+        $resultado=null;
         $nombre=$dato['nombre'];
         $dir = '../../archivos/'; // Definimos Directorio donde se guarda el archivo
         $target_file = $dir . basename($_FILES["archivo"]["name"]);
         // Comprobamos que no se hayan producido errores
         if ($_FILES['archivo']["error"] <= 0) 
         {
-            echo "Nombre: " . $_FILES['archivo']['name'] . "<br />";
-            echo "Tipo: " . $_FILES['archivo']['type'] . "<br />";
-            echo "Tamaño: " . ($_FILES['archivo']["size"] / 1024) . " kB<br />";
-            echo "Carpeta temporal: " . $_FILES['archivo']['tmp_name']." <br />";
+           
+            $resultado.= "Nombre: " . $_FILES['archivo']['name'] . "<br />";
+            $resultado.= "Tipo: " . $_FILES['archivo']['type'] . "<br />";
+            $resultado.= "Tamaño: " . ($_FILES['archivo']["size"] / 1024) . " kB<br />";
+            $resultado.= "Carpeta temporal: " . $_FILES['archivo']['tmp_name']." <br />";
 
             //Renombramos el archivo.
             $_FILES['archivo']['name']=$nombre;
@@ -20,13 +22,14 @@ class control_amarchivo{
             // Intentamos copiar el archivo al servidor.
             if (!copy($_FILES['archivo']['tmp_name'], $dir.$_FILES['archivo']['name']))
             {
-                echo 'ERROR: no se pudo cargar el archivo ';
+                $resultado.= 'ERROR: no se pudo cargar el archivo ';
             }else
-                echo "El archivo ".$_FILES['archivo']['name'].' se ha copiado con Éxito <br />';
+            $resultado.= "El archivo ".$_FILES['archivo']['name'].' se ha copiado con Éxito <br />';
         }else
             {
-            echo "ERROR: no se pudo cargar el archivo. No se pudo acceder al archivo Temporal";
+                $resultado.= "ERROR: no se pudo cargar el archivo. No se pudo acceder al archivo Temporal";
             }
+            return $resultado;
         
 }
 function GenerarHash($datos)
@@ -167,6 +170,52 @@ function mostrarArchivos2($dir){
     echo $listarArchivo;
     echo '</div>';
     echo '</div>';
+    //echo $listarCarpeta;
+    //echo $listarArchivo;
+    //return $listarArchivo;
+    }
+
+
+function mostrarArchivos3($dir){
+    $listarArchivo=null;    
+    $listarCarpeta=null;
+    $directorio = opendir($dir);
+    while(false !== ($archivo =readdir($directorio))){
+       //echo $dir.'/'.$archivo;
+       if ($archivo != '.' && $archivo != '..'){         
+            
+        $nuevadir=$dir.'/'.$archivo;
+            if (is_dir($dir.'/'.$archivo)){
+          //  $listarCarpeta.="+Carpeta: <input class='btn btn-primary' type='button' id='".$dir.'/'.$archivo.'/'."'onClick='SeleccionarArchivo(id)' value='".$archivo."/'></br>";
+           // mostrarArchivos($nuevadir); INTENTO DE RECURSIVIDAD PARA MOSTRAR SUBCARPETAS
+           // echo $dir.'/'.$archivo;
+           // echo $nuevadir;
+        }
+            else
+            $listarArchivo.='<div class="card" style="width: 18rem;">';
+            $listarArchivo.='<img src="..." class="card-img-top" alt="...">';
+            $listarArchivo.=' <div class="card-body">';
+            $listarArchivo.=' <h5 class="card-title">'.$archivo.'</h5>';
+            $listarArchivo.='<p class="card-text">texto</p>';
+            $listarArchivo.='<a href="#" class="btn btn-primary"Modificar</a></div></div>';
+            
+            
+            
+           // "-Archivo: <input class='btn btn-secondary' type='button' id='".$dir.'/'.$archivo."'onClick='SeleccionarArchivo(id)' value='".$archivo."'></br>";
+            
+       
+    } 
+    }closedir($directorio);
+   /* echo "<div class='row'>";
+    echo "<div class='col'>";
+    echo "<h4>Carpetas</h4>";*/
+    echo $listarCarpeta;
+   /* echo '</div>';
+    echo "<div class='col'>";
+    echo "<h4>Archivos</h4>";*/
+    echo $listarArchivo;
+   // echo '</div>';
+    //echo '</div>';
     //echo $listarCarpeta;
     //echo $listarArchivo;
     //return $listarArchivo;

@@ -77,7 +77,7 @@ function SugerirIcono()
 {
     var $nombre;
     var $extension;
-    $nombre=document.getElementById('nombre');
+    $nombre=document.getElementById('archivo');
     /*punto=nombre.lastIndexOf(".");
     extension=indexOf(punto,nombre.lengt());*/
     $extension=getFileExtension($nombre.value);
