@@ -19,6 +19,19 @@ function CheckPassword()
     }
 
 };
+function FortalezaPassword()
+{
+    var $tieneLetra=false;
+    var $tieneNumero=false;
+    $pass=document.getElementById('txtpassword');
+    if($pass.value.length()>6)
+    {
+        echo ('Fuerte');
+    }
+    else{
+        echo ('Debil');
+    }
+}
 function SeleccionarArchivo(valor)
 {
     var nombre;
@@ -26,6 +39,26 @@ function SeleccionarArchivo(valor)
     document.getElementById("ruta").value=valor;
     nombre=valor.split('/');
     document.getElementById("seleccion").value=nombre[3];
+}
+
+function GenerarHash()
+{
+    $nombre=document.getElementById('nombre').value;
+    $dias=document.getElementById('cantidad_dias').value;
+    $descargas=document.getElementById('cantidad_descargas').value;
+    $hash='';
+    if(($dias==0) & ($descargas==0))
+    {
+        $nombre+=$nombre+'9007199254740991';
+        $hash=md5($nombre);
+    }
+    else
+    {
+        $nombre+=$dias+$descargas;
+        $hash=md5($nombre);
+    }
+    document.getElementById('link').value=$hash;
+    return $hash;
 }
 // function SeleccionarCarpeta(valor)
 // {
@@ -51,17 +84,21 @@ function AccionHash()
 {
     document.getElementById("accion").value='nuevohash';
 }
-function FortalezaPassword()
-{
-    $pass=document.getElementById('txtpassword');
-    if($pass.value.length()>6)
-    {
-        echo ('Fuerte');
-    }
-    else{
-        echo ('Debil');
-    }
+function CapturarArchivo(){
+
+    $ruta=document.getElementById('seleccion');
+    //echo ($ruta.value);
+    $nuevaruta='../tpe/amarchivo.php?clave=1&parametro='+$ruta.value;
+    //echo ($nuevaruta);
+    window.open($nuevaruta);
+    window.close(this);
+
+    
+    //windows.location.href=$nuevaruta;
+//    window.location.href=amarchivo.php?parametro=$ruta;
 }
+
+
 function getFileExtension(filename) {
     return filename.slice((filename.lastIndexOf('.') - 1 >>> 0) + 2);
   };

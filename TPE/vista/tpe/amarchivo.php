@@ -2,20 +2,39 @@
 $Titulo = " AM Archivo"; 
 include_once("../estructura/cabecera.php");
 include_once("../estructura/menu.php");
+
+//esto es para que no falle si es un archivo nuevo que va a entrar sin parametros
+
+
+
+
+
 ?>
 <!-- <div class="row"> -->
-<form id="amarchivo" name="amarchivo" method="POST" action="accion.php" data-toggle="validator" role="form" enctype="multipart/form-data">
+<form id="amarchivo" name="amarchivo" method="get" action="accion.php" data-toggle="validator" role="form" enctype="multipart/form-data">
  
 <div class="form-group">
-    <label for="archivo" class="control-label">Seleccione un archivo: </label>
-    <input type="file"  class="form-control" name='archivo' id='archivo' onchange='SugerirIcono()'> 
-    <div class="invalid-feedback">
+<?php
+    if(!isset($_GET['parametro'])) {
+    
+    echo '<label for="archivo" class="control-label">Seleccione un archivo: </label>';
+    echo '<input type="file"  class="form-control" name="archivo" id="archivo" onchange="SugerirIcono()">';
+    echo '<div class="invalid-feedback">';
 
-    </div>
-</div>
+    echo '</div>';
+    echo '</div>';
+}
+?>
 <div class="form-group">
     <label for="nombre" class="control-label">Nombre: </label>
-    <input type="text"  class="form-control" name='nombre' id='nombre' value="" > 
+    <?php
+    if(isset($_GET['parametro'])) {
+    echo '<input type="text"  class="form-control" name="nombre" id="nombre" value='.$_GET['parametro'].' readonly> ';
+    }
+    else {
+        echo '<input type="text"  class="form-control" name="nombre" id="nombre" value="" > ';
+    }
+    ?>
     <div class="invalid-feedback">
 
     </div>
@@ -75,15 +94,31 @@ include_once("../estructura/menu.php");
     </div>
         
 </div>
+
 <div class="form-group">
     <input type='number' class="form-control" name='clave' id='clave' hidden> 
-    <input type="text" id='accion' name='accion' hidden value=''>
+    <?php
+    if(isset($_GET['clave'])) {
+    echo '<input type="text" id="accion" name="accion" hidden value='.$_GET['clave'].'>';
+    }
+    else {
+        echo '<input type="text" id="accion" name="accion" hidden value="0">';
+    }
+    ?>
     <div class="invalid-feedback">
 
     </div>
 </div>
 <div class="form-group">
-    <input id="btn_enviar" class="btn btn-primary btn-block" name="btn_enviar" type="submit" value="Enviar" onclick='NuevoArchivo()'>    
+<?php
+    if(!isset($_GET['clave'])) {
+    echo '<input id="btn_enviar" class="btn btn-primary btn-block" name="btn_enviar" type="submit" value="Enviar" onclick="NuevoArchivo()"">';    
+}else {
+    {
+        echo '<input id="btn_enviar" class="btn btn-primary btn-block" name="btn_enviar" type="submit" value="Enviar" onclick="ModificarArchivo()">';   
+    }
+}
+?>
 </div>
 
 </form>

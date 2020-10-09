@@ -10,6 +10,7 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"></link> <!-- Si saco esta se ve mal-->
 <link rel="stylesheet" href="../css/estilo.css"> 
 <script type="text/javascript" src="../js/validar.js"></script>
+<script type="text/javascript" src="../../externos/md5.js"></script>
 </head> 
 
 <body>

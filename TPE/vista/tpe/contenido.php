@@ -6,14 +6,14 @@ include_once("../estructura/menu.php");
 ?>
 
 <div class="col">
-<form name='contenido' id='contenido' action="accion.php" method="POST" data-toggle="validator"  role='form'>
+<form name='contenido' id='contenido' action="accion.php" method="get" data-toggle="validator"  role='form'>
 <div clas="form-group">
         <label for="seleccion">Seleccion:</label>
-        <input class='form-control' type="text" id="seleccion" name="seleccion" disabled>
+        <input class='form-control' type="text" id="seleccion" name="seleccion" readonly>
 </div>
 <div clas="form-group">
         <label for="ruta">Ruta Seleccionada:</label>
-        <input class='form-control' type="text" id="ruta" name="ruta" value='../../archivos' >
+        <input class='form-control' type="text" id="ruta" name="ruta" value='../../archivos'readonly >
         <input type="text" id='accion' name='accion' hidden value='sinaccion'>
 </div>
 <!-- <div class="col"> -->
@@ -39,7 +39,7 @@ $obj->mostrarArchivos2('../../archivos');
         </div>
         <div class="row form-group ml-auto">
         <h4>Modificar Archivo</h4>
-        <input type="submit" class="btn btn-primary" value="Modificar Archivo" onclick="ModificarArchivo()">        
+        <input type="submit" class="btn btn-primary" value="Modificar Archivo" onclick="CapturarArchivo()">        
         </div>
 </form>
 </div>

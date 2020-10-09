@@ -48,7 +48,7 @@ include_once("../estructura/menu.php");
     </div>
     <div class="form-group">
             <label for="contraseña">Contraseña:</label>
-            <input type="password" class="form-control" name="txtpassword" id="txtpassword" disabled>
+            <input type="password" class="form-control" name="txtpassword" id="txtpassword" onkeypress='FortalezaPassword()'disabled>
             <span id="passstrength"></span>
         <div class="invalid-feedback">
 
@@ -56,7 +56,7 @@ include_once("../estructura/menu.php");
     </div>
     <div class="form-group">
         <label for="link">Link para Compartir:</label>
-            <input type="text" class="form-control" name="link">
+            <input type="text" class="form-control" id='link' name="link" >
         <div class="invalid-feedback">
 
         </div>
@@ -64,6 +64,10 @@ include_once("../estructura/menu.php");
     <div class="form-group">
         <!-- <input id="btn_hash" class="btn btn-primary btn-block" name="btn_hash" type="submit" value="Generar Hash">     -->
         <input id="btn_hash" class="btn btn-primary btn-block" name="btn_hash" type="button" onclick="GenerarHash()" value="Generar Hash">    
+    </div>
+    <div class="form-group">
+        
+        <input id="btn_compartir" class="btn btn-primary btn-block" name="btn_compartir" type="submit" value="Compartir">    
     </div>
     <div class="row">
     <input type="text" id='accion' name='accion' hidden value='sinaccion'>

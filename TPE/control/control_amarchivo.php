@@ -36,7 +36,7 @@ class control_amarchivo{
             return $resultado;
         
 }
-function GenerarHash($datos)
+/*function GenerarHash($datos)
 {
     $nombre=$datos["nombre"];
     $dias=$datos["cantidad_dias"];
@@ -53,7 +53,7 @@ function GenerarHash($datos)
         echo hash('md5',$nombre,false);
     }
     return $hash;
-}
+}*/
 function CrearCarpeta($datos){
 
     $nombre = $datos["carpeta"];
