@@ -80,6 +80,7 @@ function SugerirIcono()
     $nombre=document.getElementById('archivo');
     /*punto=nombre.lastIndexOf(".");
     extension=indexOf(punto,nombre.lengt());*/
+    $archivo=$nombre.split('.');
     $extension=getFileExtension($nombre.value);
     
     switch($extension)
@@ -98,6 +99,7 @@ function SugerirIcono()
         default: setRadioOff();
 
     }
+    document.getElementById('nombre').value=$archivo[0];
 
 }
  

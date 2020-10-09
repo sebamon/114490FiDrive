@@ -5,16 +5,7 @@ include_once("../estructura/menu.php");
 
 ?>
 
-
-<div class="row">
-<form action="amarchivo.php" method='post'>
-        <div class="form-group">
-        <h4>Nuevo Archivo</h4>
-        <input type="submit" class="btn btn-primary" value="Nuevo Archivo" onclick="NuevoArchivo()">        
-        </div>
-</form>
-</div>
-<div class="row">
+<div class="col">
 <form name='contenido' id='contenido' action="accion.php" method="POST" data-toggle="validator"  role='form'>
 <div clas="form-group">
         <label for="seleccion">Seleccion:</label>
@@ -28,7 +19,7 @@ include_once("../estructura/menu.php");
 <!-- <div class="col"> -->
 <?php
 
- $obj = new control_amarchivo();
+$obj = new control_amarchivo();
 $obj->mostrarArchivos2('../../archivos');
 
 ?>
@@ -40,9 +31,19 @@ $obj->mostrarArchivos2('../../archivos');
     </div>
     
 </form>
-
-
+<div class="row">
+<form action="amarchivo.php" method='post'>
+        <div class="form-group">
+        <h4>Nuevo Archivo</h4>
+        <input type="submit" class="btn btn-primary" value="Nuevo Archivo" onclick="NuevoArchivo()">        
+        </div>
+</form>
 </div>
+</div>
+</div>
+
+
+
 
 
 

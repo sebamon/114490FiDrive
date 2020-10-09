@@ -3,7 +3,7 @@ $Titulo = " AM Archivo";
 include_once("../estructura/cabecera.php");
 include_once("../estructura/menu.php");
 ?>
-<div class="col">
+<!-- <div class="row"> -->
 <form id="amarchivo" name="amarchivo" method="POST" action="accion.php" data-toggle="validator" role="form" enctype="multipart/form-data">
  
 <div class="form-group">

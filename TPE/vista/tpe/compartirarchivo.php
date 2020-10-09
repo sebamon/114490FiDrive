@@ -63,7 +63,7 @@ include_once("../estructura/menu.php");
     </div>
     <div class="form-group">
         <!-- <input id="btn_hash" class="btn btn-primary btn-block" name="btn_hash" type="submit" value="Generar Hash">     -->
-        <input id="btn_hash" class="btn btn-primary btn-block" name="btn_hash" type="submit" onclick="AccionHash()" value="Generar Hash">    
+        <input id="btn_hash" class="btn btn-primary btn-block" name="btn_hash" type="button" onclick="GenerarHash()" value="Generar Hash">    
     </div>
     <div class="row">
     <input type="text" id='accion' name='accion' hidden value='sinaccion'>
