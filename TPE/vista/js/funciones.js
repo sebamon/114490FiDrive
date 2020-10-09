@@ -21,16 +21,51 @@ function CheckPassword()
 };
 function FortalezaPassword()
 {
-    var $tieneLetra=false;
-    var $tieneNumero=false;
-    $pass=document.getElementById('txtpassword');
-    if($pass.value.length()>6)
+    var $tieneLetras=false;
+    var $tieneNumeros=false;
+    var $tieneSimbolos=false;
+    var $cantidadCaracteres=0;
+    
+    var $fortaleza=null;
+    var $expresionNumeros=/[0-9]/;
+    var $expresionLetra= /[a-zA-Z ]/;
+    var $expresionSimbolo=/[!"#$%&'()*+,\-./:;<=>?@[\]^_`{|}~]/;
+    $pass=document.getElementById('txtpassword').value;
+    $cantidadCaracteres=$pass.length;
+  
+    // for(var i=0;i<$cantidadCaracteres;i++)
+    // {
+      //  var caracter=$pass.charAt(i);
+      //  $nuevo=$expresionLetra.test($pass);
+        if ($expresionNumeros.test($pass))
+        $tieneNumeros=true;
+        if ($expresionLetra.test($pass))
+        $tieneLetras=true;
+        if($expresionSimbolo.test($pass))
+        $tieneSimbolos=true;
+
+    // }
+    if($cantidadCaracteres<=6)
     {
-        echo ('Fuerte');
+        $fortaleza='Debil';
     }
-    else{
-        echo ('Debil');
+    else
+    {
+        $fortaleza='Debil';
+        if(($tieneNumeros)&&($tieneLetras))
+        {
+            $fortaleza='Media';
+        }
+        if(($tieneSimbolos)&&($tieneNumeros)&&($tieneLetras))
+        {
+                $fortaleza='Fuerte';
+        }
     }
+  
+    document.getElementById("labelstrengpass").innerHTML =$fortaleza;
+
+
+ 
 }
 function SeleccionarArchivo(valor)
 {
@@ -39,6 +74,22 @@ function SeleccionarArchivo(valor)
     document.getElementById("ruta").value=valor;
     nombre=valor.split('/');
     document.getElementById("seleccion").value=nombre[3];
+}
+function ArchivoSeleccionado()
+{
+    alert("algo");
+    var seleccion=document.getElementById('seleccion').value;
+    var botonModificar=document.getElementById('btn_modificar');
+    var botonCompartir=document.getElementById('btn_compartir');
+    if(seleccion)
+    {
+        botonModificar.disabled=false;
+        botonCompartir.disabled=false;
+    }
+    else{
+        botonModificar.disabled=true;
+        botonCompartir.disabled=true;
+    }
 }
 
 function GenerarHash()
@@ -74,8 +125,15 @@ function NuevaCarpeta()
 }
 function ModificarArchivo()
 {
-    document.getElementById("accion").value='modificararchivo';
+    document.getElementById("am").value='modificararchivo';
+    CapturarArchivo();
 }
+function CompartirArchivo()
+{
+    document.getElementById("am").value='compartirarchivo';
+    CapturarArchivo();
+}
+
 function NuevoArchivo()
 {
     document.getElementById("accion").value='nuevoarchivo';
@@ -86,9 +144,18 @@ function AccionHash()
 }
 function CapturarArchivo(){
 
+    $accion=document.getElementById('am').value;
     $ruta=document.getElementById('seleccion');
     //echo ($ruta.value);
+    if($accion=='modificararchivo'){
     $nuevaruta='../tpe/amarchivo.php?clave=1&parametro='+$ruta.value;
+    }
+    else
+    {
+        if($accion=='compartirarchivo'){
+            $nuevaruta='../tpe/compartirarchivo.php?parametro='+$ruta.value;
+        }
+    }
     //echo ($nuevaruta);
     window.open($nuevaruta);
     window.close(this);

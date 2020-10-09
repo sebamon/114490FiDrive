@@ -9,11 +9,11 @@ include_once("../estructura/menu.php");
 <form name='contenido' id='contenido' action="accion.php" method="get" data-toggle="validator"  role='form'>
 <div clas="form-group">
         <label for="seleccion">Seleccion:</label>
-        <input class='form-control' type="text" id="seleccion" name="seleccion" readonly>
+        <input class='form-control' type="text" id="seleccion"  onchange="ArchivoSeleccionado()" name="seleccion" >
 </div>
 <div clas="form-group">
         <label for="ruta">Ruta Seleccionada:</label>
-        <input class='form-control' type="text" id="ruta" name="ruta" value='../../archivos'readonly >
+        <input class='form-control' type="text" id="ruta" name="ruta" onchange="ArchivoSeleccionado()"  value='../../archivos' >
         <input type="text" id='accion' name='accion' hidden value='sinaccion'>
 </div>
 <!-- <div class="col"> -->
@@ -33,13 +33,18 @@ $obj->mostrarArchivos2('../../archivos');
 </form>
 <div class="row">
 <form action="amarchivo.php" method='post'>
+<input type="text" name="am" id="am" hidden>
         <div class="row form-group ml-auto">
         <h4>Nuevo Archivo</h4>
         <input type="submit" class="btn btn-primary" value="Nuevo Archivo" onclick="NuevoArchivo()">        
         </div>
         <div class="row form-group ml-auto">
         <h4>Modificar Archivo</h4>
-        <input type="submit" class="btn btn-primary" value="Modificar Archivo" onclick="CapturarArchivo()">        
+        <input type="button" name='btn_modificar' id='btn_modificar' class="btn btn-primary" value="Modificar Archivo" onclick="ModificarArchivo()" >    <!-- ESTOS BOTONES VAN DISABLED, PERO NO PUEDO INVOCAR AL EVENTO QUE LOS PONE ENABLE, EL  -->   
+</div>                                                                                                                                                  <!-- EL EVENTO ONCHANGE DE SELECCION NO FUNCIONA CUANDO SE CAMBIA EL VALUE EN LA FUNCION JS DOCUMENT.GETELEMENTBYID -->
+        <div class="row form-group ml-auto">
+        <h4>Compartir Archivo</h4>
+        <input type="button" name='btn_compartir' id='btn_compartir' class="btn btn-primary" value="Compartir Archivo" onclick="CompartirArchivo()" >        
         </div>
 </form>
 </div>

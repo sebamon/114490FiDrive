@@ -52,27 +52,7 @@ $('#amarchivo').bootstrapValidator({
                    message: 'Seleccione un usuario'
                 }
              }
-        }/*,
-        clave: {
-
-            validators: {
-
-                integer: {
-
-                    message: 'Ingrese: 0-Alta 1:Modificacion'
-                },
-                notEmpty: {
-
-                    message: 'Ingrese: 0-Alta 1:Modificacion'
-
-                         },
-                         between: {
-                             min: 0,
-                             max: 1,
-                             message: 'Ingrese: 0-Alta 1:Modificacion'
-                         }
         }
-    }*/
    }   
 });
 $('#compartirarchivo').bootstrapValidator({
@@ -164,22 +144,16 @@ $('#compartirarchivo').bootstrapValidator({
                    message: 'Seleccione un usuario'
                 }
              }
-        },
-        txtpassword:{
-            validators:{
-                notEmpty:{
-                    message: 'La contraseña no puede quedar vacía'
-                },
-                regexp:{
-                    regexp:/[a-zA-Z ]{2,6}/,
-                    message: 'Debil',
-                    regexp:/[a-zA-Z ]{6,}/,
-                    message: 'Normal'
-
-                }
-                
-            }
-        }
+        
+         },
+         txtpassword: {
+             validators:
+             {
+                 notEmpty: {
+                    message:'Ingrese una Contraseña'
+                 }
+             }
+         }
     
     }   
 });

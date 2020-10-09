@@ -83,7 +83,7 @@ function MostrarMensaje($datos)
     }
     return $resultado;
 
-}
+}/*
 function mostrarArchivos($dir){
     $listarArchivo=null;    
     //$listarCarpeta=null;
@@ -113,12 +113,12 @@ function mostrarArchivos($dir){
     echo "<div class='col'>";
     echo $listarArchivo;
     echo '</div>';
-    echo '</div>';*/
+    echo '</div>';
     echo $listarCarpeta;
     echo $listarArchivo;
     //return $listarArchivo;
     return;
-    }
+    }*/
 function mostrarCarpetas($dir){
 
     $listarCarpeta=null;
@@ -143,7 +143,7 @@ closedir($directorio);
 echo $listarCarpeta;
 }
 
-function mostrarArchivos2($dir){
+function mostrarArchivos2($dir){//EL QUE ESTA EN FUNCIONAMIENTO
     $listarArchivo=null;    
     $listarCarpeta=null;
     $directorio = opendir($dir);

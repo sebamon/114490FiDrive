@@ -11,7 +11,7 @@ include_once("../estructura/menu.php");
 
 ?>
 <!-- <div class="row"> -->
-<form id="amarchivo" name="amarchivo" method="get" action="accion.php" data-toggle="validator" role="form" enctype="multipart/form-data">
+<form id="amarchivo" name="amarchivo" method="post" action="accion.php" data-toggle="validator" role="form" enctype="multipart/form-data">
  
 <div class="form-group">
 <?php

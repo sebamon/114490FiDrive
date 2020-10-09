@@ -9,8 +9,12 @@ include_once("../estructura/menu.php");
 <div class="col">
 <form id="compartirarchivo" name="compartirarchivo"  method="POST" action="accion.php" data-toggle="validator" role="form" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="archivo">Nombre del Archivo: 1234.png</label>
-        <input type="text" id='nombre' name='nombre' value="1234.png">
+        <label for="archivo">Nombre del Archivo:</label>
+        <?php
+        if(isset($_GET['parametro'])) {
+        echo '<input type="text" class="form-control" id="nombre" name="nombre" value="'.$_GET['parametro'].'">';
+    }
+    ?>
 
     </div>
     <div class="form-group">
@@ -48,14 +52,15 @@ include_once("../estructura/menu.php");
     </div>
     <div class="form-group">
             <label for="contraseña">Contraseña:</label>
-            <input type="password" class="form-control" name="txtpassword" id="txtpassword" onkeypress='FortalezaPassword()'disabled>
-            <span id="passstrength"></span>
+            <input type="password" class="form-control" name="txtpassword" id="txtpassword" onkeyup='FortalezaPassword()'disabled>
+            <span id="passstrength">
+            <label id='labelstrengpass'for=""></label></span>
         <div class="invalid-feedback">
 
         </div>
     </div>
     <div class="form-group">
-        <label for="link">Link para Compartir:</label>
+        <label for="link">Hash para Compartir:</label>
             <input type="text" class="form-control" id='link' name="link" >
         <div class="invalid-feedback">
 
