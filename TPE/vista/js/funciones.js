@@ -80,9 +80,10 @@ function SugerirIcono()
     $nombre=document.getElementById('archivo');
     /*punto=nombre.lastIndexOf(".");
     extension=indexOf(punto,nombre.lengt());*/
-    $archivo=$nombre.split('.');
+    $ruta=$nombre.value.split('.');
     $extension=getFileExtension($nombre.value);
-    
+    $archivo=$ruta[0].split("\\");
+
     switch($extension)
     {
         case ('jpg'): document.getElementById('radioImagen').checked=true;break;
@@ -99,7 +100,7 @@ function SugerirIcono()
         default: setRadioOff();
 
     }
-    document.getElementById('nombre').value=$archivo[0];
+    document.getElementById('nombre').value=$archivo[2];
 
 }
  

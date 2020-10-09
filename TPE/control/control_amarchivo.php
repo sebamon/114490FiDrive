@@ -7,6 +7,10 @@ class control_amarchivo{
         $nombre=$dato['nombre'];
         $dir = '../../archivos/'; // Definimos Directorio donde se guarda el archivo
         $target_file = $dir . basename($_FILES["archivo"]["name"]);
+
+        //recupero extension
+        $extension=explode('.',$_FILES['archivo']['name']);
+        $extension=$extension[1];
         // Comprobamos que no se hayan producido errores
         if ($_FILES['archivo']["error"] <= 0) 
         {
@@ -17,7 +21,7 @@ class control_amarchivo{
             $resultado.= "Carpeta temporal: " . $_FILES['archivo']['tmp_name']." <br />";
 
             //Renombramos el archivo.
-            $_FILES['archivo']['name']=$nombre;
+            $_FILES['archivo']['name']=$nombre.'.'.$extension;
 
             // Intentamos copiar el archivo al servidor.
             if (!copy($_FILES['archivo']['tmp_name'], $dir.$_FILES['archivo']['name']))

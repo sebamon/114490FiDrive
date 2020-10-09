@@ -33,9 +33,13 @@ $obj->mostrarArchivos2('../../archivos');
 </form>
 <div class="row">
 <form action="amarchivo.php" method='post'>
-        <div class="form-group">
+        <div class="row form-group ml-auto">
         <h4>Nuevo Archivo</h4>
         <input type="submit" class="btn btn-primary" value="Nuevo Archivo" onclick="NuevoArchivo()">        
+        </div>
+        <div class="row form-group ml-auto">
+        <h4>Modificar Archivo</h4>
+        <input type="submit" class="btn btn-primary" value="Modificar Archivo" onclick="ModificarArchivo()">        
         </div>
 </form>
 </div>
