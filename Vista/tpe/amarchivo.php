@@ -15,8 +15,9 @@ include_once("../estructura/menu.php");
  
 <div class="form-group">
 <?php
-    if(!isset($_GET['parametro'])) {
-    
+    if(isset($_GET['parametro'])) {
+        if($_GET['parametro']=='nuevo')
+    {
     echo '<label for="archivo" class="control-label">Seleccione un archivo: </label>';
     echo '<input type="file"  class="form-control" name="archivo" id="archivo" onchange="SugerirIcono()">';
     echo '<div class="invalid-feedback">';
@@ -24,15 +25,20 @@ include_once("../estructura/menu.php");
     echo '</div>';
     echo '</div>';
 }
+}
 ?>
 <div class="form-group">
     <label for="nombre" class="control-label">Nombre: </label>
     <?php
-    if(isset($_GET['parametro'])) {
-    echo '<input type="text"  class="form-control" name="nombre" id="nombre" value='.$_GET['parametro'].' readonly> ';
-    }
-    else {
-        echo '<input type="text"  class="form-control" name="nombre" id="nombre" value="" > ';
+    if(isset($_GET['parametro'])) 
+    {
+        if($_GET['parametro']!='nuevo')
+        {
+        echo '<input type="text"  class="form-control" name="nombre" id="nombre" value='.$_GET['parametro'].' readonly> ';
+        }
+        else {
+            echo '<input type="text"  class="form-control" name="nombre" id="nombre" value="" > ';
+        }
     }
     ?>
     <div class="invalid-feedback">

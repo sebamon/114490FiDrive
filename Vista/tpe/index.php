@@ -1,5 +1,5 @@
 <?php 
-$Titulo = " AM Archivo"; 
+$Titulo = "Index"; 
 include_once("../estructura/cabecera.php");
 include_once("../estructura/menu.php");
 ?>
