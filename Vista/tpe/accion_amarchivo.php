@@ -3,16 +3,33 @@ include_once("../estructura/cabecera.php");
 include_once("../estructura/menu.php");
 
 $datos = data_submitted();
-$obj = new control_amarchivo();
-$parametro=$datos['parametro'];
+$AbmArchivoCargado = new AbmArchivoCargado();
+$AbmArchivoEstado = new AbmArchivoCargadoEstado();
 
-switch($accion)
-{
-    case ('accionhash'): $respuesta=$obj->GenerarHash($datos);break;
-    case ('nuevacarpeta'): $respuesta=$obj->CrearCarpeta($datos);break;
-    case ('modificararchivo'): $respuesta=$obj->ModificarArchivo($datos);break;
-    case ('nuevoarchivo'):$respuesta=$obj->UploadFile($datos);break;
+if(isset($datos['parametro'])){
+    $parametro=$datos['parametro'];
+    if($parametro=='nuevo')
+    {
+        $respuesta = $AbmArchivoCargado->UploadFile($datos);
+        if($respuesta)
+        {
+            $respuesta = $AbmArchivoCargado->alta($datos);
+            $respuesta = $AbmArchivoEstado->alta($datos);
+        }
+    }
+    if($parametro=='eliminar')
+    {
+        $respuesta=$AbmArchivoCargado->baja($datos);
+    }
+    
 }
+// switch($parametro)
+// {
+//     case ('nuevo'): $respuesta=$obj;
+
+//     case ('modificar'): $respuesta=$obj->;
+
+// }
 
 
 ?>

@@ -20,7 +20,7 @@ class usuario {
     public function setear($idusuario, $usnombre, $usapellido, $uslogin, $usclave, $usactivo)    {
         $this->setidusuario($idusuario);
         $this->setusnombre($usnombre);
-        $this->seusapellido($usapellido);
+        $this->setusapellido($usapellido);
         $this->setuslogin($uslogin);
         $this->setusclave($usclave);
         $this->setusactivo($usactivo);
@@ -108,12 +108,12 @@ class usuario {
         $resp = false;
         $base=new BaseDatos();
         $sql="INSERT INTO usuario(idusuario,usnombre,usapellido,uslogin,usclave,usactivo)  VALUES('";
-        $sql.=.$this->getidusuario()."',";
-        $sql.=.$this->getusnombre()."','";
-        $sql.=.$this->getusapellido()."','";
-        $sql.=.$this->getuslogin()."','";
-        $sql.=.$this->getusclave()."',";
-        $sql.=.$this->getusactivo().");";
+        $sql.=$this->getidusuario()."',";
+        $sql.=$this->getusnombre()."','";
+        $sql.=$this->getusapellido()."','";
+        $sql.=$this->getuslogin()."','";
+        $sql.=$this->getusclave()."',";
+        $sql.=$this->getusactivo().");";
         if ($base->Iniciar()) {
             if ($elid = $base->Ejecutar($sql)) {
                 $this->setidusuario($elid);
@@ -130,7 +130,7 @@ class usuario {
     public function modificar(){
         $resp = false;
         $base=new BaseDatos();
-        $sql="UPDATE usuario SET usnombre='".$this->getusnombre().'";
+        $sql="update usuario SET usnombre='".$this->getusnombre()."'";
         $sql.=", usapellido='".$this->getusapellido()."'";
         $sql.=", uslogin='".$this->getuslogin()."'";
         $sql.=", usclave='".$this->getusclave()."'";

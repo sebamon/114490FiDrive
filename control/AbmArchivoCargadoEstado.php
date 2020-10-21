@@ -17,6 +17,15 @@ class AbmArchivoCargadoEstado{
         }
         return $obj;
     }
+    private function cargarObjetoNuevo($param){
+        $obj = null;
+           
+        if( array_key_exists('idarchivocargadoestado',$param)){
+            $obj = new archivocargadoestado();
+            $obj->setear($param['idarchivocargadoestado'], 1, null, $param['idusuario'], null, null, $param['idarchivocargado']);
+        }
+        return $obj;
+    }
     
     /**
      * Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto que son claves
@@ -54,7 +63,7 @@ class AbmArchivoCargadoEstado{
     public function alta($param){
         $resp = false;
         $param['idarchivocargadoestado'] =null;
-        $elObjtTabla = $this->cargarObjeto($param);
+        $elObjtTabla = $this->cargarObjetoNuevo($param);
 //        verEstructura($elObjtTabla);
         if ($elObjtTabla!=null and $elObjtTabla->insertar()){
             $resp = true;

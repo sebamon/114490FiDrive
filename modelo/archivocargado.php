@@ -37,7 +37,7 @@ class archivocargado {
         $this->setusuario($usuario);
         $this->setaclinkacceso($aclinkacceso);
         $this->setaccantidaddescarga($accantidaddescarga);
-        $this->seaccantidadusada($accantidadusada);
+        $this->setaccantidadusada($accantidadusada);
         $this->setacfechainiciocompartir($acfechainiciocompartir);
         $this->setacfechafincompartir($acfechafincompartir);
         $this->setacprotegidoclave($acprotegidoclave);
@@ -155,14 +155,36 @@ class archivocargado {
         
     }
     
+    public function insertarNuevo(){
+        $resp = false;
+        $base=new BaseDatos();
+        $sql="INSERT INTO archivocargado(acnombre,acdescripcion,acicono,idusuario)  VALUES('";
+        $sql.=$this->getacnombre()."','";
+        $sql.=$this->getacdescripcion()."','";
+        $sql.=$this->getacicono()."','";
+        $sql.=$this->getusuario()->getidusuario()."');";
+
+
+        if ($base->Iniciar()) {
+            if ($elid = $base->Ejecutar($sql)) {
+                $this->setidarchivocargado($elid);
+                $resp = true;
+            } else {
+                $this->setmensajeoperacion("Tabla->insertar: ".$base->getError());
+            }
+        } else {
+            $this->setmensajeoperacion("Tabla->insertar: ".$base->getError());
+        }
+        return $resp;
+    }
     public function insertar(){
         $resp = false;
         $base=new BaseDatos();
         $sql="INSERT INTO archivocargado(acnombre,acdescripcion,acicono,idusuario,aclinkacceso,accantidaddescarga,accantidadusada,acfechainiciocompartir,acfechafincompartir,acprotegidoclave)  VALUES('";
         $sql.=$this->getacnombre()."','";
         $sql.=$this->getacdescripcion()."','";
-        $sql.=$this->getacinoco()."','";
-        $sql.=$this->getidusuario()."','";
+        $sql.=$this->getacicono()."','";
+        $sql.=$this->getusuario()->getidusuario()."','";
         $sql.=$this->getaclinkacceso().",";
         $sql.=$this->getaccantidaddescarga().",";
         $sql.=$this->getaccantidadusada().",'";
@@ -243,7 +265,7 @@ class archivocargado {
                     $obj2= new usuario();
                     $obj2->setidusuario($row['idusuario']);
                     $obj2->cargar();
-                    $obj->setear($row['idarchivocargado'], $row['acnombre'], $row['acdescripcion'], $row['acicono'], $obj2, $row['aclinkacceso'], $row['accantidaddescarga'], $row['accantidadusada'], $row['acfechainiciocompartir'], $row['acfechafincompartir'], $row['acprotegidoclave']);
+                    $obj->setear($row['idarchivocargado'], $row['acnombre'], $row['acdescripcion'], $row['acicono'], $obj2, $row['aclinkacceso'], $row['accantidaddescarga'], $row['accantidadusada'], $row['acfechainiciocompartir'], $row['acefechafincompartir'], $row['acprotegidoclave']);
                     array_push($arreglo, $obj);
                 }
                

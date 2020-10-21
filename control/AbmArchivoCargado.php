@@ -1,5 +1,44 @@
 <?php
 class AbmArchivoCargado{
+
+    // Funcion Subir Archivo
+    public function UploadFile($dato)
+    {
+        $resultado=null;
+        $nombre=$dato['acnombre'];
+        $dir = '../../archivos/'; // Definimos Directorio donde se guarda el archivo
+        $target_file = $dir . basename($_FILES["archivo"]["name"]);
+
+        //recupero extension
+        $extension=explode('.',$_FILES['archivo']['name']);
+        $extension=$extension[1];
+        // Comprobamos que no se hayan producido errores
+        if ($_FILES['archivo']["error"] <= 0) 
+        {
+           
+            $resultado.= "Nombre: " . $_FILES['archivo']['name'] . "<br />";
+            $resultado.= "Tipo: " . $_FILES['archivo']['type'] . "<br />";
+            $resultado.= "Tamaño: " . ($_FILES['archivo']["size"] / 1024) . " kB<br />";
+            $resultado.= "Carpeta temporal: " . $_FILES['archivo']['tmp_name']." <br />";
+
+            //Renombramos el archivo.
+            $_FILES['archivo']['name']=$nombre.'.'.$extension;
+
+            // Intentamos copiar el archivo al servidor.
+            if (!copy($_FILES['archivo']['tmp_name'], $dir.$_FILES['archivo']['name']))
+            {
+                $resultado.= 'ERROR: no se pudo cargar el archivo ';
+            }else
+            $resultado.= "El archivo ".$_FILES['archivo']['name'].' se ha copiado con Éxito <br />';
+        }else
+            {
+                $resultado.= "ERROR: no se pudo cargar el archivo. No se pudo acceder al archivo Temporal";
+            }
+            return $resultado;
+            
+        
+}
+
     //Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto
 
     
@@ -9,6 +48,18 @@ class AbmArchivoCargado{
      * @return archivocargado
      */
     private function cargarObjeto($param){
+        $obj = null;
+           
+        if( array_key_exists('idarchivocargado',$param)){
+            $obj = new archivocargado();
+            $objUsuario = new usuario();
+            $objUsuario->setidusuario($param['usuario']);
+            $objUsuario->cargar();
+            $obj->setear($param['idarchivocargado'], $param['acnombre'], $param['acdescripcion'], $param['acicono'], $objUsuario, null, null, null, null, null, null);
+        }
+        return $obj;
+    }
+    private function cargarObjetoCompleto($param){
         $obj = null;
            
         if( array_key_exists('idarchivocargado',$param)){
@@ -56,7 +107,7 @@ class AbmArchivoCargado{
         $param['idarchivocargado'] =null;
         $elObjtTabla = $this->cargarObjeto($param);
 //        verEstructura($elObjtTabla);
-        if ($elObjtTabla!=null and $elObjtTabla->insertar()){
+        if ($elObjtTabla!=null and $elObjtTabla->insertarNuevo()){
             $resp = true;
         }
         return $resp;

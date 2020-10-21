@@ -11,7 +11,7 @@ include_once("../estructura/menu.php");
 
 ?>
 <!-- <div class="row"> -->
-<form id="amarchivo" name="amarchivo" method="post" action="accion.php" data-toggle="validator" role="form" enctype="multipart/form-data">
+<form id="amarchivo" name="amarchivo" method="post" action="accion_amarchivo.php" data-toggle="validator" role="form" enctype="multipart/form-data">
  
 <div class="form-group">
 <?php
@@ -26,6 +26,7 @@ include_once("../estructura/menu.php");
     echo '</div>';
 }
 }
+
 ?>
 <div class="form-group">
     <label for="nombre" class="control-label">Nombre: </label>
@@ -34,10 +35,14 @@ include_once("../estructura/menu.php");
     {
         if($_GET['parametro']!='nuevo')
         {
-        echo '<input type="text"  class="form-control" name="nombre" id="nombre" value='.$_GET['parametro'].' readonly> ';
+
+        $Abm = new AbmArchivoCargado();
+        $elObj=$Abm->buscar($_GET);
+
+        echo '<input type="text"  class="form-control" name="acnombre" id="acnombre" value='.$elObj[0]->getacnombre().' readonly> ';
         }
         else {
-            echo '<input type="text"  class="form-control" name="nombre" id="nombre" value="" > ';
+            echo '<input type="text"  class="form-control" name="acnombre" id="acnombre" value="" > ';
         }
     }
     ?>
@@ -47,8 +52,23 @@ include_once("../estructura/menu.php");
 </div>
 <div class="form-group">
     <label for="descripcion" class="control-label">Descripcion: </label>
-    <textarea  id="descripcion" class="form-control" name='descripcion'>
-    Esta es una descripción generica, si lo necesita la puede cambiar.
+    <textarea  id="acdescripcion" class="form-control" name='acdescripcion'>
+    <?php
+    if(isset($_GET['parametro'])) 
+    {
+        if($_GET['parametro']!='nuevo')
+        {
+            echo $elObj[0]->getacdescripcion();
+        }
+        else {
+            echo 'Esta es una descripción generica, si lo necesita la puede cambiar.';
+        }
+        
+    }
+    else {
+        echo 'Esta es una descripción generica, si lo necesita la puede cambiar.';
+    }
+    ?>
     </textarea>
     <div class="help-block with-errors">
 
@@ -58,14 +78,39 @@ include_once("../estructura/menu.php");
 
    
     <label class="control-label" for="usuario">Usuario</label>
-  
-    <select class="form-control" name='usuario' id='usuario'>
-        <option value=" ">Seleccion un Usuario</option>
-        <option value='admin'>Admin</option>
-        <option value='visitante'>Visitante</option>
-        <option value='usted'>Usted</option>
-    </select>
+  <?php
 
+    $select = new AbmUsuario();
+    $objSelect = $select->buscar(null);
+
+    echo  " <select class='form-control' name='usuario' id='usuario'>";
+    echo  " <option value=' '>Seleccion un Usuario</option>";
+    foreach($objSelect as $unUsuario){
+        if(isset($_GET['parametro'])) 
+    {
+        if($_GET['parametro']!='nuevo')
+        {
+        
+        if($unUsuario==$elObj[0]->getusuario()){
+        echo  " <option value='".$unUsuario->getidusuario()."' selected>".$unUsuario->getusapellido()."</option>";
+        }
+        else {
+            echo  " <option value='".$unUsuario->getidusuario()."'>".$unUsuario->getusapellido()."</option>";
+        }
+        }
+        else {
+            echo  " <option value='".$unUsuario->getidusuario()."'>".$unUsuario->getusapellido()."</option>";
+        }
+        
+    
+    
+    }
+   // 
+    }
+    
+
+    echo  " </select>";
+   ?>
     <div class="invalid-feedback">
 
     </div>
@@ -74,41 +119,103 @@ include_once("../estructura/menu.php");
 <div class="form-group">
     <label for="icono" class="control-label" >Seleccione el Icono: </label>
     <div class="custom-control custom-radio custom-control-inline ">
-        <input type="radio" id="radioImagen" name="radioIcono" class="custom-control-input" value='Imagen'>
-       
+    <?php
+    if(isset($_GET['parametro'])) 
+       {
+           if($_GET['parametro']=='modificar')
+           {
+               if($elObj[0]->getacicono()=='Imagen')
+                echo "<input type='radio' id='radioImagen' name='acicono' class='custom-control-input' value='Imagen' checked>";
+           }
+           else 
+               {
+                echo "<input type='radio' id='radioImagen' name='acicono' class='custom-control-input' value='Imagen'>";
+               }
+           
+        }
+    ?>
         <label class="custom-control-label" for="radioImagen"><i class="far fa-image"></i> Imagen  </label>
         
     </div>
     <div class="custom-control custom-radio custom-control-inline ">
-        <input type="radio" id="radioZip" name="radioIcono" class="custom-control-input" value='Zip'>
+    <?php
+    if(isset($_GET['parametro'])) 
+       {
+           if($_GET['parametro']=='modificar')
+           {
+            if($elObj[0]->getacicono()=='Zip' || $elObj[0]->getacicono()=='Rar')
+            echo "<input type='radio' id='radioZip' name='acicono' class='custom-control-input' value='Zip'checked>";
+        }
+        else {
+         echo "<input type='radio' id='radioZip' name='acicono' class='custom-control-input' value='Zip'>";
+        }
+     }
+     ?>
         <label class="custom-control-label" for="radioZip"><i class="far fa-file-archive"></i> Zip  </label>
     </div>
     <div class="custom-control custom-radio custom-control-inline ">
-        <input type="radio" id="radioDoc" name="radioIcono" class="custom-control-input" value='Doc'>
+    <?php
+    if(isset($_GET['parametro'])) 
+       {
+           if($_GET['parametro']=='modificar')
+           {
+            if($elObj[0]->getacicono()=='Doc' || $elObj[0]->getacicono()=='Docx')
+            echo "<input type='radio' id='radioDoc' name='acicono' class='custom-control-input' value='Doc' checked>";
+        }
+        else {
+         echo "<input type='radio' id='radioDoc' name='acicono' class='custom-control-input' value='Doc'>";
+        }
+     }
+     ?>
         <label class="custom-control-label" for="radioDoc"><i class="far fa-file-word"></i> Doc  </label>
     </div>
     <div class="custom-control custom-radio custom-control-inline ">
-        <input type="radio" id="radioPdf" name="radioIcono" class="custom-control-input" value='Pdf'>
+    <?php
+    if(isset($_GET['parametro'])) 
+       {
+           if($_GET['parametro']=='modificar')
+           {
+            if($elObj[0]->getacicono()=='Pdf')
+            echo "<input type='radio' id='radioPdf' name='acicono' class='custom-control-input' value='Pdf' checked>";
+           }
+           else {
+            echo "<input type='radio' id='radioPdf' name='acicono' class='custom-control-input' value='Pdf'>";
+           }
+        }
+        ?>
         <label class="custom-control-label" for="radioPdf"><i class="far fa-file-pdf"></i> PDF  </label>
     </div>
     <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="radioXls" name="radioIcono" class="custom-control-input" value='Xls'>
+    <?php
+    if(isset($_GET['parametro'])) 
+       {
+           if($_GET['parametro']=='modificar')
+           {
+            if($elObj[0]->getacicono()=='Xls' || $elObj[0]->getacicono()=='Xlsx')
+            echo "<input type='radio' id='radioXls' name='acicono' class='custom-control-input' value='Xls'checked>";
+        }
+        else {
+         echo "<input type='radio' id='radioXls' name='acicono' class='custom-control-input' value='Xls'>";
+        }
+     }
+     ?>
+
         <label class="custom-control-label" for="radioXls"><i class="far fa-file-excel"></i> XLS</label>
     </div>
     <div class="invalid-feedback">
 
     </div>
-        
 </div>
 
 <div class="form-group">
-    <input type='number' class="form-control" name='clave' id='clave' hidden> 
+    <input type='number' class="form-control" name='acprotegidoclave' id='acprotegidoclave' hidden> 
     <?php
-    if(isset($_GET['clave'])) {
-    echo '<input type="text" id="accion" name="accion" hidden value='.$_GET['clave'].'>';
-    }
-    else {
-        echo '<input type="text" id="accion" name="accion" hidden value="0">';
+    if(isset($_GET['parametro'])) 
+    {
+        if($_GET['parametro']=='nuevo')
+            echo "<input type='text' id='parametro' name='parametro' hidden value='nuevo'>";
+        else
+            echo '<input type="text" id="parametro" name="parametro" hidden value="modificar">';
     }
     ?>
     <div class="invalid-feedback">
@@ -117,13 +224,13 @@ include_once("../estructura/menu.php");
 </div>
 <div class="form-group">
 <?php
-    if(!isset($_GET['clave'])) {
-    echo '<input id="btn_enviar" class="btn btn-primary btn-block" name="btn_enviar" type="submit" value="Enviar" onclick="NuevoArchivo()"">';    
-}else {
+    if(isset($_GET['parametro'])) 
     {
-        echo '<input id="btn_enviar" class="btn btn-primary btn-block" name="btn_enviar" type="submit" value="Enviar" onclick="ModificarArchivo()">';   
+        if($_GET['parametro']=='nuevo')
+            echo "<input id='btn_enviar' class='btn btn-primary btn-block' name='btn_enviar' type='submit' value='Nuevo'>";
+        else
+            echo "<input id='btn_enviar' class='btn btn-primary btn-block' name='btn_enviar' type='submit' value='Modificar'>";   
     }
-}
 ?>
 </div>
 

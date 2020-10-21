@@ -22,6 +22,9 @@ $listaTabla = $objAbmArchivoCargado->buscar(null);
       <th scope="col">Nombre</th>
       <th scope="col">Descripcion</th>
       <th scope="col">Usuario</th>
+      <th scope="col">Modificar</th>
+      <th scope="col">Compartir</th>
+      <th scope="col">Eliminar</th>
       
     </tr>
     </thead>
@@ -41,7 +44,8 @@ $listaTabla = $objAbmArchivoCargado->buscar(null);
         echo '<td>'.$objTabla->getusuario()->getusnombre().'</td>';
         //echo '<td>'.$objTabla->MostrarDuenio().'</td>';
          echo '<td><a href="amarchivo.php?parametro=modificar&idarchivocargado='.$objTabla->getidarchivocargado().'">Modificar</a></td>';
-        echo '<td><a href="compartir.php?parametro=compartir&idarchivocargado='.$objTabla->getidarchivocargado().'">Compartir</a></td>';
+        echo '<td><a href="compartirarchivo.php?parametro=compartir&idarchivocargado='.$objTabla->getidarchivocargado().'">Compartir</a></td>';
+        echo '<td><a href="accion_amarchivo.php?parametro=eliminar&idarchivocargado='.$objTabla->getidarchivocargado().'">Eliminar</a></td>';
         echo '</tr>';
         $i++;
     }

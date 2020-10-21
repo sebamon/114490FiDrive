@@ -204,56 +204,28 @@ function SugerirIcono()
         default: setRadioOff();
 
     }
-    document.getElementById('nombre').value=$archivo[2];
+    document.getElementById('acnombre').value=$archivo[2];
 
 }
+function SeleccionarIcono($extension)
+{
+    alert('Seleccionar Icono'+$extension);
+    switch($extension)
+    {
+        case ('Imagen'): document.getElementById('radioImagen').checked=true;break;
+        case ('png'): document.getElementById('radioImagen').checked=true;break;
+        case ('gif'): document.getElementById('radioImagen').checked=true;break;
+        case ('txt'): document.getElementById('radioDoc').checked=true;break;
+        case ('doc'): document.getElementById('radioDoc').checked=true;break;
+        case ('docx'):document.getElementById('radioDoc').checked=true;break;
+        case ('zip'): document.getElementById('radioZip').checked=true;break;
+        case ('rar'): document.getElementById('radioZip').checked=true;break;
+        case ('Pdf'): document.getElementById('radioPdf').checked=true;break;
+        case ('xls'): document.getElementById('radioXls').checked=true;break;
+        case ('xlsx'): document.getElementById('radioXls').checked=true;break;
+        default: setRadioOff();
+
+    }
+}
  
-function ListarArchivos()
-{
-    var $directorio='../archivos/';
-    var $arc;
-    var $archivos = array();
-    $archivos = scandir($directorio,1);
-  /*  foreach($archivos as $key=>$clave)
-    {
-        $arc=$directorio.$1archivo;
-        echo $arc;
-    }*/
-}
-/*function ListarArchivos2()
-{
-$ruta="../../archivos/";
- 
-$directorio = opendir($ruta); //ruta actual
-while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
-{
-    if (is_dir($archivo))//verificamos si es o no un directorio
-    {
-        echo "[".$archivo . "]<br />"; //de ser un directorio lo envolvemos entre corchetes
-    }
-    else
-    {
-        echo $archivo . "<br />";
-    }
-}
-}
-/*
-$('#txtpassword').keyup(function(e) {
-    var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
-    var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
-    var enoughRegex = new RegExp("(?=.{6,}).*", "g");
-    if (false == enoughRegex.test($(this).val())) {
-            $('#passstrength').html('Más caracteres.');
-    } else if (strongRegex.test($(this).val())) {
-            $('#passstrength').className = 'ok';
-            $('#passstrength').html('Fuerte!');
-    } else if (mediumRegex.test($(this).val())) {
-            $('#passstrength').className = 'alert';
-            $('#passstrength').html('Media!');
-    } else {
-            $('#passstrength').className = 'error';
-            $('#passstrength').html('Débil!');
-    }
-    return true;
-});
-*/
+
