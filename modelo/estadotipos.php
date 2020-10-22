@@ -11,8 +11,8 @@ class estadotipos {
         $this->etdescripcion="";
         $this->etactivo ="";
     }
-    public function setear($didestadotiposni, $etdescripcion, $etactivo)    {
-        $this->setdidestadotiposni($didestadotiposni);
+    public function setear($idestadotipos, $etdescripcion, $etactivo)    {
+        $this->setidestadotipos($idestadotipos);
         $this->setetdescripcion($etdescripcion);
         $this->setetactivo($etactivo);
     }
@@ -91,7 +91,7 @@ class estadotipos {
         $base=new BaseDatos();
         $sql="UPDATE estadotipos SET ";
         $sql.="etdescripcion='".$this->getetdescripcion()."', ";
-        $sql.="etactivo='"$this->getetactivo()."' ";
+        $sql.="etactivo='".$this->getetactivo()."' ";
         $sql.="WHERE idestadotipos=".$this->getidestadotipos();
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {

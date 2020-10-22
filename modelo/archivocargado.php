@@ -9,7 +9,7 @@ class archivocargado {
     private $accantidaddescarga;
     private $accantidadusada;
     private $acfechainiciocompartir;
-    private $acfechafincompartir;
+    private $acefechafincompartir;
     private $acprotegidoclave;
     
    
@@ -24,12 +24,12 @@ class archivocargado {
         $this->accantidaddescarga="";
         $this->accantidadusada="";
         $this->acfechainiciocompartir="";
-        $this->acfechafincompartir="";
+        $this->acefechafincompartir="";
         $this->acprotegidoclave="";
 
     }
     public function setear($idarchivocargado, $acnombre, $acdescripcion, $acicono, $usuario, 
-    $aclinkacceso, $accantidaddescarga, $accantidadusada, $acfechainiciocompartir, $acfechafincompartir,$acprotegidoclave)    {
+    $aclinkacceso, $accantidaddescarga, $accantidadusada, $acfechainiciocompartir, $acefechafincompartir,$acprotegidoclave)    {
         $this->setidarchivocargado($idarchivocargado);
         $this->setacnombre($acnombre);
         $this->setacdescripcion($acdescripcion);
@@ -39,7 +39,7 @@ class archivocargado {
         $this->setaccantidaddescarga($accantidaddescarga);
         $this->setaccantidadusada($accantidadusada);
         $this->setacfechainiciocompartir($acfechainiciocompartir);
-        $this->setacfechafincompartir($acfechafincompartir);
+        $this->setacefechafincompartir($acefechafincompartir);
         $this->setacprotegidoclave($acprotegidoclave);
 
     }
@@ -113,12 +113,12 @@ class archivocargado {
     public function setacfechainiciocompartir($valor){
         $this->acfechainiciocompartir = $valor;
         
-    }   public function getacfechafincompartir(){
-        return $this->acfechafincompartir;
+    }   public function getacefechafincompartir(){
+        return $this->acefechafincompartir;
         
     }
-    public function setacfechafincompartir($valor){
-        $this->acfechafincompartir = $valor;
+    public function setacefechafincompartir($valor){
+        $this->acefechafincompartir = $valor;
         
     }   public function getacprotegidoclave(){
         return $this->acprotegidoclave;
@@ -143,7 +143,7 @@ class archivocargado {
                     $usuario->setidusuario($row['idusuario']);
                     $usuario->cargar();
 
-                    $this->setear($row['idarchivocargado'], $row['acnombre'], $row['acdescripcion'], $row['acicono'], $usuario, $row['aclinkacceso'], $row['accantidaddescarga'], $row['accantidadusada'], $row['acfechainiciocompartir'], $row['acfechafincompartir'], $row['acprotegidoclave']);
+                    $this->setear($row['idarchivocargado'], $row['acnombre'], $row['acdescripcion'], $row['acicono'], $usuario, $row['aclinkacceso'], $row['accantidaddescarga'], $row['accantidadusada'], $row['acfechainiciocompartir'], $row['acefechafincompartir'], $row['acprotegidoclave']);
                     
                 }
             }
@@ -158,11 +158,13 @@ class archivocargado {
     public function insertarNuevo(){
         $resp = false;
         $base=new BaseDatos();
-        $sql="INSERT INTO archivocargado(acnombre,acdescripcion,acicono,idusuario)  VALUES('";
+        $sql="INSERT INTO archivocargado(acnombre,acdescripcion,acicono,aclinkacceso,idusuario)  VALUES('";
         $sql.=$this->getacnombre()."','";
         $sql.=$this->getacdescripcion()."','";
         $sql.=$this->getacicono()."','";
+        $sql.=$this->getaclinkacceso()."','";
         $sql.=$this->getusuario()->getidusuario()."');";
+        
 
 
         if ($base->Iniciar()) {
@@ -210,13 +212,12 @@ class archivocargado {
         $base=new BaseDatos();
         $sql="UPDATE archivocargado SET acnombre='".$this->getacnombre()."',";
         $sql.="acdescripcion='".$this->getacdescripcion()."',";
-        $sql.="acicono='".$this->getacicono().",";
-        $sql.="idusuario='".$this->getusuario()->getidusuario().",'";
+        $sql.="acicono='".$this->getacicono()."',";
+        $sql.="idusuario='".$this->getusuario()->getidusuario()."',";
         $sql.="aclinkacceso='".$this->getaclinkacceso()."',";
-        $sql.="accantidadescarga='".$this->getaccantidaddescarga().",";
-        $sql.="accantidadusada='".$this->getaccantidadusada().",'";
-        $sql.="acfechainiciocompartir='".$this->getacfechainiciocompartir()."','";
-        $sql.="acfechafincompartir='".$this->getacfechafincompartir()."',";
+        $sql.="accantidaddescarga='".$this->getaccantidaddescarga()."',";
+        $sql.="acfechainiciocompartir='".$this->getacfechainiciocompartir()."',";
+        $sql.="acefechafincompartir='".$this->getacefechafincompartir()."',";
         $sql.="acprotegicoclave='".$this->getacprotegidoclave()."'";
         $sql.=" WHERE idarchivocargado=".$this->getidarchivocargado().";";
         

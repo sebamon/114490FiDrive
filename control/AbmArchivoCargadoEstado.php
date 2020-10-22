@@ -22,7 +22,11 @@ class AbmArchivoCargadoEstado{
            
         if( array_key_exists('idarchivocargadoestado',$param)){
             $obj = new archivocargadoestado();
-            $obj->setear($param['idarchivocargadoestado'], 1, null, $param['idusuario'], null, null, $param['idarchivocargado']);
+            $objUsuario = new usuario();
+            $objUsuario->setidusuario($param['usuario']);
+            $objUsuario->cargar();
+            $obj->setear($param['idarchivocargadoestado'], 1, null, $objUsuario, null, null, $param['idarchivocargado']);
+
         }
         return $obj;
     }
@@ -66,6 +70,17 @@ class AbmArchivoCargadoEstado{
         $elObjtTabla = $this->cargarObjetoNuevo($param);
 //        verEstructura($elObjtTabla);
         if ($elObjtTabla!=null and $elObjtTabla->insertar()){
+            $resp = true;
+        }
+        return $resp;
+        
+    }
+    public function altaConObjeto($param){
+        $resp = false;
+        $param->setidarchivocargadoestado(null);
+      //  $elObjtTabla = $this->cargarObjetoNuevo($param);
+//        verEstructura($elObjtTabla);
+        if ($param->insertar()){
             $resp = true;
         }
         return $resp;

@@ -3,23 +3,37 @@ $Titulo = "Compartir Archivo";
 include_once("../estructura/cabecera.php");
 
 include_once("../estructura/menu.php");
+
+if(isset($_GET['parametro'])) 
+    {
+        if($_GET['parametro']=='compartir')
+        {
+
+        $Abm = new AbmArchivoCargado();
+        $elObj=$Abm->buscar($_GET);
+        $elObj=$elObj[0];
+        
+    }
+}
 ?>
 
-
 <div class="col">
-<form id="compartirarchivo" name="compartirarchivo"  method="POST" action="accion.php" data-toggle="validator" role="form" enctype="multipart/form-data">
+<form id="compartirarchivo" name="compartirarchivo"  method="POST" action="accion_compartirarchivo.php" data-toggle="validator" role="form" enctype="multipart/form-data">
     <div class="form-group">
         <label for="archivo">Nombre del Archivo:</label>
         <?php
-        if(isset($_GET['parametro'])) {
-        echo '<input type="text" class="form-control" id="nombre" name="nombre" value="'.$_GET['parametro'].'">';
-    }
+        
+        echo '<input type="text" class="form-control" id="acnombre" name="acnombre" readonly value="'.$elObj->getacnombre().'">';
+        echo '<input type="text" id="idarchivocargado" name="idarchivocargado" hidden value="'.$elObj->getidarchivocargado().'">';
+    
     ?>
 
     </div>
     <div class="form-group">
         <label for="cantidaddias">Cantidad de Dias Compartido:</label>
-        <input type="number" class="form-control" id="cantidad_dias" name="cantidad_dias" placeholder="0 para ilimitado">
+        
+        <input type="number" class="form-control" id="cantidad_dias" name="cantidad_dias" placeholder="0 para ilimitado" >
+        
         <div class="invalid-feedback">
         
         </div>
@@ -33,12 +47,39 @@ include_once("../estructura/menu.php");
     </div>
     <div class="form-group" >
         <label for="usuario">Usuario</label>
-        <select class="form-control" name='usuario' id='usuario'>
-        <option value=' '>Seleccione un Usuario</option>
-        <option value='admin'>Admin</option>
-        <option value='visitante'>Visitante</option>
-        <option value='usted'>Usted</option>
-        </select>
+        <?php
+
+    $select = new AbmUsuario();
+    $objSelect = $select->buscar(null);
+
+    echo  " <select class='form-control' name='usuario' id='usuario'>";
+    echo  " <option value=' '>Seleccion un Usuario</option>";
+    foreach($objSelect as $unUsuario){
+        if(isset($_GET['parametro'])) 
+    {
+        if($_GET['parametro']!='nuevo')
+        {
+        
+        if($unUsuario==$elObj->getusuario()){
+        echo  " <option value='".$unUsuario->getidusuario()."' selected>".$unUsuario->getusapellido()."</option>";
+        }
+        else {
+            echo  " <option value='".$unUsuario->getidusuario()."'>".$unUsuario->getusapellido()."</option>";
+        }
+        }
+        else {
+            echo  " <option value='".$unUsuario->getidusuario()."'>".$unUsuario->getusapellido()."</option>";
+        }
+        
+    
+    
+    }
+   // 
+    }
+    
+
+    echo  " </select>";
+   ?>
         <div class="invalid-feedback">
 
         </div>
@@ -75,7 +116,7 @@ include_once("../estructura/menu.php");
         <input id="btn_compartir" class="btn btn-primary btn-block" name="btn_compartir" type="submit" value="Compartir">    
     </div>
     <div class="row">
-    <input type="text" id='accion' name='accion' hidden value='sinaccion'>
+    <input type="text" id='accion' name='accion' hidden value='compartir'>
     </div>
 </form>
 </div>

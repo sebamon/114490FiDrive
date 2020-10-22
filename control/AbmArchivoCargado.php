@@ -55,7 +55,24 @@ class AbmArchivoCargado{
             $objUsuario = new usuario();
             $objUsuario->setidusuario($param['usuario']);
             $objUsuario->cargar();
-            $obj->setear($param['idarchivocargado'], $param['acnombre'], $param['acdescripcion'], $param['acicono'], $objUsuario, null, null, null, null, null, null);
+            $obj->setear($param['idarchivocargado'], $param['acnombre'], $param['acdescripcion'], $param['acicono'], $objUsuario, '/archivos/'.$param['acnombre'].'.'.$param['extension'], null, null, null, null, null);
+        }
+        return $obj;
+    }
+    private function cargarObjetoCompartir($param){
+        $obj = null;
+           
+        if( array_key_exists('idarchivocargado',$param)){
+            $obj = new archivocargado();
+            $objUsuario = new usuario();
+            $objUsuario->setidusuario($param['usuario']);
+            $objUsuario->cargar();
+            $obj->setidarchivocargado($param['idarchivocargado']);
+            $obj->cargar();
+            $obj->setaccantidaddescarga($param['cantidad_descargas']);
+            $nuevafecha=date("Y-m-d",strtotime($obj->getacfechainiciocompartir()."+ ".$param['cantidad_dias']." days")); 
+            $obj->setacefechafincompartir($nuevafecha);
+            //$obj->setear($param['idarchivocargado'], $param['acnombre'], $param['acdescripcion'], $param['acicono'], $objUsuario, '/archivos/'.$param['acnombre'].'.'.$param['extension'], null, null, null, null, null);
         }
         return $obj;
     }
@@ -108,6 +125,13 @@ class AbmArchivoCargado{
         $elObjtTabla = $this->cargarObjeto($param);
 //        verEstructura($elObjtTabla);
         if ($elObjtTabla!=null and $elObjtTabla->insertarNuevo()){
+            $ACE = new AbmArchivoCargadoEstado();
+            $AEstado = new archivocargadoestado();
+            $AEstado->setarchivocargado($elObjtTabla);
+            $AEstado->setusuario($elObjtTabla->getusuario());
+            $ACE->altaConObjeto($AEstado);
+
+            
             $resp = true;
         }
         return $resp;
@@ -139,7 +163,7 @@ class AbmArchivoCargado{
         //echo "Estoy en modificacion";
         $resp = false;
         if ($this->seteadosCamposClaves($param)){
-            $elObjtTabla = $this->cargarObjeto($param);
+            $elObjtTabla = $this->cargarObjetoCompartir($param);
             if($elObjtTabla!=null and $elObjtTabla->modificar()){
                 $resp = true;
             }

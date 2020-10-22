@@ -20,13 +20,13 @@ class archivocargadoestado {
         $this->archivocargado ="";
 
     }
-    public function setear($idarchivocargadoestado, $idestadotipos,$acedescripcion,$idusuario,$acefechaingreso,$acefechaifin,$archivocargado)    {
-        $this->setId($idarchivocargadoestado);
+    public function setear($idarchivocargadoestado, $idestadotipos,$acedescripcion,$idusuario,$acefechaingreso,$acefechafin,$archivocargado)    {
+        $this->setidarchivocargadoestado($idarchivocargadoestado);
         $this->setestadotipo($idestadotipos);
         $this->setacedescripcion($acedescripcion);
         $this->setusuario($idusuario);
         $this->setacefechaingreso($acefechaingreso);
-        $this->setacefechaifin($acefechafin);
+        $this->setacefechafin($acefechafin);
         $this->setarchivocargado($archivocargado);
     }
     
@@ -124,13 +124,10 @@ class archivocargadoestado {
     public function insertar(){
         $resp = false;
         $base=new BaseDatos();
-        $sql="INSERT INTO archivocargadoestado(idestadotipos,acedescripcion,idusuario,acefechaingreso,acefechafin,idarchivocargado)  VALUES('";
-        $sql.=$this->getestadotipo()->getidestadotipos()."','";
-        $sql.=$this->getacedescripcion()."',";
-        $sql.=$this->getusuario()->getidusuario().",'";
-        $sql.=$this->getacefechaingreso()."','";
-        $sql.=$this->getacefechafin()."',";
-        $sql.=$this->getusuario()->getidusuario().");";
+        $sql="INSERT INTO archivocargadoestado(idestadotipos,idusuario,idarchivocargado)  VALUES(";
+        $sql.="1,";
+        $sql.=$this->getusuario()->getidusuario().",";
+        $sql.=$this->getarchivocargado()->getidarchivocargado().");";
 
         if ($base->Iniciar()) {
             if ($elid = $base->Ejecutar($sql)) {
@@ -205,7 +202,7 @@ class archivocargadoestado {
                     $objE->cargar();
                     $objA=new archivocargado();
                     $objA->setidarchivocargado($row['idarchivocargado']);
-                    $objA-cargar();
+                    $objA->cargar();
                     $obj->setear($row['idarchivocargadoestado'], $objE,$row['acedescripcion'],$objP,$row['acefechaingreso'],$row['acefechafin'],$objA);
                     array_push($arreglo, $obj);
                 }

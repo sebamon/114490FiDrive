@@ -10,11 +10,10 @@ if(isset($datos['parametro'])){
     $parametro=$datos['parametro'];
     if($parametro=='nuevo')
     {
-        $respuesta = $AbmArchivoCargado->UploadFile($datos);
+        $respuesta = $AbmArchivoCargado->UploadFile($datos);//Sube el archivo a la carpeta
         if($respuesta)
         {
-            $respuesta = $AbmArchivoCargado->alta($datos);
-            $respuesta = $AbmArchivoEstado->alta($datos);
+            $respuesta = $AbmArchivoCargado->alta($datos);//Da de alta en la tabla archivocargado
         }
     }
     if($parametro=='eliminar')

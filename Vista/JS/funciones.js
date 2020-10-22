@@ -190,6 +190,7 @@ function SugerirIcono()
 
     switch($extension)
     {
+        case ('jpeg'): ;
         case ('jpg'): document.getElementById('radioImagen').checked=true;break;
         case ('png'): document.getElementById('radioImagen').checked=true;break;
         case ('gif'): document.getElementById('radioImagen').checked=true;break;
@@ -205,6 +206,7 @@ function SugerirIcono()
 
     }
     document.getElementById('acnombre').value=$archivo[2];
+    document.getElementById('extension').value=$extension;
 
 }
 function SeleccionarIcono($extension)

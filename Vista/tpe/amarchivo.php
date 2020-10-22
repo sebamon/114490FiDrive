@@ -20,6 +20,7 @@ include_once("../estructura/menu.php");
     {
     echo '<label for="archivo" class="control-label">Seleccione un archivo: </label>';
     echo '<input type="file"  class="form-control" name="archivo" id="archivo" onchange="SugerirIcono()">';
+    echo '<input type="text" name="extension" id="extension" hidden>';
     echo '<div class="invalid-feedback">';
 
     echo '</div>';

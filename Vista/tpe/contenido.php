@@ -4,7 +4,12 @@ include_once("../estructura/cabecera.php");
 include_once("../estructura/menu.php");
 
 $objAbmArchivoCargado= new AbmArchivoCargado();
+$Estado = new AbmArchivoCargadoEstado();
 $listaTabla = $objAbmArchivoCargado->buscar(null);
+//$elObjE = new archivocargadoestado();
+$listaTablaEstado= $Estado->buscar(null);
+
+
 
 ?>
 
@@ -22,6 +27,8 @@ $listaTabla = $objAbmArchivoCargado->buscar(null);
       <th scope="col">Nombre</th>
       <th scope="col">Descripcion</th>
       <th scope="col">Usuario</th>
+      <th scope="col">Ver</th>
+      <th scope="col">Estado</th>
       <th scope="col">Modificar</th>
       <th scope="col">Compartir</th>
       <th scope="col">Eliminar</th>
@@ -36,14 +43,16 @@ $listaTabla = $objAbmArchivoCargado->buscar(null);
      echo '<tbody>';
     foreach ($listaTabla as $objTabla) 
     { 
-        
+
+
         echo '<tr>';
         echo '<th scope="row">'.$i.'</th>';
         echo '<td>'.$objTabla->getacnombre().'</td>';
         echo '<td>'.$objTabla->getacdescripcion().'</td>';
         echo '<td>'.$objTabla->getusuario()->getusnombre().'</td>';
-        //echo '<td>'.$objTabla->MostrarDuenio().'</td>';
-         echo '<td><a href="amarchivo.php?parametro=modificar&idarchivocargado='.$objTabla->getidarchivocargado().'">Modificar</a></td>';
+        echo '<td><a href=../..'.$objTabla->getaclinkacceso().'>'.$objTabla->getacnombre().'</a></td>';
+     //   echo '<td>'.$ElObjE->getestadotipos()->getetdescripcion().'</td>';
+        echo '<td><a href="amarchivo.php?parametro=modificar&idarchivocargado='.$objTabla->getidarchivocargado().'">Modificar</a></td>';
         echo '<td><a href="compartirarchivo.php?parametro=compartir&idarchivocargado='.$objTabla->getidarchivocargado().'">Compartir</a></td>';
         echo '<td><a href="accion_amarchivo.php?parametro=eliminar&idarchivocargado='.$objTabla->getidarchivocargado().'">Eliminar</a></td>';
         echo '</tr>';
