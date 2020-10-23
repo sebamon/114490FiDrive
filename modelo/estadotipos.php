@@ -16,7 +16,7 @@ class estadotipos {
         $this->setetdescripcion($etdescripcion);
         $this->setetactivo($etactivo);
     }
-       
+
     
     public function getidestadotipos(){
         return $this->idestadotipos;

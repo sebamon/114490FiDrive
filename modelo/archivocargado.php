@@ -43,6 +43,13 @@ class archivocargado {
         $this->setacprotegidoclave($acprotegidoclave);
 
     }
+    public function seteocorto($acnombre,$acdescripcion,$acicono,$usuario)
+    {
+        $this->setacnombre($acnombre);
+        $this->setacdescripcion($acdescripcion);
+        $this->setacicono($acicono);
+        $this->setusuario($usuario);
+    }
     
     
     
@@ -158,11 +165,10 @@ class archivocargado {
     public function insertarNuevo(){
         $resp = false;
         $base=new BaseDatos();
-        $sql="INSERT INTO archivocargado(acnombre,acdescripcion,acicono,aclinkacceso,idusuario)  VALUES('";
+        $sql="INSERT INTO archivocargado(acnombre,acdescripcion,acicono,idusuario)  VALUES('";
         $sql.=$this->getacnombre()."','";
         $sql.=$this->getacdescripcion()."','";
         $sql.=$this->getacicono()."','";
-        $sql.=$this->getaclinkacceso()."','";
         $sql.=$this->getusuario()->getidusuario()."');";
         
 
@@ -218,7 +224,7 @@ class archivocargado {
         $sql.="accantidaddescarga='".$this->getaccantidaddescarga()."',";
         $sql.="acfechainiciocompartir='".$this->getacfechainiciocompartir()."',";
         $sql.="acefechafincompartir='".$this->getacefechafincompartir()."',";
-        $sql.="acprotegicoclave='".$this->getacprotegidoclave()."'";
+        $sql.="acprotegidoclave='".$this->getacprotegidoclave()."'";
         $sql.=" WHERE idarchivocargado=".$this->getidarchivocargado().";";
         
         

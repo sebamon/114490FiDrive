@@ -29,7 +29,13 @@ class archivocargadoestado {
         $this->setacefechafin($acefechafin);
         $this->setarchivocargado($archivocargado);
     }
-    
+    public function seteoNuevo($archivo,$estado,$usuario,$descripcion)
+    {
+        $this->setarchivocargado($archivo);
+        $this->setestadotipo($estado);
+        $this->setusuario($usuario);
+        $this->setacedescripcion($descripcion);
+    }
     
     
     public function getidarchivocargadoestado(){
@@ -128,6 +134,27 @@ class archivocargadoestado {
         $sql.="1,";
         $sql.=$this->getusuario()->getidusuario().",";
         $sql.=$this->getarchivocargado()->getidarchivocargado().");";
+
+        if ($base->Iniciar()) {
+            if ($elid = $base->Ejecutar($sql)) {
+                $this->setidarchivocargadoestado($elid);
+                $resp = true;
+            } else {
+                $this->setmensajeoperacion("Tabla->insertar: ".$base->getError());
+            }
+        } else {
+            $this->setmensajeoperacion("Tabla->insertar: ".$base->getError());
+        }
+        return $resp;
+    }
+    public function insertarNuevo(){
+        $resp = false;
+        $base=new BaseDatos();
+        $sql="INSERT INTO archivocargadoestado(idestadotipos,idusuario,idarchivocargado,acedescripcion)  VALUES(";
+        $sql.="1,";
+        $sql.=$this->getusuario()->getidusuario().",";
+        $sql.=$this->getarchivocargado()->getidarchivocargado().",'";
+        $sql.=$this->getacedescripcion()."');";
 
         if ($base->Iniciar()) {
             if ($elid = $base->Ejecutar($sql)) {

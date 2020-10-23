@@ -41,6 +41,7 @@ include_once("../estructura/menu.php");
         $elObj=$Abm->buscar($_GET);
 
         echo '<input type="text"  class="form-control" name="acnombre" id="acnombre" value='.$elObj[0]->getacnombre().' readonly> ';
+        echo '<input type="text" name="idarchivocargado" id="idarchivocargado" hidden value="'.$_GET['idarchivocargado'].'">';
         }
         else {
             echo '<input type="text"  class="form-control" name="acnombre" id="acnombre" value="" > ';
@@ -53,7 +54,7 @@ include_once("../estructura/menu.php");
 </div>
 <div class="form-group">
     <label for="descripcion" class="control-label">Descripcion: </label>
-    <textarea  id="acdescripcion" class="form-control" name='acdescripcion'>
+    <textarea  id="summernote" class="form-control" name='acdescripcion'>
     <?php
     if(isset($_GET['parametro'])) 
     {
