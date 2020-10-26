@@ -41,20 +41,20 @@ $listaTablaEstado= $Estado->buscar(null);
  {
      $i=1;
      echo '<tbody>';
-    foreach ($listaTabla as $objTabla) 
+    foreach ($listaTablaEstado as $objTabla) 
     { 
 
 
         echo '<tr>';
         echo '<th scope="row">'.$i.'</th>';
-        echo '<td>'.$objTabla->getacnombre().'</td>';
-        echo '<td>'.$objTabla->getacdescripcion().'</td>';
-        echo '<td>'.$objTabla->getusuario()->getusnombre().'</td>';
-        echo '<td><a href=../..'.$objTabla->getaclinkacceso().'>'.$objTabla->getacnombre().'</a></td>';
-     //   echo '<td>'.$ElObjE->getestadotipos()->getetdescripcion().'</td>';
-        echo '<td><a href="amarchivo.php?parametro=modificar&idarchivocargado='.$objTabla->getidarchivocargado().'">Modificar</a></td>';
-        echo '<td><a href="compartirarchivo.php?parametro=compartir&idarchivocargado='.$objTabla->getidarchivocargado().'">Compartir</a></td>';
-        echo '<td><a href="accion_amarchivo.php?parametro=eliminar&idarchivocargado='.$objTabla->getidarchivocargado().'">Eliminar</a></td>';
+        echo '<td>'.$objTabla->getarchivocargado()->getacnombre().'</td>';
+        echo '<td>'.$objTabla->getarchivocargado()->getacdescripcion().'</td>';
+        echo '<td>'.$objTabla->getarchivocargado()->getusuario()->getusnombre().'</td>';
+        echo '<td><a href=../..'.$objTabla->getarchivocargado()->getaclinkacceso().'>'.$objTabla->getarchivocargado()->getacnombre().'</a></td>';
+        echo '<td>'.$objTabla->getestadotipo()->getetdescripcion().'</td>';
+        echo '<td><a href="amarchivo.php?parametro=modificar&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Modificar</a></td>';
+        echo '<td><a href="compartirarchivo.php?parametro=compartir&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Compartir</a></td>';
+        echo '<td><a href="accion_amarchivo.php?parametro=eliminar&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Eliminar</a></td>';
         echo '</tr>';
         $i++;
     }

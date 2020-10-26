@@ -43,6 +43,13 @@ class archivocargado {
         $this->setacprotegidoclave($acprotegidoclave);
 
     }
+    public function seteocorto($acnombre,$acdescripcion,$acicono,$usuario)
+    {
+        $this->setacnombre($acnombre);
+        $this->setacdescripcion($acdescripcion);
+        $this->setacicono($acicono);
+        $this->setusuario($usuario);
+    }
     
     
     
@@ -158,11 +165,10 @@ class archivocargado {
     public function insertarNuevo(){
         $resp = false;
         $base=new BaseDatos();
-        $sql="INSERT INTO archivocargado(acnombre,acdescripcion,acicono,aclinkacceso,idusuario)  VALUES('";
+        $sql="INSERT INTO archivocargado(acnombre,acdescripcion,acicono,idusuario)  VALUES('";
         $sql.=$this->getacnombre()."','";
         $sql.=$this->getacdescripcion()."','";
         $sql.=$this->getacicono()."','";
-        $sql.=$this->getaclinkacceso()."','";
         $sql.=$this->getusuario()->getidusuario()."');";
         
 
@@ -213,12 +219,36 @@ class archivocargado {
         $sql="UPDATE archivocargado SET acnombre='".$this->getacnombre()."',";
         $sql.="acdescripcion='".$this->getacdescripcion()."',";
         $sql.="acicono='".$this->getacicono()."',";
-        $sql.="idusuario='".$this->getusuario()->getidusuario()."',";
+        $sql.="idusuario=".$this->getusuario()->getidusuario().",";
         $sql.="aclinkacceso='".$this->getaclinkacceso()."',";
         $sql.="accantidaddescarga='".$this->getaccantidaddescarga()."',";
         $sql.="acfechainiciocompartir='".$this->getacfechainiciocompartir()."',";
         $sql.="acefechafincompartir='".$this->getacefechafincompartir()."',";
-        $sql.="acprotegicoclave='".$this->getacprotegidoclave()."'";
+        $sql.="acprotegidoclave='".$this->getacprotegidoclave()."'";
+        $sql.=" WHERE idarchivocargado=".$this->getidarchivocargado().";";
+        
+        
+        if ($base->Iniciar()) {
+            if ($base->Ejecutar($sql)) {
+                $resp = true;
+            } else {
+                $this->setmensajeoperacion("Tabla->modificar: ".$base->getError());
+            }
+        } else {
+            $this->setmensajeoperacion("Tabla->modificar: ".$base->getError());
+        }
+        return $resp;
+    }
+
+    public function AsignarDatosCompartir(){
+        $resp = false;
+        $base=new BaseDatos();
+        $sql="UPDATE archivocargado SET ";
+        $sql.="aclinkacceso='".$this->getaclinkacceso()."',";
+        $sql.="accantidaddescarga='".$this->getaccantidaddescarga()."',";
+        $sql.="acfechainiciocompartir='".$this->getacfechainiciocompartir()."',";
+        $sql.="acefechafincompartir='".$this->getacefechafincompartir()."',";
+        $sql.="acprotegidoclave='".$this->getacprotegidoclave()."'";
         $sql.=" WHERE idarchivocargado=".$this->getidarchivocargado().";";
         
         
@@ -273,7 +303,7 @@ class archivocargado {
             }
             
         } else {
-            $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
+           // $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
         }
  
         return $arreglo;

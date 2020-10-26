@@ -16,7 +16,7 @@ class estadotipos {
         $this->setetdescripcion($etdescripcion);
         $this->setetactivo($etactivo);
     }
-       
+
     
     public function getidestadotipos(){
         return $this->idestadotipos;
@@ -141,7 +141,7 @@ class estadotipos {
             }
             
         } else {
-            $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
+           // $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
         }
  
         return $arreglo;

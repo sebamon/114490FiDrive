@@ -29,7 +29,14 @@ class archivocargadoestado {
         $this->setacefechafin($acefechafin);
         $this->setarchivocargado($archivocargado);
     }
-    
+    public function seteoNuevo($archivo,$estado,$usuario,$descripcion,$fechaingreso)
+    {
+        $this->setarchivocargado($archivo);
+        $this->setestadotipo($estado);
+        $this->setusuario($usuario);
+        $this->setacedescripcion($descripcion);
+        $this->setacefechaingreso($fechaingreso);
+    }
     
     
     public function getidarchivocargadoestado(){
@@ -120,6 +127,19 @@ class archivocargadoestado {
     
         
     }
+    public function NuevoEstado($archivo, $estado)
+    {
+        $resp=false;
+        $base=new BaseDatos();
+        $estadoAnterior = new archivocargadoestado();
+        $estadoAnterior->setarchivocargado($archivo);
+        $estadoAnterior->setacefechafin(date("Y-m-d H:i:s"));
+        $sql="insert into archivocargadoestado(idestadotipos,idusuario,idarchivocargado) values(";
+        $sql.=$archivo->getidarchivocargadoestado().",";
+        $sql.=$archivo->getusuario()->getidusuario().",";
+        $sql.=$archivo->getarchivocargado()->getidarchivocargado().");";
+
+    }
     
     public function insertar(){
         $resp = false;
@@ -128,6 +148,28 @@ class archivocargadoestado {
         $sql.="1,";
         $sql.=$this->getusuario()->getidusuario().",";
         $sql.=$this->getarchivocargado()->getidarchivocargado().");";
+
+        if ($base->Iniciar()) {
+            if ($elid = $base->Ejecutar($sql)) {
+                $this->setidarchivocargadoestado($elid);
+                $resp = true;
+            } else {
+                $this->setmensajeoperacion("Tabla->insertar: ".$base->getError());
+            }
+        } else {
+            $this->setmensajeoperacion("Tabla->insertar: ".$base->getError());
+        }
+        return $resp;
+    }
+    public function insertarNuevo(){
+        $resp = false;
+        $base=new BaseDatos();
+        $sql="INSERT INTO archivocargadoestado(idestadotipos,idusuario,idarchivocargado,acedescripcion,acefechaingreso)  VALUES(";
+        $sql.="1,";
+        $sql.=$this->getusuario()->getidusuario().",";
+        $sql.=$this->getarchivocargado()->getidarchivocargado().",'";
+        $sql.=$this->getacedescripcion()."',CURRENT_TIMESTAMP);";
+        
 
         if ($base->Iniciar()) {
             if ($elid = $base->Ejecutar($sql)) {
@@ -210,13 +252,63 @@ class archivocargadoestado {
             }
             
         } else {
-            $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
+         //   $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
         }
  
         return $arreglo;
     }
+    public static function listarUltimo($parametro){
+        $obj=null;
+        $base=new BaseDatos();
+        $sql="SELECT * FROM archivocargadoestado ";
+        if ($parametro!="") {
+            $sql.='WHERE '.$parametro;
+        }
+        $res = $base->Ejecutar($sql);
+        if($res>-1){
+            if($res>0){
+                
+                while ($row = $base->Registro()){
+                    $obj= new archivocargadoestado();
+                    $objP= new usuario();
+                    $objP->setidusuario($row['idusuario']);
+                    $objP->cargar();
+                    $objE=new estadotipos();
+                    $objE->setidestadotipos($row['idestadotipos']);
+                    $objE->cargar();
+                    $objA=new archivocargado();
+                    $objA->setidarchivocargado($row['idarchivocargado']);
+                    $objA->cargar();
+                    $obj->setear($row['idarchivocargadoestado'], $objE,$row['acedescripcion'],$objP,$row['acefechaingreso'],$row['acefechafin'],$objA);
+                   
+                }
+               
+            }
+            
+        } else {
+         //   $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
+        }
+ 
+        return $obj;
+    }
+    public function setearFechaFin()
+    {
+        $resp=false;
+        $base= new BaseDatos();
+        $sql="UPDATE archivocargadoestado set ";
+        $sql.="acefechafin = CURRENT_TIMESTAMP where idarchivocargadoestado=".$this->getidarchivocargadoestado().";";
+        if ($base->Iniciar()) {
+            if ($base->Ejecutar($sql)) {
+                $resp = true;
+            } else {
+                $this->setmensajeoperacion("Tabla->modificar: ".$base->getError());
+            }
+        } else {
+            $this->setmensajeoperacion("Tabla->modificar: ".$base->getError());
+        }
+        return $resp;
+    }
     
 }
-
 
 ?>

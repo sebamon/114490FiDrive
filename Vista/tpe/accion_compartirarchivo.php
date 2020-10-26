@@ -10,7 +10,7 @@ if(isset($datos['accion'])){
     $parametro=$datos['accion'];
     if($parametro=='compartir')
     {
-        $respuesta = $AbmArchivoCargado->modificacion($datos);
+        $respuesta = $AbmArchivoCargado->Compartir($datos);
         // if($respuesta)
         // {
         //     $respuesta = $AbmArchivoCargado->alta($datos);//Da de alta en la tabla archivocargado

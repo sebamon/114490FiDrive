@@ -30,7 +30,7 @@ class AbmArchivoCargadoEstado{
         }
         return $obj;
     }
-    
+
     /**
      * Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto que son claves
      * @param array $param
@@ -138,10 +138,8 @@ class AbmArchivoCargadoEstado{
             $where.=" and idusuario ='".$param['idusuario']."'";
             if  (isset($param['acefechaingreso']))
             $where.=" and acefechaingreso ='".$param['acefechaingreso']."'";
-            if  (isset($param['acefechafin']))
-            $where.=" and acefechafin ='".$param['acefechafin']."'";
             if  (isset($param['idarchivocargado']))
-            $where.=" and idarchivocargado ='".$param['idarchivocargado']."'";
+            $where.=" acefechafin=null and idarchivocargado ='".$param['idarchivocargado']."'";
         }
         $arreglo = archivocargadoestado::listar($where);  
         return $arreglo;
@@ -149,6 +147,15 @@ class AbmArchivoCargadoEstado{
             
       
         
+    }
+    public function cargarUltimoEstado($param)
+    {
+        $obj = null;
+        $where = " acefechafin IS NULL and idarchivocargado=".$param['idarchivocargado'];
+        $obj= archivocargadoestado::listarUltimo($where);
+        
+        
+        return $obj;
     }
     
 }

@@ -5,7 +5,7 @@ include_once("../estructura/menu.php");
 $datos = data_submitted();
 $AbmArchivoCargado = new AbmArchivoCargado();
 $AbmArchivoEstado = new AbmArchivoCargadoEstado();
-
+$respuesta=null;
 if(isset($datos['parametro'])){
     $parametro=$datos['parametro'];
     if($parametro=='nuevo')
@@ -13,12 +13,16 @@ if(isset($datos['parametro'])){
         $respuesta = $AbmArchivoCargado->UploadFile($datos);//Sube el archivo a la carpeta
         if($respuesta)
         {
-            $respuesta = $AbmArchivoCargado->alta($datos);//Da de alta en la tabla archivocargado
+            $respuesta = $AbmArchivoCargado->NuevoAmarchivo($datos);//Da de alta en la tabla archivocargado
         }
     }
     if($parametro=='eliminar')
     {
         $respuesta=$AbmArchivoCargado->baja($datos);
+    }
+    if($parametro=='modificar')
+    {
+        $respuesta=$AbmArchivoCargado->ActualizarAmarchivo($datos);
     }
     
 }
