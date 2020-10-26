@@ -182,13 +182,20 @@ class AbmArchivoCargado{
             $obj->setear($param['idarchivocargado'],$param['acnombre'],$param['acdescripcion'],$param['acicono'],$objUsuario,null,null,null,null,null,null);
 
     }
+<<<<<<< HEAD
 }
+=======
+>>>>>>> 06c4b90832821ca5425333a558fc579b7c276cb6
     
     /**
      * permite buscar un objeto
      * @param array $param
      * @return boolean
+<<<<<<< HEAD
     //  */
+=======
+     */
+>>>>>>> 06c4b90832821ca5425333a558fc579b7c276cb6
     public function buscar($param){
         $where = " true ";
         if ($param<>NULL){
