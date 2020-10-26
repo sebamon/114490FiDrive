@@ -85,6 +85,22 @@ class AbmArchivoCargado{
         }
         return $obj;
     }
+
+    private function cargarObjetoDesCompartir($param){ // DEVUELVE EL OBJETO COMPARTIR CON FECHAS Y LO DEL FORMULARIO
+        $obj = null;
+           
+        if( array_key_exists('idarchivocargado',$param)){
+            $obj = new archivocargado();
+            $objUsuario = new usuario();
+            $objUsuario->setidusuario($param['usuario']);
+            $objUsuario->cargar();
+            $obj->setidarchivocargado($param['idarchivocargado']);
+            $obj->cargar();
+            $obj->setusuario($objUsuario);
+            //$obj->setear($param['idarchivocargado'], $param['acnombre'], $param['acdescripcion'], $param['acicono'], $objUsuario, '/archivos/'.$param['acnombre'].'.'.$param['extension'], null, null, null, null, null);
+        }
+        return $obj;
+    }
   /*  private function cargarObjetoCompleto($param){//NUNCA TENGO TODOS LOS ATRIBUTOS CUANDO CARGO EL OBJETO
         $obj = null;
            
@@ -181,16 +197,33 @@ class AbmArchivoCargado{
                 $estadoNuevo = new archivocargadoestado();
 
                 $EstadoTipo = new estadotipos();
-                $EstadoTipo->setidestadotipos(2); //ASIGNO QUE EL ESTADO ES COMPARTIDO
+                if($param['accion']=='compartir'){
+                    $EstadoTipo->setidestadotipos(2);
+                }
+                if($param['accion']=='descompartir'){
+                    $EstadoTipo->setidestadotipos(3);
+                }
+                 //ASIGNO QUE EL ESTADO ES COMPARTIDO
                 $EstadoTipo->cargar();//CARGO LA DESCRIPCION PARA OBTENER EL OBJETO COMPLETO 
                 
                 $estadoActual=$AbmEstado->cargarUltimoEstado($param); //aca validar si no es null
+                if(isset($estadoActual))//true si encuentra el ultimo estado
+                {
                 $estadoActual->setearFechaFin(); //cambia en la base, toma la hora de la base de datos
                 
                 // ARMAR EL OBJETO ESTADO NUEVO
+                if($param['accion']=="compartir")
                 $estadoNuevo->seteoNuevo($elObjtTabla,$EstadoTipo,$elObjtTabla->getusuario(),'Compartido Personalizable',date("Y-m-d"));
-                $estadoNuevo->insertarNuevo();
 
+                if($param['accion']=="descompartir")
+                $estadoNuevo->seteoNuevo($elObjtTabla,$EstadoTipo,$elObjtTabla->getusuario(),$param['motivo'],date("Y-m-d"));
+                
+                $estadoNuevo->insertarEstado();
+                }
+
+                else {
+                    $resp=false;
+                }
                 
               
             //    $estado->CambiarEstado($elObjtTabla,$-);
@@ -200,6 +233,58 @@ class AbmArchivoCargado{
         }
         return $resp;
     }
+
+    public function DesCompartirEliminar($param){
+        //echo "Estoy en DesCompartir un archivo tengo los DATOS DEL FORMULARIO EN UN ARRAY, en esto viene EL ID DEL ARCHIVOCARGADO";
+        $resp = false;
+        if ($this->seteadosCamposClaves($param)){
+            
+            //recupero el archivo
+            $archivo = new archivocargado();
+            $archivo->setidarchivocargado($param['idarchivocargado']);
+            $archivo->cargar();
+
+            $AbmEstado = new AbmArchivoCargadoEstado();
+            $estadoActual = new archivocargadoestado();
+            $estadoNuevo = new archivocargadoestado();
+            $EstadoTipo = new estadotipos();
+                if($param['accion']=='descompartir')
+                    $EstadoTipo->setidestadotipos(3);
+                if($param['accion']=='eliminar')
+                    $EstadoTipo->setidestadotipos(4);
+                
+                 //ASIGNO QUE EL ESTADO ES COMPARTIDO
+                $EstadoTipo->cargar();//CARGO LA DESCRIPCION PARA OBTENER EL OBJETO COMPLETO 
+                
+                $estadoActual=$AbmEstado->cargarUltimoEstado($param); //aca validar si no es null
+                if(isset($estadoActual))//true si encuentra el ultimo estado
+                {
+                $estadoActual->setearFechaFin(); //cambia en la base, toma la hora de la base de datos
+                
+                // ARMAR EL OBJETO ESTADO NUEVO
+                if($param['accion']=="descompartir")
+                $estadoNuevo->seteoNuevo($archivo,$EstadoTipo,$archivo->getusuario(),$param['motivo'],date("Y-m-d"));
+
+                if($param['accion']=="eliminar")
+                $estadoNuevo->seteoNuevo($elObjtTabla,$EstadoTipo,$elObjtTabla->getusuario(),$param['motivo'],date("Y-m-d"));
+                
+                $estadoNuevo->insertarEstado();
+                }
+
+                else {
+                    $resp=false;
+                }
+                
+              
+            //    $estado->CambiarEstado($elObjtTabla,$-);
+                //crear nueva instancia en archivocargadoestado
+                
+            }
+            return $resp;
+        }
+       
+    
+
     public function ActualizarAmarchivo($param)
     {
         $obj = null;
@@ -251,23 +336,23 @@ class AbmArchivoCargado{
         
     }
     
-    public function NuevoAmarchivo($param)
-    {
-        $nuevo = new archivocargado();
-        $usuario = new usuario();
-        $objEstado = new estadotipos();
-        $objArchivoCargadoEstado = new archivocargadoestado();
-        $objEstado->setidestadotipos(1);
-        $usuario->setidusuario($param['usuario']);
-        $usuario->cargar();
-        $nuevo->seteocorto($param['acnombre'],$param['acdescripcion'],$param['acicono'],$usuario);
-        $nuevo->insertarNuevo();
-        $objArchivoCargadoEstado->seteoNuevo($nuevo,$objEstado,$usuario,'Archivo Cargado por el Sistema',);
-        $objArchivoCargadoEstado->insertarNuevo();
+    // public function NuevoAmarchivo($param)
+    // {
+    //     $nuevo = new archivocargado();
+    //     $usuario = new usuario();
+    //     $objEstado = new estadotipos();
+    //     $objArchivoCargadoEstado = new archivocargadoestado();
+    //     $objEstado->setidestadotipos(1);
+    //     $usuario->setidusuario($param['usuario']);
+    //     $usuario->cargar();
+    //     $nuevo->seteocorto($param['acnombre'],$param['acdescripcion'],$param['acicono'],$usuario);
+    //     $nuevo->insertarNuevo();
+    //     $objArchivoCargadoEstado->seteoNuevo($nuevo,$objEstado,$usuario,'Archivo Cargado por el Sistema',date("Y-m-d"));
+    //     $objArchivoCargadoEstado->insertarNuevo();
 
 
-        //insertar en archivocargadoestado
-    }
+    //     //insertar en archivocargadoestado
+    // }
     public function CambiarEstado($archivo, $estado)
     {
         $newArchivoCargado = new archivocargadoestado();

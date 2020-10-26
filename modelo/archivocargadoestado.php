@@ -127,7 +127,7 @@ class archivocargadoestado {
     
         
     }
-    public function NuevoEstado($archivo, $estado)
+    public function NuevoEstado()
     {
         $resp=false;
         $base=new BaseDatos();
@@ -161,11 +161,11 @@ class archivocargadoestado {
         }
         return $resp;
     }
-    public function insertarNuevo(){
+    public function insertarEstado(){
         $resp = false;
         $base=new BaseDatos();
         $sql="INSERT INTO archivocargadoestado(idestadotipos,idusuario,idarchivocargado,acedescripcion,acefechaingreso)  VALUES(";
-        $sql.="1,";
+        $sql.=$this->getestadotipo()->getidestadotipos().",";
         $sql.=$this->getusuario()->getidusuario().",";
         $sql.=$this->getarchivocargado()->getidarchivocargado().",'";
         $sql.=$this->getacedescripcion()."',CURRENT_TIMESTAMP);";
@@ -184,7 +184,7 @@ class archivocargadoestado {
         return $resp;
     }
     
-    public function modificar(){
+   /* public function modificar(){
         $resp = false;
         $base=new BaseDatos();
         $sql="UPDATE archivocargadoestado SET ";
@@ -206,8 +206,8 @@ class archivocargadoestado {
         }
         return $resp;
     }
-    
-    public function eliminar(){
+    */
+    /*public function eliminar(){
         $resp = false;
         $base=new BaseDatos();
         $sql="DELETE FROM archivocargadoestado WHERE idarchivocargadoestado=".$this->getidarchivocargadoestado();
@@ -221,7 +221,7 @@ class archivocargadoestado {
             $this->setmensajeoperacion("Tabla->eliminar: ".$base->getError());
         }
         return $resp;
-    }
+    }*/
     
     public static function listar($parametro=""){
         $arreglo = array();

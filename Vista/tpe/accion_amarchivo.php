@@ -13,16 +13,8 @@ if(isset($datos['parametro'])){
         $respuesta = $AbmArchivoCargado->UploadFile($datos);//Sube el archivo a la carpeta
         if($respuesta)
         {
-            $respuesta = $AbmArchivoCargado->NuevoAmarchivo($datos);//Da de alta en la tabla archivocargado
+            $respuesta = $AbmArchivoEstado->NuevoAmarchivo($datos);//Da de alta en la tabla archivocargado
         }
-    }
-    if($parametro=='eliminar')
-    {
-        $respuesta=$AbmArchivoCargado->baja($datos);
-    }
-    if($parametro=='modificar')
-    {
-        $respuesta=$AbmArchivoCargado->ActualizarAmarchivo($datos);
     }
     
 }

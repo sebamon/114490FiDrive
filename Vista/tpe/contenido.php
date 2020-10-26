@@ -5,7 +5,7 @@ include_once("../estructura/menu.php");
 
 $objAbmArchivoCargado= new AbmArchivoCargado();
 $Estado = new AbmArchivoCargadoEstado();
-$listaTabla = $objAbmArchivoCargado->buscar(null);
+//$listaTabla = $objAbmArchivoCargado->buscar(null);
 //$elObjE = new archivocargadoestado();
 $listaTablaEstado= $Estado->buscar(null);
 
@@ -37,7 +37,7 @@ $listaTablaEstado= $Estado->buscar(null);
     </thead>
 <?php	
 
- if( count($listaTabla)>0)
+ if( count($listaTablaEstado)>0)
  {
      $i=1;
      echo '<tbody>';
@@ -53,7 +53,12 @@ $listaTablaEstado= $Estado->buscar(null);
         echo '<td><a href=../..'.$objTabla->getarchivocargado()->getaclinkacceso().'>'.$objTabla->getarchivocargado()->getacnombre().'</a></td>';
         echo '<td>'.$objTabla->getestadotipo()->getetdescripcion().'</td>';
         echo '<td><a href="amarchivo.php?parametro=modificar&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Modificar</a></td>';
-        echo '<td><a href="compartirarchivo.php?parametro=compartir&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Compartir</a></td>';
+        switch($objTabla->getestadotipo()->getidestadotipos())
+        {
+          case '1': echo '<td><a href="compartirarchivo.php?parametro=compartir&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Compartir</a></td>';break;
+          case '2': echo '<td><a href="eliminararchivocompartido.php?parametro=descompartir&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Descompartir</a></td>';break;
+          case '3': echo '<td><a href="compartirarchivo.php?parametro=compartir&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Compartir</a></td>';break;
+        }
         echo '<td><a href="accion_amarchivo.php?parametro=eliminar&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Eliminar</a></td>';
         echo '</tr>';
         $i++;
