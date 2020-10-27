@@ -13,7 +13,7 @@ $('#amarchivo').bootstrapValidator({
    
     fields: {
 
-        nombre: {
+        acnombre: {
 
             validators: {
 
@@ -26,7 +26,7 @@ $('#amarchivo').bootstrapValidator({
             }
 
         },
-        descripcion: {
+        acdescripcion: {
 
             validators: {
 
@@ -151,6 +151,14 @@ $('#compartirarchivo').bootstrapValidator({
              {
                  notEmpty: {
                     message:'Ingrese una Contraseña'
+                 }
+             }
+         },
+         link: {
+             validators:
+             {
+                 notEmpty: {
+                     message:'Genere Hash antes de Continuar'
                  }
              }
          }

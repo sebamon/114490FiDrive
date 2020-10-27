@@ -6,15 +6,19 @@ $datos = data_submitted();
 $AbmArchivoCargado = new AbmArchivoCargado();
 $AbmArchivoEstado = new AbmArchivoCargadoEstado();
 $respuesta=null;
-if(isset($datos['parametro'])){
-    $parametro=$datos['parametro'];
+if(isset($datos['accion'])){
+    $parametro=$datos['accion'];
     if($parametro=='nuevo')
     {
         $respuesta = $AbmArchivoCargado->UploadFile($datos);//Sube el archivo a la carpeta
         if($respuesta)
         {
             $respuesta = $AbmArchivoEstado->NuevoAmarchivo($datos);//Da de alta en la tabla archivocargado
+          // $respuesta = $AbmArchivoEstado->alta($datos);
         }
+    }
+    else {
+        $respuesta = $AbmArchivoEstado->NuevoEstado($datos);
     }
     
 }

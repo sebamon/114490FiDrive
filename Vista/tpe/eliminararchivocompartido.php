@@ -18,7 +18,7 @@ if(isset($_GET['parametro']))
 
 
 <div class="col">
-<form id="compartirarchivo" name="compartirarchivo" class="form-group" method="POST" action="accion_eliminararchivocompartido.php" data-toggle="validator" role="form" enctype="multipart/form-data">
+<form id="compartirarchivo" name="compartirarchivo" class="form-group" method="POST" action="accion_amarchivo.php" data-toggle="validator" role="form" enctype="multipart/form-data">
     <div class="form-group">
         <label for="archivo">Nombre del Archivo:</label>
         <?php

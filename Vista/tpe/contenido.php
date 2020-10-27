@@ -58,8 +58,9 @@ $listaTablaEstado= $Estado->buscar(null);
           case '1': echo '<td><a href="compartirarchivo.php?parametro=compartir&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Compartir</a></td>';break;
           case '2': echo '<td><a href="eliminararchivocompartido.php?parametro=descompartir&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Descompartir</a></td>';break;
           case '3': echo '<td><a href="compartirarchivo.php?parametro=compartir&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Compartir</a></td>';break;
+          case '4': echo '<td>No Compartible</td>';
         }
-        echo '<td><a href="accion_amarchivo.php?parametro=eliminar&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Eliminar</a></td>';
+        echo '<td><a href="eliminararchivo.php?parametro=eliminar&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Eliminar</a></td>';
         echo '</tr>';
         $i++;
     }

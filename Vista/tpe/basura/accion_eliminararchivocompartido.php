@@ -10,25 +10,13 @@ if(isset($datos['accion'])){
     $parametro=$datos['accion'];
     if($parametro=='descompartir')
     {
-        $respuesta = $AbmArchivoCargado->DesCompartirEliminar($datos);
-        // if($respuesta)
-        // {
-        //     $respuesta = $AbmArchivoCargado->alta($datos);//Da de alta en la tabla archivocargado
-        // }
+        $respuesta = $AbmArchivoEstado->NuevoEstado($datos);
+
     }
-    if($parametro=='eliminar')
-    {
-        $respuesta=$AbmArchivoCargado->baja($datos);
-    }
+
     
 }
-// switch($parametro)
-// {
-//     case ('nuevo'): $respuesta=$obj;
 
-//     case ('modificar'): $respuesta=$obj->;
-
-// }
 
 
 ?>

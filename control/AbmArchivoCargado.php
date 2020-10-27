@@ -65,7 +65,7 @@ class AbmArchivoCargado{
      * @param array $param
      * @return archivocargado
      */
-    private function cargarObjetoCompartir($param){ // DEVUELVE EL OBJETO COMPARTIR CON FECHAS Y LO DEL FORMULARIO
+    public function cargarObjetoCompartir($param){ // DEVUELVE EL OBJETO COMPARTIR CON FECHAS Y LO DEL FORMULARIO
         $obj = null;
            
         if( array_key_exists('idarchivocargado',$param)){
@@ -80,6 +80,7 @@ class AbmArchivoCargado{
             $obj->setacfechainiciocompartir($hoy = date("Y-m-d H:i:s"));
             $nuevafecha=date("Y-m-d",strtotime($obj->getacfechainiciocompartir()."+ ".$param['cantidad_dias']." days")); 
             $obj->setacefechafincompartir($nuevafecha);
+            if(isset($param['txtpassword']))
             $obj->setacprotegidoclave($param['txtpassword']);
             //$obj->setear($param['idarchivocargado'], $param['acnombre'], $param['acdescripcion'], $param['acicono'], $objUsuario, '/archivos/'.$param['acnombre'].'.'.$param['extension'], null, null, null, null, null);
         }
@@ -116,7 +117,7 @@ class AbmArchivoCargado{
      * @param array $param
      * @return archivocargado
      */
-    private function cargarObjetoConClave($param){
+    public function cargarObjetoConClave($param){
         $obj = null;
         
         if( isset($param['idarchivocargado']) ){
@@ -133,7 +134,7 @@ class AbmArchivoCargado{
      * @return boolean
      */
     
-    private function seteadosCamposClaves($param){//NO SE BIEN QUE HACE
+    public function seteadosCamposClaves($param){//NO SE BIEN QUE HACE
         $resp = false;
         if (isset($param['idarchivocargado']))
             $resp = true;
@@ -184,7 +185,7 @@ class AbmArchivoCargado{
      * @param array $param
      * @return boolean
      */
-    public function Compartir($param){
+   /* public function Compartir($param){
         //echo "Estoy en Compartir un archivo tengo los DATOS DEL FORMULARIO EN UN ARRAY, en esto viene EL ID DEL ARCHIVOCARGADO";
         $resp = false;
         if ($this->seteadosCamposClaves($param)){
@@ -233,7 +234,7 @@ class AbmArchivoCargado{
         }
         return $resp;
     }
-
+*/
     public function DesCompartirEliminar($param){
         //echo "Estoy en DesCompartir un archivo tengo los DATOS DEL FORMULARIO EN UN ARRAY, en esto viene EL ID DEL ARCHIVOCARGADO";
         $resp = false;

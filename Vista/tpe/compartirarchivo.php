@@ -18,7 +18,7 @@ if(isset($_GET['parametro']))
 ?>
 
 <div class="col">
-<form id="compartirarchivo" name="compartirarchivo"  method="POST" action="accion_compartirarchivo.php" data-toggle="validator" role="form" enctype="multipart/form-data">
+<form id="compartirarchivo" name="compartirarchivo"  method="POST" action="accion_amarchivo.php" data-toggle="validator" role="form" enctype="multipart/form-data">
     <div class="form-group">
         <label for="archivo">Nombre del Archivo:</label>
         <?php
@@ -102,7 +102,7 @@ if(isset($_GET['parametro']))
     </div>
     <div class="form-group">
         <label for="link">Hash para Compartir:</label>
-            <input type="text" class="form-control" id='link' name="link" >
+            <input type="text" class="form-control" readonly id='link' name="link" >
         <div class="invalid-feedback">
 
         </div>

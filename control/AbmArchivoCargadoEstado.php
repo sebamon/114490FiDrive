@@ -211,34 +211,95 @@ class AbmArchivoCargadoEstado{
         
 
         $objEstado = new estadotipos();
-        $objEstado->setidestadotipos(1);
+        $objEstado->setidestadotipos(1);//seteo valor Cargado
 
         $objArchivoCargadoEstado = new archivocargadoestado();
         
-        if($nuevo->insertarNuevo()){
-        $resp=true;
+        if($nuevo->insertarNuevo()){//Inserto en archivocargado los primeros valores
 
         $objArchivoCargadoEstado->seteoNuevo($nuevo,$objEstado,$usuario,'Archivo Cargado por el Sistema',date("Y-m-d"));
-        $objArchivoCargadoEstado->insertarEstado();
+        $resp=$objArchivoCargadoEstado->insertarEstado();
+        }
+        if($resp==true)
+        {
+            $resp='El Archivo fue Cargado Correctamente';
+        }
+        else {
+            $resp='No se pudo Cargar el Archivo';
         }
         return $resp;
-
         //insertar en archivocargadoestado
     }
 
-    public function NuevoArchivo($param){
-
-        $resp=false;
-
+    public function NuevoEstado($param){
+        //echo "Estoy en Compartir un archivo tengo los DATOS DEL FORMULARIO EN UN ARRAY, en esto viene EL ID DEL ARCHIVOCARGADO";
+        $resp = false;
+        $abmArchivo = new AbmArchivoCargado();
         $archivo = new archivocargado();
         
-        
+        //$archivo=$abmArchivo->seteadosCamposClaves($param);
 
-        $archivoEstado = new archivocargadoestado();
+        if ($abmArchivo->seteadosCamposClaves($param)){
+            
+            if($param['accion']=='nuevo')
+            {
+                $archivo = $abmArchivo->cargarObjetoCompartir($param); // Cargo en un objeto los demas datos del archivo
+            }
+            else {
+                $archivo->setidarchivocargado($param['idarchivocargado']);
+                $archivo->cargar();
+            }
+            if($archivo!=null){
+                $resp = true;
+                
+               
+                $estadoActual = new archivocargadoestado();
+                $estadoNuevo = new archivocargadoestado();
 
+                $EstadoTipo = new estadotipos();
 
+                if($param['accion']=='nuevo')
+                {
+                    $archivo->AsignarDatosCompartir();
+                    $EstadoTipo->setidestadotipos(1);
+                }
 
+                if($param['accion']=='compartir'){
+                    $EstadoTipo->setidestadotipos(2);
+                    $estadoNuevo->seteoNuevo($archivo,$EstadoTipo,$archivo->getusuario(),'Compartido Personalizable',date("Y-m-d"));
+                    $resp='El Archivo cambio a Estado:Compartido';
+                }
+                if($param['accion']=='descompartir'){
+                    $EstadoTipo->setidestadotipos(3);
+                    $estadoNuevo->seteoNuevo($archivo,$EstadoTipo,$archivo->getusuario(),$param['motivo'],date("Y-m-d"));
+                    $resp='El Archivo cambio a Estado:No Compartido';
+                }
+                if($param['accion']=='eliminar'){
+                    $EstadoTipo->setidestadotipos(4);
+                    $estadoNuevo->seteoNuevo($archivo,$EstadoTipo,$archivo->getusuario(),$param['motivo'],date("Y-m-d"));
+                    $resp='El Archivo cambio a Estado:Eliminado';
+                }
+                 //ASIGNO QUE EL ESTADO ES COMPARTIDO
+                //$EstadoTipo->cargar();//CARGO LA DESCRIPCION PARA OBTENER EL OBJETO COMPLETO 
+                
+                if($param['accion']!='nuevo')
+                {
+                    $estadoActual=$this->cargarUltimoEstado($param); //aca validar si no es null
+                    if(isset($estadoActual))//true si encuentra el ultimo estado
+                    {
+                        $estadoActual->setearFechaFin(); //cambia en la base, toma la hora de la base de datos
+                    }
+                    else {
+                        $resp='No se encontro Ultimo Estado';
+                    }
+                     
+                }             
+                $estadoNuevo->insertarEstado();
+                
+                
+            }
+        }
+        return $resp;
     }
-    
 }
 ?>

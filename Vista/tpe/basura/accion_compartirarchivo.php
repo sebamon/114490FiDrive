@@ -3,14 +3,14 @@ include_once("../estructura/cabecera.php");
 include_once("../estructura/menu.php");
 
 $datos = data_submitted();
-$AbmArchivoCargado = new AbmArchivoCargado();
+//$AbmArchivoCargado = new AbmArchivoCargado();
 $AbmArchivoEstado = new AbmArchivoCargadoEstado();
 
 if(isset($datos['accion'])){
     $parametro=$datos['accion'];
     if($parametro=='compartir')
     {
-        $respuesta = $AbmArchivoCargado->Compartir($datos);
+        $respuesta = $AbmArchivoEstado->NuevoEstado($datos);
         // if($respuesta)
         // {
         //     $respuesta = $AbmArchivoCargado->alta($datos);//Da de alta en la tabla archivocargado
