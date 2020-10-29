@@ -29,12 +29,13 @@ class archivocargadoestado {
         $this->setacefechafin($acefechafin);
         $this->setarchivocargado($archivocargado);
     }
-    public function seteoNuevo($archivo,$estado,$usuario,$descripcion)
+    public function seteoNuevo($archivo,$estado,$usuario,$descripcion,$fechaingreso)
     {
         $this->setarchivocargado($archivo);
         $this->setestadotipo($estado);
         $this->setusuario($usuario);
         $this->setacedescripcion($descripcion);
+        $this->setacefechaingreso($fechaingreso);
     }
     
     
@@ -126,6 +127,19 @@ class archivocargadoestado {
     
         
     }
+    public function NuevoEstado()
+    {
+        $resp=false;
+        $base=new BaseDatos();
+        $estadoAnterior = new archivocargadoestado();
+        $estadoAnterior->setarchivocargado($archivo);
+        $estadoAnterior->setacefechafin(date("Y-m-d H:i:s"));
+        $sql="insert into archivocargadoestado(idestadotipos,idusuario,idarchivocargado) values(";
+        $sql.=$archivo->getidarchivocargadoestado().",";
+        $sql.=$archivo->getusuario()->getidusuario().",";
+        $sql.=$archivo->getarchivocargado()->getidarchivocargado().");";
+
+    }
     
     public function insertar(){
         $resp = false;
@@ -147,14 +161,15 @@ class archivocargadoestado {
         }
         return $resp;
     }
-    public function insertarNuevo(){
+    public function insertarEstado(){
         $resp = false;
         $base=new BaseDatos();
-        $sql="INSERT INTO archivocargadoestado(idestadotipos,idusuario,idarchivocargado,acedescripcion)  VALUES(";
-        $sql.="1,";
+        $sql="INSERT INTO archivocargadoestado(idestadotipos,idusuario,idarchivocargado,acedescripcion,acefechaingreso)  VALUES(";
+        $sql.=$this->getestadotipo()->getidestadotipos().",";
         $sql.=$this->getusuario()->getidusuario().",";
         $sql.=$this->getarchivocargado()->getidarchivocargado().",'";
-        $sql.=$this->getacedescripcion()."');";
+        $sql.=$this->getacedescripcion()."',CURRENT_TIMESTAMP);";
+        
 
         if ($base->Iniciar()) {
             if ($elid = $base->Ejecutar($sql)) {
@@ -169,44 +184,6 @@ class archivocargadoestado {
         return $resp;
     }
     
-    public function modificar(){
-        $resp = false;
-        $base=new BaseDatos();
-        $sql="UPDATE archivocargadoestado SET ";
-        $sql.="idestadotipo=".$this->getestadotipo()->getidestadotipos().", ";
-        $sql.="acedescripcion='".$this->getacedescripcion()."', ";
-        $sql.="idusuario=".$this->getusuario()->getidusuario().", ";
-        $sql.="acefechaingreso='".$this->getacefechaingreso()."', ";
-        $sql.="acefechafin='".$this->getacefechafin()."', ";
-        $sql.="idarchivocargado=".$this->getarchivocargado()->getidarchivocargado()." ";
-        $sql.="WHERE idarchivocargadoestado=".$this->getidarchivocargadoestado().";";
-        if ($base->Iniciar()) {
-            if ($base->Ejecutar($sql)) {
-                $resp = true;
-            } else {
-                $this->setmensajeoperacion("Tabla->modificar: ".$base->getError());
-            }
-        } else {
-            $this->setmensajeoperacion("Tabla->modificar: ".$base->getError());
-        }
-        return $resp;
-    }
-    
-    public function eliminar(){
-        $resp = false;
-        $base=new BaseDatos();
-        $sql="DELETE FROM archivocargadoestado WHERE idarchivocargadoestado=".$this->getidarchivocargadoestado();
-        if ($base->Iniciar()) {
-            if ($base->Ejecutar($sql)) {
-                return true;
-            } else {
-                $this->setmensajeoperacion("Tabla->eliminar: ".$base->getError());
-            }
-        } else {
-            $this->setmensajeoperacion("Tabla->eliminar: ".$base->getError());
-        }
-        return $resp;
-    }
     
     public static function listar($parametro=""){
         $arreglo = array();
@@ -237,13 +214,63 @@ class archivocargadoestado {
             }
             
         } else {
-            $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
+         //   $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
         }
  
         return $arreglo;
     }
+    public static function listarUltimo($parametro){
+        $obj=null;
+        $base=new BaseDatos();
+        $sql="SELECT * FROM archivocargadoestado ";
+        if ($parametro!="") {
+            $sql.='WHERE '.$parametro;
+        }
+        $res = $base->Ejecutar($sql);
+        if($res>-1){
+            if($res>0){
+                
+                while ($row = $base->Registro()){
+                    $obj= new archivocargadoestado();
+                    $objP= new usuario();
+                    $objP->setidusuario($row['idusuario']);
+                    $objP->cargar();
+                    $objE=new estadotipos();
+                    $objE->setidestadotipos($row['idestadotipos']);
+                    $objE->cargar();
+                    $objA=new archivocargado();
+                    $objA->setidarchivocargado($row['idarchivocargado']);
+                    $objA->cargar();
+                    $obj->setear($row['idarchivocargadoestado'], $objE,$row['acedescripcion'],$objP,$row['acefechaingreso'],$row['acefechafin'],$objA);
+                   
+                }
+               
+            }
+            
+        } else {
+         //   $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
+        }
+ 
+        return $obj;
+    }
+    public function setearFechaFin()
+    {
+        $resp=false;
+        $base= new BaseDatos();
+        $sql="UPDATE archivocargadoestado set ";
+        $sql.="acefechafin = CURRENT_TIMESTAMP where idarchivocargadoestado=".$this->getidarchivocargadoestado().";";
+        if ($base->Iniciar()) {
+            if ($base->Ejecutar($sql)) {
+                $resp = true;
+            } else {
+                $this->setmensajeoperacion("Tabla->modificar: ".$base->getError());
+            }
+        } else {
+            $this->setmensajeoperacion("Tabla->modificar: ".$base->getError());
+        }
+        return $resp;
+    }
     
 }
-
 
 ?>
