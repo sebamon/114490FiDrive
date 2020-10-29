@@ -184,7 +184,7 @@ class usuario {
             }
             
         } else {
-            $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
+           // $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
         }
  
         return $arreglo;
