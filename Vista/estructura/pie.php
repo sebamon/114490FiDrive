@@ -12,7 +12,7 @@ Email: sebastian.mon@est.fi.uncoma.edu.ar</p>
  <script type="text/javascript" src="../../externos/summernote-develop/src/js/summernote-bs4.js"></script>
  <script type="text/javascript" src="../js/validar.js"></script>
  <script>
-    $('#descripcion').summernote({
+    $('#acdescripcion').summernote({
         lang: 'es-ES',
     });
 </script>

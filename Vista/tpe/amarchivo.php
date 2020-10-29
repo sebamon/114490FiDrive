@@ -54,7 +54,7 @@ include_once("../estructura/menu.php");
 </div>
 <div class="form-group">
     <label for="descripcion" class="control-label">Descripcion: </label>
-    <textarea  id="summernote" class="form-control" name='acdescripcion'>
+    <textarea  id="acdescripcion" class="form-control" name='acdescripcion'>
     <?php
     if(isset($_GET['parametro'])) 
     {
@@ -215,9 +215,9 @@ include_once("../estructura/menu.php");
     if(isset($_GET['parametro'])) 
     {
         if($_GET['parametro']=='nuevo')
-            echo "<input type='text' id='parametro' name='parametro' hidden value='nuevo'>";
+            echo "<input type='text' id='accion' name='accion' hidden value='nuevo'>";
         else
-            echo '<input type="text" id="parametro" name="parametro" hidden value="modificar">';
+            echo '<input type="text" id="accion" name="accion" hidden value="modificar">';
     }
     ?>
     <div class="invalid-feedback">

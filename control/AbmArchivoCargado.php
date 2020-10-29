@@ -82,6 +82,7 @@ class AbmArchivoCargado{
             $obj->setacefechafincompartir($nuevafecha);
             if(isset($param['txtpassword']))
             $obj->setacprotegidoclave($param['txtpassword']);
+            $obj->setaclinkacceso($param['link']);
             //$obj->setear($param['idarchivocargado'], $param['acnombre'], $param['acdescripcion'], $param['acicono'], $objUsuario, '/archivos/'.$param['acnombre'].'.'.$param['extension'], null, null, null, null, null);
         }
         return $obj;
@@ -289,15 +290,29 @@ class AbmArchivoCargado{
     public function ActualizarAmarchivo($param)
     {
         $obj = null;
-           
+           $resp='El Archivo no pudo ser modificado';
         if( array_key_exists('idarchivocargado',$param)){
             $obj = new archivocargado();
             $objUsuario = new usuario();
             $objUsuario->setidusuario($param['usuario']);
             $objUsuario->cargar();
-            $obj->setear($param['idarchivocargado'],$param['acnombre'],$param['acdescripcion'],$param['acicono'],$objUsuario,null,null,null,null,null,null);
+            if(!isset($param['acdescripcion']))
+            {
+                $param['acdescripcion']=null;
+            } 
+            if(!isset($param['acicono']))
+            {
+                $param['acicono']=null;
+            }
+            if(!isset($param['link']))
+            {
+                $param['link']=null;
+            }
+            $obj->setear($param['idarchivocargado'],$param['acnombre'],$param['acdescripcion'],$param['acicono'],$objUsuario,$param['link'],null,null,null,null,null);
             $obj->modificar();
+            $resp='Se Modifico el Archivo';
         }
+        return $resp;
     }
     /**
      * permite buscar un objeto

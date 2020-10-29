@@ -94,7 +94,7 @@ function ArchivoSeleccionado()
 
 function GenerarHash()
 {
-    $nombre=document.getElementById('nombre').value;
+    $nombre=document.getElementById('acnombre').value;
     $dias=document.getElementById('cantidad_dias').value;
     $descargas=document.getElementById('cantidad_descargas').value;
     $hash='';

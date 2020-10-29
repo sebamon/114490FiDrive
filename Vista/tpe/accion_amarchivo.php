@@ -17,9 +17,18 @@ if(isset($datos['accion'])){
           // $respuesta = $AbmArchivoEstado->alta($datos);
         }
     }
-    else {
-        $respuesta = $AbmArchivoEstado->NuevoEstado($datos);
+    else 
+    if($parametro=='modificar')
+    {
+        $respuesta=$AbmArchivoCargado->ActualizarAmarchivo($datos);
     }
+    
+    else {
+         $respuesta = $AbmArchivoEstado->NuevoEstado($datos);
+    }
+    
+        
+    
     
 }
 // switch($parametro)

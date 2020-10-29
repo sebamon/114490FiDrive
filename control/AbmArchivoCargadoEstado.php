@@ -248,7 +248,14 @@ class AbmArchivoCargadoEstado{
             else {
                 $archivo->setidarchivocargado($param['idarchivocargado']);
                 $archivo->cargar();
+                if($param['accion']=='compartir'){
+                
+                $archivo = $abmArchivo->cargarObjetoCompartir($param);
+                $archivo->setaclinkacceso($param['link']);
+                $archivo->AsignarDatosCompartir();
+               // $abmArchivo->ActualizarAmarchivo($param);
             }
+        }
             if($archivo!=null){
                 $resp = true;
                 
