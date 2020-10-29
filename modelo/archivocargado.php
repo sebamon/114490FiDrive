@@ -251,7 +251,6 @@ class archivocargado {
         $sql.="acprotegidoclave='".$this->getacprotegidoclave()."'";
         $sql.=" WHERE idarchivocargado=".$this->getidarchivocargado().";";
         
-        
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
@@ -264,7 +263,7 @@ class archivocargado {
         return $resp;
     }
     
-    public function eliminar(){
+   /* public function eliminar(){
         $resp = false;
         $base=new BaseDatos();
         $sql="DELETE FROM archivocargado WHERE idarchivocargado=".$this->getidarchivocargado();
@@ -278,7 +277,7 @@ class archivocargado {
             $this->setmensajeoperacion("Tabla->eliminar: ".$base->getError());
         }
         return $resp;
-    }
+    }*/
     
     public static function listar($parametro=""){
         $arreglo = array();
