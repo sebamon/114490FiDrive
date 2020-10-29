@@ -180,14 +180,22 @@ class AbmArchivoCargado{
             $objUsuario->setidusuario($param['usuario']);
             $objUsuario->cargar();
             $obj->setear($param['idarchivocargado'],$param['acnombre'],$param['acdescripcion'],$param['acicono'],$objUsuario,null,null,null,null,null,null);
-            $obj->modificar();
-        }
+
     }
+<<<<<<< HEAD
+}
+=======
+>>>>>>> 06c4b90832821ca5425333a558fc579b7c276cb6
+    
     /**
      * permite buscar un objeto
      * @param array $param
      * @return boolean
+<<<<<<< HEAD
+    //  */
+=======
      */
+>>>>>>> 06c4b90832821ca5425333a558fc579b7c276cb6
     public function buscar($param){
         $where = " true ";
         if ($param<>NULL){
@@ -221,24 +229,5 @@ class AbmArchivoCargado{
         
     }
     
-    public function NuevoAmarchivo($param)
-    {
-        $nuevo = new archivocargado();
-        $usuario = new usuario();
-        $objEstado = new estadotipos();
-        $objArchivoCargadoEstado = new archivocargadoestado();
-        $objEstado->setidestadotipos(1);
-        $usuario->setidusuario($param['usuario']);
-        $usuario->cargar();
-        $nuevo->seteocorto($param['acnombre'],$param['acdescripcion'],$param['acicono'],$usuario);
-        $nuevo->insertarNuevo();
-        $objArchivoCargadoEstado->seteoNuevo($nuevo,$objEstado,$usuario,'Archivo Cargado por el Sistema');
-        $objArchivoCargadoEstado->insertarNuevo();
-
-
-        //insertar en archivocargadoestado
-    }
-
-
 }
 ?>
