@@ -8,7 +8,6 @@ $abmusuario = new AbmUsuario();
 if($respuesta=$abmusuario->alta($datos))
 {
     
-    
 }
 
 ?>

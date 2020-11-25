@@ -128,10 +128,24 @@ class AbmUsuarioRol{
         }
         $arreglo = usuariorol::listar($where);  
         return $arreglo;
-            
-            
-      
+ 
+    }
+    public function obtenerRol($idusuario)
+    {
+        $userrol = new usuariorol();
+        $user = new usuario();
         
+        $user->setidusuario($idusuario);
+        $user->cargar();
+        $user->setusclave(null);
+
+        $userrol->setusuario($user);
+        $userrol->cargar();
+
+
+        return $userrol;
+
+
     }
     
 }

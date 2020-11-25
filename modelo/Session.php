@@ -1,10 +1,7 @@
 <?php
 class Session {
 
-
-    private $Usuario;
-    private $Rol;
-
+    private $ssIdUsuario;
     private $ssNombre;
     private $ssPass;
     private $ssEmail;
@@ -12,7 +9,7 @@ class Session {
     private $ssDescripcionRol;
     
 
-    public function getUsuario()
+  /*  public function getUsuario()
     {
         return $this->Usuario;
     }
@@ -30,7 +27,17 @@ class Session {
     {
         $this->Rol=$valor;
     }
+*/
+    public function __construct(){
+    {
+        $this->ssIdUsuario='';
+        $this->ssNombre='';
+        $this->ssPass='';
+        $this->ssEmail='';
+        $this->ssRol='';
+        $this->ssDescripcionRol='';
 
+    }
     public function getssNombre()
     {
         return $this->ssNombre;
@@ -75,33 +82,30 @@ class Session {
     {
         $this->ssDescripcionRol=$valor;
     }
+ 
 
-
-
-    public function login($param)
-    {
+    public function loguear(){
         $resp = false;
-        
-        $elObjtTabla = $this->objLogin($param);
-//        verEstructura($elObjtTabla);
-        if ($elObjtTabla!=null and $elObjtTabla->loguear()){
-           $resp=true;
-        //    $abmusuariorol= new AbmUsuarioRol();
-        //    $nuevoParametro= array('idusuario'=>$elObjtTabla->getidusuario(),'idrol'=>2);
-        //    $abmusuariorol->alta($nuevoParametro);
-
+        $base=new BaseDatos();
+        $sql="SELECT * FROM usuario WHERE uslogin = '".$this->getusuario()->getuslogin()."' and usclave = '".$this->getusuario()->getusclave()."';";
+        if ($base->Iniciar()) {
+            $res = $base->Ejecutar($sql);
+            if($res>-1){
+                if($res>0){
+                    $row = $base->Registro();
+                    //$this->setear($row['idusuario'], $row['usnombre'], $row['usapellido'], $row['uslogin'],$row['usmail'], $row['usclave'], $row['usactivo'],$row['usdeshabilitado']);
+                    $usuario= new usuario();
+                    $usuario->setidusuario($row['idusuario']);
+                    $this->setUsuario($usuario);
+                    $resp=true;
+                }
+            }
+        } else {
+            $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
         }
         return $resp;
-
-    }
-
-    public function objLogin($param)
-    {
-        $obj = new usuario();
-        $obj->setuslogin($param['username']);
-        $obj->setusclave($param['clave']);
-
-        return $obj;
+    
+        
     }
 
     public function iniciar($user,$pass)

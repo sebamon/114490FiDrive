@@ -121,27 +121,7 @@ class usuario {
     
         
     }
-    public function loguear(){
-        $resp = false;
-        $base=new BaseDatos();
-        $sql="SELECT * FROM usuario WHERE uslogin = '".$this->getuslogin()."' and usclave = '".$this->getusclave()."';";
-        if ($base->Iniciar()) {
-            $res = $base->Ejecutar($sql);
-            if($res>-1){
-                if($res>0){
-                    $row = $base->Registro();
-                    //$this->setear($row['idusuario'], $row['usnombre'], $row['usapellido'], $row['uslogin'],$row['usmail'], $row['usclave'], $row['usactivo'],$row['usdeshabilitado']);
-                    $this->setidusuario($row['idusuario']);
-                    
-                }
-            }
-        } else {
-            $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
-        }
-        return $resp;
     
-        
-    }
     
     public function insertar(){
         $resp = false;

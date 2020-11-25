@@ -4,13 +4,11 @@ include_once("../estructura/cabecera.php");
 <!-- <div id="contenido" style="height: 400px; width: 89%; border: 2px solid red; border-radius: 5px;margin-left:10.5%;" > -->
 <?php 
 $datos = data_submitted();
-$abmusuario = new AbmUsuario();
-$sesion = new Session();
+$abmlogin = new AbmLogin();
 
-$respuesta= $sesion-> ;
+$respuesta= $abmlogin->login($datos);
 
 
-$respuesta = $abmusuario->Login($datos);
 
 
 ?>

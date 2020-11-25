@@ -111,11 +111,10 @@ class AbmRol{
         }
         $arreglo = rol::listar($where);  
         return $arreglo;
-            
-            
-      
-        
+ 
     }
+
+ 
     
 }
 ?>
