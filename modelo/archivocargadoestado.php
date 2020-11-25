@@ -7,7 +7,7 @@ class archivocargadoestado {
     private $acefechaingreso;
     private $acefechafin;
     private $archivocargado;
-    
+    private $mensajeoperacion;
    
     public function __construct(){
         
@@ -18,6 +18,7 @@ class archivocargadoestado {
         $this->acefechaingreso ="";
         $this->acefechafin ="";
         $this->archivocargado ="";
+        $this->mensajeoperacion ="";
 
     }
     public function setear($idarchivocargadoestado, $idestadotipos,$acedescripcion,$idusuario,$acefechaingreso,$acefechafin,$archivocargado)    {
@@ -94,6 +95,14 @@ class archivocargadoestado {
     }
     public function setarchivocargado($valor){
         $this->archivocargado = $valor;
+        
+    }
+    public function getmensajeoperacion(){
+        return $this->mensajeoperacion;
+        
+    }
+    public function setmensajeoperacion($valor){
+        $this->mensajeoperacion = $valor;
         
     }
     

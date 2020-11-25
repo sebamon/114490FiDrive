@@ -1,48 +1,39 @@
 <?php 
-class estadotipos {
-    private $idestadotipos;
-    private $etdescripcion;
-    private $etactivo;
+class rol {
+    private $idrol;
+    private $rodescripcion;
     private $mensajeoperacion;
     
    
     public function __construct(){
         
-        $this->idestadotipos="";
-        $this->etdescripcion="";
-        $this->etactivo ="";
+        $this->idrol="";
+        $this->rodescripcion="";
         $this->mensajeoperacion ="";
-    }
-    public function setear($idestadotipos, $etdescripcion, $etactivo)    {
-        $this->setidestadotipos($idestadotipos);
-        $this->setetdescripcion($etdescripcion);
-        $this->setetactivo($etactivo);
-    }
 
-    
-    public function getidestadotipos(){
-        return $this->idestadotipos;
-        
     }
-    public function setidestadotipos($valor){
-        $this->idestadotipos = $valor;
-        
+    public function setear($idrol, $rodescripcion)    {
+        $this->setidrol($idrol);
+        $this->setrodescripcion($rodescripcion);
     }
     
-    public function getetdescripcion(){
-        return $this->etdescripcion;
+    
+    
+    public function getidrol(){
+        return $this->idrol;
         
     }
-    public function setetdescripcion($valor){
-        $this->etdescripcion = $valor;
+    public function setidrol($valor){
+        $this->idrol = $valor;
         
     }
-    public function getetactivo(){
-        return $this->etactivo;
+    
+    public function getrodescripcion(){
+        return $this->rodescripcion;
         
     }
-    public function setetactivo($valor){
-        $this->etactivo = $valor;
+    public function setrodescripcion($valor){
+        $this->rodescripcion = $valor;
         
     }
     public function getmensajeoperacion(){
@@ -55,16 +46,17 @@ class estadotipos {
     }
     
     
+    
     public function cargar(){
         $resp = false;
         $base=new BaseDatos();
-        $sql="SELECT * FROM estadotipos WHERE idestadotipos = ".$this->getidestadotipos();
+        $sql="SELECT * FROM rol WHERE idrol = ".$this->getidrol();
         if ($base->Iniciar()) {
             $res = $base->Ejecutar($sql);
             if($res>-1){
                 if($res>0){
                     $row = $base->Registro();
-                    $this->setear($row['idestadotipos'], $row['etdescripcion'], $row['etactivo']);
+                    $this->setear($row['idrol'], $row['rodescripcion']);
                     
                 }
             }
@@ -79,13 +71,10 @@ class estadotipos {
     public function insertar(){
         $resp = false;
         $base=new BaseDatos();
-        $sql="INSERT INTO estadotipos (idestadotipos,etdescripcion,etactivo)  VALUES(";
-        $sql.=$this->getidestadotipos().", '";
-        $sql.=$this->getetdescripcion()."', ";
-        $sql.=$this->getetactivo()."); ";
+        $sql="INSERT INTO rol(rodescripcion)  VALUES('".$this->getrodescripcion()."');";
         if ($base->Iniciar()) {
             if ($elid = $base->Ejecutar($sql)) {
-                $this->setidestadotipos($elid);
+                $this->setidrol($elid);
                 $resp = true;
             } else {
                 $this->setmensajeoperacion("Tabla->insertar: ".$base->getError());
@@ -99,10 +88,7 @@ class estadotipos {
     public function modificar(){
         $resp = false;
         $base=new BaseDatos();
-        $sql="UPDATE estadotipos SET ";
-        $sql.="etdescripcion='".$this->getetdescripcion()."', ";
-        $sql.="etactivo='".$this->getetactivo()."' ";
-        $sql.="WHERE idestadotipos=".$this->getidestadotipos();
+        $sql="UPDATE rol SET rodescripcion='".$this->getDescrip()."' WHERE idrol=".$this->getidrol();
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
@@ -118,7 +104,7 @@ class estadotipos {
     public function eliminar(){
         $resp = false;
         $base=new BaseDatos();
-        $sql="DELETE FROM estadotipos WHERE idestadotipos=".$this->getidestadotipos();
+        $sql="DELETE FROM rol WHERE idrol=".$this->getidrol();
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 return true;
@@ -134,7 +120,7 @@ class estadotipos {
     public static function listar($parametro=""){
         $arreglo = array();
         $base=new BaseDatos();
-        $sql="SELECT * FROM estadotipos ";
+        $sql="SELECT * FROM rol ";
         if ($parametro!="") {
             $sql.='WHERE '.$parametro;
         }
@@ -143,15 +129,15 @@ class estadotipos {
             if($res>0){
                 
                 while ($row = $base->Registro()){
-                    $obj= new estadotipos();
-                    $obj->setear($row['idestadotipos'], $row['etdescripcion'], $row['etactivo']);
+                    $obj= new rol();
+                    $obj->setear($row['idrol'], $row['rodescripcion']);
                     array_push($arreglo, $obj);
                 }
                
             }
             
         } else {
-           // $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
+            //$this->setmensajeoperacion("Tabla->listar: ".$base->getError());
         }
  
         return $arreglo;

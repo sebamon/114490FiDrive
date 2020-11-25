@@ -1,19 +1,19 @@
 <?php
-class AbmUsuario{
+class AbmRol{
     //Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto
 
     
     /**
      * Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto
      * @param array $param
-     * @return usuario
+     * @return rol
      */
     private function cargarObjeto($param){
         $obj = null;
            
-        if( array_key_exists('idusuario',$param)){
-            $obj = new usuario();
-            $obj->setear($param['idusuario'], $param['usnombre'], $param['usapellido'], $param['uslogin'], $param['usmail'], $param['usclave'], $param['usactivo'], $param['usdeshabilitado']);
+        if( array_key_exists('idrol',$param) and array_key_exists('rodescripcion',$param)){
+            $obj = new rol();
+            $obj->setear($param['idrol'], $param['rodescripcion']);
         }
         return $obj;
     }
@@ -21,14 +21,14 @@ class AbmUsuario{
     /**
      * Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto que son claves
      * @param array $param
-     * @return usuario
+     * @return rol
      */
     private function cargarObjetoConClave($param){
         $obj = null;
         
-        if( isset($param['idusuario']) ){
-            $obj = new usuario();
-            $obj->setear($param['idusuario'], null,null,null,null,null,null,null);
+        if( isset($param['idrol']) ){
+            $obj = new rol();
+            $obj->setear($param['idrol'], null);
         }
         return $obj;
     }
@@ -42,7 +42,7 @@ class AbmUsuario{
     
     private function seteadosCamposClaves($param){
         $resp = false;
-        if (isset($param['idusuario']))
+        if (isset($param['idrol']))
             $resp = true;
         return $resp;
     }
@@ -53,19 +53,11 @@ class AbmUsuario{
      */
     public function alta($param){
         $resp = false;
-        $param['idusuario'] =null;
-        $param['usactivo'] =1;
-        $param['usdeshabilitado'] =null;
-        
+        $param['idrol'] =null;
         $elObjtTabla = $this->cargarObjeto($param);
 //        verEstructura($elObjtTabla);
         if ($elObjtTabla!=null and $elObjtTabla->insertar()){
-           // $resp = 'El Usuario '.$elObjtTabla->getuslogin().' fue creado con Exito';
-           $resp=true;
-           $abmusuariorol= new AbmUsuarioRol();
-           $nuevoParametro= array('idusuario'=>$elObjtTabla->getidusuario(),'idrol'=>2);
-           $abmusuariorol->alta($nuevoParametro);
-
+            $resp = true;
         }
         return $resp;
         
@@ -112,31 +104,18 @@ class AbmUsuario{
     public function buscar($param){
         $where = " true ";
         if ($param<>NULL){
-            if  (isset($param['idusuario']))
-                $where.=" and idusuario =".$param['idusuario'];
-            if  (isset($param['usnombre']))
-                 $where.=" and usnombre ='".$param['usnombre']."'";
-                 if  (isset($param['usapellido']))
-                 $where.=" and usapellido ='".$param['usapellido']."'";
-                 if  (isset($param['uslogin']))
-                 $where.=" and uslogin ='".$param['uslogin']."'";
-                 if  (isset($param['usactivo']))
-                 $where.=" and usactivo ='".$param['usactivo']."'";
-
+            if  (isset($param['idrol']))
+                $where.=" and idrol =".$param['idrol'];
+            if  (isset($param['rodescripcion']))
+                 $where.=" and rodescripcion ='".$param['rodescripcion']."'";
         }
-        $arreglo = usuario::listar($where);  
+        $arreglo = rol::listar($where);  
         return $arreglo;
             
             
       
         
     }
-     /**
-     * permite buscar un objeto
-     * @param array $param
-     * @return boolean
-     */
-    
     
 }
 ?>

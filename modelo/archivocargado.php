@@ -11,7 +11,7 @@ class archivocargado {
     private $acfechainiciocompartir;
     private $acefechafincompartir;
     private $acprotegidoclave;
-    
+    private $mensajeoperacion;
    
     public function __construct(){
         
@@ -26,6 +26,7 @@ class archivocargado {
         $this->acfechainiciocompartir="";
         $this->acefechafincompartir="";
         $this->acprotegidoclave="";
+        $this->mensajeoperacion ="";
 
     }
     public function setear($idarchivocargado, $acnombre, $acdescripcion, $acicono, $usuario, 
@@ -135,6 +136,15 @@ class archivocargado {
         $this->acprotegidoclave = $valor;
         
     }
+    public function getmensajeoperacion(){
+        return $this->mensajeoperacion;
+        
+    }
+    public function setmensajeoperacion($valor){
+        $this->mensajeoperacion = $valor;
+        
+    }
+    
     
     
     public function cargar(){

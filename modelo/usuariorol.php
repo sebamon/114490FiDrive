@@ -1,48 +1,38 @@
 <?php 
-class estadotipos {
-    private $idestadotipos;
-    private $etdescripcion;
-    private $etactivo;
+class usuariorol {
+    private $usuario;
+    private $rol;
     private $mensajeoperacion;
-    
    
     public function __construct(){
         
-        $this->idestadotipos="";
-        $this->etdescripcion="";
-        $this->etactivo ="";
+        $this->usuario="";
+        $this->rol="";
         $this->mensajeoperacion ="";
-    }
-    public function setear($idestadotipos, $etdescripcion, $etactivo)    {
-        $this->setidestadotipos($idestadotipos);
-        $this->setetdescripcion($etdescripcion);
-        $this->setetactivo($etactivo);
-    }
-
-    
-    public function getidestadotipos(){
-        return $this->idestadotipos;
         
     }
-    public function setidestadotipos($valor){
-        $this->idestadotipos = $valor;
-        
+    public function setear($usuario, $rol)    {
+        $this->setusuario($usuario);
+        $this->setrol($rol);
     }
     
-    public function getetdescripcion(){
-        return $this->etdescripcion;
+    
+    
+    public function getusuario(){
+        return $this->usuario;
         
     }
-    public function setetdescripcion($valor){
-        $this->etdescripcion = $valor;
+    public function setusuario($valor){
+        $this->usuario = $valor;
         
     }
-    public function getetactivo(){
-        return $this->etactivo;
+    
+    public function getrol(){
+        return $this->rol;
         
     }
-    public function setetactivo($valor){
-        $this->etactivo = $valor;
+    public function setrol($valor){
+        $this->rol = $valor;
         
     }
     public function getmensajeoperacion(){
@@ -55,16 +45,26 @@ class estadotipos {
     }
     
     
+    
     public function cargar(){
         $resp = false;
         $base=new BaseDatos();
-        $sql="SELECT * FROM estadotipos WHERE idestadotipos = ".$this->getidestadotipos();
+        $sql="SELECT * FROM usuariorol WHERE idusuario = ".$this->getusuario()->getidusuario();
         if ($base->Iniciar()) {
             $res = $base->Ejecutar($sql);
             if($res>-1){
                 if($res>0){
                     $row = $base->Registro();
-                    $this->setear($row['idestadotipos'], $row['etdescripcion'], $row['etactivo']);
+
+                    $unUsuario = new usuario();
+                    $unUsuario->setidusuario($row['idusuario']);
+                    $unUsuario->cargar();
+
+                    $unRol= new rol();
+                    $unRol->setidrol($row['idrol']);
+                    $unRol->cargar();
+
+                    $this->setear($unUsuario,$unRol);
                     
                 }
             }
@@ -79,16 +79,14 @@ class estadotipos {
     public function insertar(){
         $resp = false;
         $base=new BaseDatos();
-        $sql="INSERT INTO estadotipos (idestadotipos,etdescripcion,etactivo)  VALUES(";
-        $sql.=$this->getidestadotipos().", '";
-        $sql.=$this->getetdescripcion()."', ";
-        $sql.=$this->getetactivo()."); ";
+        $sql="INSERT INTO usuariorol(idusuario,idrol)  VALUES(";
+        $sql.=$this->getusuario()->getidusuario().",".$this->getrol()->getidrol().");";
         if ($base->Iniciar()) {
             if ($elid = $base->Ejecutar($sql)) {
-                $this->setidestadotipos($elid);
+               // $this->setId($elid); //ACA NO NECESITO QUE DEVUELVA EL ID
                 $resp = true;
             } else {
-                $this->setmensajeoperacion("Tabla->insertar: ".$base->getError());
+                //$this->setmensajeoperacion("Tabla->insertar: ".$base->getError());
             }
         } else {
             $this->setmensajeoperacion("Tabla->insertar: ".$base->getError());
@@ -99,10 +97,7 @@ class estadotipos {
     public function modificar(){
         $resp = false;
         $base=new BaseDatos();
-        $sql="UPDATE estadotipos SET ";
-        $sql.="etdescripcion='".$this->getetdescripcion()."', ";
-        $sql.="etactivo='".$this->getetactivo()."' ";
-        $sql.="WHERE idestadotipos=".$this->getidestadotipos();
+        $sql="UPDATE usuariorol SET idrol=".$this->getrol()->getidrol()." WHERE idusuario=".$this->getusuario()->getidusuario();
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
@@ -118,7 +113,7 @@ class estadotipos {
     public function eliminar(){
         $resp = false;
         $base=new BaseDatos();
-        $sql="DELETE FROM estadotipos WHERE idestadotipos=".$this->getidestadotipos();
+        $sql="DELETE FROM usuariorol WHERE idusuario=".$this->getusuario()->getidusuario();
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 return true;
@@ -134,7 +129,7 @@ class estadotipos {
     public static function listar($parametro=""){
         $arreglo = array();
         $base=new BaseDatos();
-        $sql="SELECT * FROM estadotipos ";
+        $sql="SELECT * FROM usuariorol ";
         if ($parametro!="") {
             $sql.='WHERE '.$parametro;
         }
@@ -143,15 +138,25 @@ class estadotipos {
             if($res>0){
                 
                 while ($row = $base->Registro()){
-                    $obj= new estadotipos();
-                    $obj->setear($row['idestadotipos'], $row['etdescripcion'], $row['etactivo']);
+                    $obj= new usuariorol();
+
+                    $unUsuario = new usuario();
+                    $unUsuario->setidusuario($row['idusuario']);
+                    $unUsuario->cargar();
+
+                    $unRol= new rol();
+                    $unRol->setidrol($row['idrol']);
+                    $unRol->cargar();
+
+
+                    $obj->setear($unUsuario, $unRol);
                     array_push($arreglo, $obj);
                 }
                
             }
             
         } else {
-           // $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
+        //$this->setmensajeoperacion("Tabla->listar: ".$base->getError());
         }
  
         return $arreglo;

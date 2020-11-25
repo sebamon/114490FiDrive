@@ -1,19 +1,28 @@
 <?php
-class AbmUsuario{
+class AbmUsuarioRol{
     //Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto
 
     
     /**
      * Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto
      * @param array $param
-     * @return usuario
+     * @return usuariorol
      */
     private function cargarObjeto($param){
         $obj = null;
            
-        if( array_key_exists('idusuario',$param)){
-            $obj = new usuario();
-            $obj->setear($param['idusuario'], $param['usnombre'], $param['usapellido'], $param['uslogin'], $param['usmail'], $param['usclave'], $param['usactivo'], $param['usdeshabilitado']);
+        if( array_key_exists('idusuario',$param) and array_key_exists('idrol',$param)){
+            $obj = new usuariorol();
+
+            $unUsuario= new usuario();
+            $unUsuario->setidusuario($param['idusuario']);
+            $unUsuario->cargar();
+
+            $unRol = new rol();
+            $unRol->setidrol($param['idrol']);
+            $unRol->cargar();
+
+            $obj->setear($unUsuario, $unRol);
         }
         return $obj;
     }
@@ -21,14 +30,23 @@ class AbmUsuario{
     /**
      * Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto que son claves
      * @param array $param
-     * @return usuario
+     * @return usuariorol
      */
     private function cargarObjetoConClave($param){
         $obj = null;
         
-        if( isset($param['idusuario']) ){
-            $obj = new usuario();
-            $obj->setear($param['idusuario'], null,null,null,null,null,null,null);
+        if( isset($param['idusuario']) && isset($param['idrol']) ){
+            $obj = new usuariorol();
+
+            $unUsuario= new usuario();
+            $unUsuario->setidusuario($param['idusuario']);
+            $unUsuario->cargar();
+
+            $unRol = new rol();
+            $unRol->setidrol($param['idrol']);
+            $unRol->cargar();
+
+            $obj->setear($unUsuario, $unRol);
         }
         return $obj;
     }
@@ -53,19 +71,10 @@ class AbmUsuario{
      */
     public function alta($param){
         $resp = false;
-        $param['idusuario'] =null;
-        $param['usactivo'] =1;
-        $param['usdeshabilitado'] =null;
-        
-        $elObjtTabla = $this->cargarObjeto($param);
+        $elObjtTabla = $this->cargarObjetoConClave($param);
 //        verEstructura($elObjtTabla);
         if ($elObjtTabla!=null and $elObjtTabla->insertar()){
-           // $resp = 'El Usuario '.$elObjtTabla->getuslogin().' fue creado con Exito';
-           $resp=true;
-           $abmusuariorol= new AbmUsuarioRol();
-           $nuevoParametro= array('idusuario'=>$elObjtTabla->getidusuario(),'idrol'=>2);
-           $abmusuariorol->alta($nuevoParametro);
-
+            $resp = true;
         }
         return $resp;
         
@@ -114,29 +123,16 @@ class AbmUsuario{
         if ($param<>NULL){
             if  (isset($param['idusuario']))
                 $where.=" and idusuario =".$param['idusuario'];
-            if  (isset($param['usnombre']))
-                 $where.=" and usnombre ='".$param['usnombre']."'";
-                 if  (isset($param['usapellido']))
-                 $where.=" and usapellido ='".$param['usapellido']."'";
-                 if  (isset($param['uslogin']))
-                 $where.=" and uslogin ='".$param['uslogin']."'";
-                 if  (isset($param['usactivo']))
-                 $where.=" and usactivo ='".$param['usactivo']."'";
-
+            if  (isset($param['idrol']))
+                 $where.=" and idrol ='".$param['idrol']."'";
         }
-        $arreglo = usuario::listar($where);  
+        $arreglo = usuariorol::listar($where);  
         return $arreglo;
             
             
       
         
     }
-     /**
-     * permite buscar un objeto
-     * @param array $param
-     * @return boolean
-     */
-    
     
 }
 ?>
