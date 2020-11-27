@@ -3,7 +3,14 @@ $Titulo = "Compartir Archivo";
 include_once("../estructura/cabecera.php");
 
 include_once("../estructura/menu.php");
-
+$myLogin = new AbmLogin();
+$myLogin->iniciarSesion();
+if(!$myLogin->isLog())
+{
+        header ("location: http://localhost/114490fidrive/vista/tpe/login.php");
+        
+}
+else {
 if(isset($_GET['parametro'])) 
     {
         if($_GET['parametro']=='compartir')
@@ -14,6 +21,7 @@ if(isset($_GET['parametro']))
         $elObj=$elObj[0];
         
     }
+}
 }
 ?>
 
@@ -48,7 +56,14 @@ if(isset($_GET['parametro']))
     <div class="form-group" >
         <label for="usuario">Usuario</label>
         <?php
-
+$myLogin = new AbmLogin();
+$myLogin->iniciarSesion();
+if(!$myLogin->isLog())
+{
+        header ("location: http://localhost/114490fidrive/vista/tpe/login.php");
+        
+}
+else {
     $select = new AbmUsuario();
     $objSelect = $select->buscar(null);
 
@@ -79,6 +94,7 @@ if(isset($_GET['parametro']))
     
 
     echo  " </select>";
+}
    ?>
         <div class="invalid-feedback">
 

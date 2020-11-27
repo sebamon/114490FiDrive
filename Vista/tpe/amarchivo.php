@@ -6,8 +6,13 @@ include_once("../estructura/menu.php");
 //esto es para que no falle si es un archivo nuevo que va a entrar sin parametros
 
 
-
-
+$myLogin = new AbmLogin();
+$myLogin->iniciarSesion();
+if(!$myLogin->isLog())
+{
+        header ("location: http://localhost/114490fidrive/vista/tpe/login.php");
+        
+}
 
 ?>
 <!-- <div class="row"> -->

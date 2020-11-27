@@ -4,10 +4,11 @@ include_once("../estructura/cabecera.php");
 //include_once("../estructura/menu.php");
 
 $myLogin = new AbmLogin();
+$myLogin->iniciarSesion();
 if(!$myLogin->isLog())
 {
         header ("location: http://localhost/114490fidrive/vista/tpe/login.php");
-        
+        exit;
 }
 else {
   
@@ -16,7 +17,8 @@ $objAbmArchivoCargado= new AbmArchivoCargado();
 $Estado = new AbmArchivoCargadoEstado();
 //$listaTabla = $objAbmArchivoCargado->buscar(null);
 //$elObjE = new archivocargadoestado();
-$listaTablaEstado= $Estado->buscar(null);
+$parametro['idusuario']=$myLogin->getidUsuario();
+$listaTablaEstado= $Estado->buscar($parametro);
 
 }
 
@@ -45,12 +47,7 @@ $listaTablaEstado= $Estado->buscar(null);
     </tr>
     </thead>
 <?php	
-if(!$myLogin->isLog())
-{
-        header ("location: http://localhost/114490fidrive/vista/tpe/login.php");
-        
-}
-else {
+
  if( count($listaTablaEstado)>0)
  {
      $i=1;
@@ -81,7 +78,7 @@ else {
     echo '</tbody>';
     echo'</table>';
 
-}
+
 }
 ?>
 

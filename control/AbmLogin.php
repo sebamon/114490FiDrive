@@ -19,10 +19,13 @@ class AbmLogin{
 
             $this->iniciarSesion();
 
+            foreach($mySession as $Parametros)
+            {
             $this->assignSession('idUsuario',$myUser->getidUsuario());
             $this->assignSession('Nombre',$myUser->getusnombre());
             $this->assignSession('Apellido',$myUser->getusapellido());
             $this->assignSession('Rol',$userrol);
+            }
             $resp=true;
         }
 
@@ -33,11 +36,26 @@ class AbmLogin{
 
     public function iniciarSesion()
     {
-        if($_SESSION!=null){
-            session_start();
-        }
-
+        //if(!(isset($_SESSION))){}
+        $valor=session_status();
+        if(session_status()!=PHP_SESSION_ACTIVE)
+            {
+                session_start();
+                $_SESSION['idSession']=session_id();
+            }
+            
+   }
+   public function cerrarSesion()
+   {
+       print_r(session_status());
+    if(session_status()===PHP_SESSION_ACTIVE or session_status()===PHP_SESSION_NONE)
+    {
+        session_unset();
+        session_destroy();
     }
+   }
+
+    
     public function assignSession($nombreVariable,$valor)
     {
         if(isset($nombreVariable) and isset($valor))

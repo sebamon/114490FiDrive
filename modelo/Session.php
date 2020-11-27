@@ -48,47 +48,7 @@ class Session {
     public function setmensajeoperacion($valor){
         $this->mensajeoperacion = $valor;
         
-    }
-
-   
-
-    public function NuevaSesion()
-    {
-        $mySession = new Session();
-
-    }
-
-    public function validar()
-    {
-
-
-        $abmUser = new AbmUsuario();
-
-        $user = new usuario();
-        
-        $user= $abmUser->buscar($this->getUsuario());
-
-        
-        
-        
-    }
-
-    public function activa()
-    {
-        $activo=false;
-        if(isset($this))
-        {
-            $activo=true;
-        }
-
-        return $activo;
-    }
-
-    public function cerrar()
-    {
-        session_unset();
-        session_destroy();
-    }
+    }   
 
 
 

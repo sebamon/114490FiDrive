@@ -11,6 +11,7 @@ $PROYECTO ='114490FiDrive';
 //variable que almacena el directorio del proyecto
 $ROOT =$_SERVER['DOCUMENT_ROOT']."/$PROYECTO/";
 
+$GLOBALS['ROOT']=$ROOT;
 include_once($ROOT.'util/funciones.php');
 
 
@@ -21,6 +22,6 @@ $INICIO = "Location:http://".$_SERVER['HTTP_HOST']."/$PROYECTO/vista/login/login
 $PRINCIPAL = "Location:http://".$_SERVER['HTTP_HOST']."/$PROYECTO/principal.php";
 
 
-$_SESSION['ROOT']=$ROOT;
+//$_SESSION['ROOT']=$ROOT;
 
 ?>
