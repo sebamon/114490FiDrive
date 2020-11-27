@@ -1,4 +1,3 @@
- 
 <div class="row"> 
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
 <h4 align="center">Menu</h3>

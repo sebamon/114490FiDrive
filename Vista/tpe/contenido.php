@@ -1,7 +1,16 @@
 <?php 
 $Titulo = "Contenido"; 
 include_once("../estructura/cabecera.php");
-include_once("../estructura/menu.php");
+//include_once("../estructura/menu.php");
+
+$myLogin = new AbmLogin();
+if(!$myLogin->isLog())
+{
+        header ("location: http://localhost/114490fidrive/vista/tpe/login.php");
+        
+}
+else {
+  
 
 $objAbmArchivoCargado= new AbmArchivoCargado();
 $Estado = new AbmArchivoCargadoEstado();
@@ -9,7 +18,7 @@ $Estado = new AbmArchivoCargadoEstado();
 //$elObjE = new archivocargadoestado();
 $listaTablaEstado= $Estado->buscar(null);
 
-
+}
 
 ?>
 
@@ -36,7 +45,12 @@ $listaTablaEstado= $Estado->buscar(null);
     </tr>
     </thead>
 <?php	
-
+if(!$myLogin->isLog())
+{
+        header ("location: http://localhost/114490fidrive/vista/tpe/login.php");
+        
+}
+else {
  if( count($listaTablaEstado)>0)
  {
      $i=1;
@@ -68,7 +82,7 @@ $listaTablaEstado= $Estado->buscar(null);
     echo'</table>';
 
 }
-
+}
 ?>
 
 
@@ -78,5 +92,5 @@ $listaTablaEstado= $Estado->buscar(null);
 </div>
 
 <?php
-include_once("../estructura/pie.php")
+include_once("../estructura/pie.php");
 ?>

@@ -134,16 +134,18 @@ class AbmUsuarioRol{
     {
         $userrol = new usuariorol();
         $user = new usuario();
+        $rol = new rol();
         
         $user->setidusuario($idusuario);
         $user->cargar();
-        $user->setusclave(null);
 
         $userrol->setusuario($user);
         $userrol->cargar();
 
+        $rol->setidrol($userrol->getrol()->getidrol());
+        $rol->cargar();
 
-        return $userrol;
+        return $rol;
 
 
     }

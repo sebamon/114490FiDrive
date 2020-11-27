@@ -1,4 +1,3 @@
-
 </div>
 <!-- </div> Este cierra el div que abre en el menu   ATENCION NO ABRIR OTRO DIV EN INDEX -->
 <footer class="card text-white bg-info mb-3"><p>Sebastian MON</br> 

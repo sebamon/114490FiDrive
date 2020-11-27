@@ -1,25 +1,38 @@
 <?php
 class Session {
 
-    private $ssIdUsuario;
-    private $ssNombre;
-    private $ssPass;
-    private $ssEmail;
-    private $ssRol;
-    private $ssDescripcionRol;
+    private $idSession;
+    private $idUsuario;
+    private $Rol;
+    private $mensajeoperacion;
+
     
-
-  /*  public function getUsuario()
+    public function __construct()
     {
-        return $this->Usuario;
+        $this->idSession='';
+        $this->idUsuario='';
+        $this->Rol='';
+        $this->mensajeoperacion='';
+
+    }
+    public function getidSession()
+    {
+        return $this->idSession;
+    }
+    public function setidSession($valor)
+    {
+        $this->idSession=$valor;
+    }
+    public function getidUsuario()
+    {
+        return $this->idUsuario;
+    }
+    public function setidUsuario($valor)
+    {
+        $this->idUsuario=$valor;
     }
 
-    public function setUsuario($valor)
-    {
-        $this->Usuario=$valor;
-    }
-
-     public function getRol()
+    public function getRol()
     {
         return $this->Rol;
     }
@@ -27,114 +40,21 @@ class Session {
     {
         $this->Rol=$valor;
     }
-*/
-    public function __construct(){
-    {
-        $this->ssIdUsuario='';
-        $this->ssNombre='';
-        $this->ssPass='';
-        $this->ssEmail='';
-        $this->ssRol='';
-        $this->ssDescripcionRol='';
-
-    }
-    public function getssNombre()
-    {
-        return $this->ssNombre;
-    }
-    public function setssNombre($valor)
-    {
-        $this->ssNombre=$valor;
-    }
-
-    public function getssPass()
-    {
-        return $this->ssPass;
-    }
-    public function setssPass($valor)
-    {
-        $this->ssPass=$valor;
-    }
-
-    public function getssEmail()
-    {
-        return $this->ssEmail;
-    }
-    public function setssEmail($valor)
-    {
-        $this->ssEmail=$valor;
-    }
-
-    public function getssRol()
-    {
-        return $this->ssRol;
-    }
-    public function setssRol($valor)
-    {
-        $this->ssRol=$valor;
-    }
         
-    public function getssDescripcionRol()
-    {
-        return $this->ssDescripcionRol;
+    public function getmensajeoperacion(){
+        return $this->mensajeoperacion;
+        
     }
-    public function setssDescripcionRol($valor)
-    {
-        $this->ssDescripcionRol=$valor;
-    }
- 
-
-    public function loguear(){
-        $resp = false;
-        $base=new BaseDatos();
-        $sql="SELECT * FROM usuario WHERE uslogin = '".$this->getusuario()->getuslogin()."' and usclave = '".$this->getusuario()->getusclave()."';";
-        if ($base->Iniciar()) {
-            $res = $base->Ejecutar($sql);
-            if($res>-1){
-                if($res>0){
-                    $row = $base->Registro();
-                    //$this->setear($row['idusuario'], $row['usnombre'], $row['usapellido'], $row['uslogin'],$row['usmail'], $row['usclave'], $row['usactivo'],$row['usdeshabilitado']);
-                    $usuario= new usuario();
-                    $usuario->setidusuario($row['idusuario']);
-                    $this->setUsuario($usuario);
-                    $resp=true;
-                }
-            }
-        } else {
-            $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
-        }
-        return $resp;
-    
+    public function setmensajeoperacion($valor){
+        $this->mensajeoperacion = $valor;
         
     }
 
-    public function iniciar($user,$pass)
+   
+
+    public function NuevaSesion()
     {
-
-        $buscar = array('usnombre');
-        $usuario = new usuario();
-        $usuario->setussNombre($user);
-        $usuario->setussPass($pass);
-
-        $usuario = AbmUsuario::buscar($usuario);
-        if(isset($usuario))
-        {
-            $rol = AbmUsuarioRol::buscar($usuario->getidusuario());
-            $this->setUsuario=$usuario;
-            if(isset($rol))
-            {
-                $this->setRol($rol);
-            }
-
-
-        }
-        //session_start();
-      //  $session = new Session();
-        $session->setUsuario($user);
-        $session->setssPass($pass);
-
-        //$_SESSION=$session;
-
+        $mySession = new Session();
 
     }
 
@@ -145,7 +65,7 @@ class Session {
         $abmUser = new AbmUsuario();
 
         $user = new usuario();
-        -
+        
         $user= $abmUser->buscar($this->getUsuario());
 
         

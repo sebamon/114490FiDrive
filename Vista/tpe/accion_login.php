@@ -6,8 +6,15 @@ include_once("../estructura/cabecera.php");
 $datos = data_submitted();
 $abmlogin = new AbmLogin();
 
-$respuesta= $abmlogin->login($datos);
+if($abmlogin->login($datos))
+{
+    $respuesta='Usuario Logueado en el Sistema';
+    header("location: contenido.php");
 
+}
+else {
+    $respuesta='Las Credenciales son incorrectas';
+}
 
 
 

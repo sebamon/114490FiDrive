@@ -5,45 +5,62 @@ class AbmLogin{
     {
         $resp = false;
         
-        $elObjtTabla = $this->objLogin($param);
-        if($elObjtTabla!=null)
+        $myUser = new usuario();
+        $myUser->setearCredenciales($param['username'],$param['clave']);
+       // $elObjtTabla = $this->objLogin($param);
+        if($myUser->loguear())//si encuentra usuario devuelve true
         {
-            $resp=true;
+            $abmUserRol=new AbmUsuarioRol();
+            $userrol= $abmUserRol->obtenerRol($myUser->getidusuario());
+
             $mySession = new Session();
-            $mySession->setUsuario($elObjtTabla);
-            if($mySession->loguear())//si encuentra usuario devuelve true
-            {
-                $abmUserRol=new AbmUsuarioRol();
-                $userrol= $abmUserRol->obtenerRol($mySession->getusuario()->getidusuario());
-                $mySession->getUsuario($userrol->getUsuario());
-                $mySession->setRol($userrol->getRol());
+            $mySession->setidUsuario($myUser->getidusuario());
+            $mySession->setRol($userrol);
 
+            $this->iniciarSesion();
 
-                session_start();
-
-
-                $_SESSION=$mySession;
-
-            }
-            else {
-                $resp='Las credenciales son incorrectas';
-            }
-
+            $this->assignSession('idUsuario',$myUser->getidUsuario());
+            $this->assignSession('Nombre',$myUser->getusnombre());
+            $this->assignSession('Apellido',$myUser->getusapellido());
+            $this->assignSession('Rol',$userrol);
+            $resp=true;
         }
-        
 
         return $resp;
            
 
         }
 
-    public function objLogin($param)
+    public function iniciarSesion()
     {
-        $obj = new usuario();
-        $obj->setuslogin($param['username']);
-        $obj->setusclave($param['clave']);
+        if($_SESSION!=null){
+            session_start();
+        }
 
-        return $obj;
+    }
+    public function assignSession($nombreVariable,$valor)
+    {
+        if(isset($nombreVariable) and isset($valor))
+        {
+            $_SESSION[$nombreVariable]=$valor;
+        }
+    }
+    public function isAdmin(){
+        $resp=false;
+        if (session_status()===PHP_SESSION_ACTIVE)
+        {
+            if($_SESSION['Rol']->getidrol()=='1' && $_SESSION['Rol']->getrodescripcion()=='Administrador')
+                $resp=true;
+        }
+        return $resp;
+    }
+    public function isLog(){
+        $resp=false;
+        if (session_status()===PHP_SESSION_ACTIVE)
+        {
+            $resp=true;
+        }
+        return $resp;
     }
 
 }

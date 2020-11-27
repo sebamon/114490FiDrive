@@ -3,10 +3,6 @@ $Titulo = "Contenido";
 include_once("../estructura/cabecera.php");
 
 
-
-
-
-
 ?>
 
 <form id="usuario" name="usuario"  method="post" action="accion_usuario.php" data-toggle="validator" role="form">

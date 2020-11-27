@@ -22,7 +22,7 @@ function verEstructura($e){
     echo "</pre>"; 
 }
 
-function __autoload($class_name){
+function my_autoloader($class_name){
   //  echo "class ".$class_name ;
     $directorys = array(
         $_SESSION['ROOT'].'modelo/',
@@ -39,5 +39,15 @@ function __autoload($class_name){
         }
     }
 }
+/*function my_autoloader($class) {
+    include 'classes/' . $class . '.class.php';
+}*/
+
+spl_autoload_register('my_autoloader');
+
+
+
+
+
 
 ?>
