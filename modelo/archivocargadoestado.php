@@ -12,12 +12,12 @@ class archivocargadoestado {
     public function __construct(){
         
         $this->idarchivocargadoestado="";
-        $this->estadotipo="";
+        $this->estadotipo=new estadotipos();
         $this->acedescripcion ="";
-        $this->usuario ="";
+        $this->usuario =new usuario();
         $this->acefechaingreso ="";
         $this->acefechafin ="";
-        $this->archivocargado ="";
+        $this->archivocargado = new archivocargado();
         $this->mensajeoperacion ="";
 
     }

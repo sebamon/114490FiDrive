@@ -2,10 +2,16 @@
 $Titulo = "Elimiar Archivo Compartido"; 
 include_once("../estructura/cabecera.php");
 
+
+if(!$mySession->isLog())
+{
+        header ("location: http://localhost/114490fidrive/vista/login/login.php");
+        exit;
+}
 include_once("../estructura/menu.php");
 if(isset($_GET['parametro'])) 
     {
-        if($_GET['parametro']=='eliminar')
+        if($_GET['parametro']=='descompartir')
         {
 
         $Abm = new AbmArchivoCargadoEstado();
@@ -18,7 +24,7 @@ if(isset($_GET['parametro']))
 
 
 <div class="col">
-<form id="eliminararchivo" name="eliminararchivo" method="POST" action="accion_amarchivo.php" data-toggle="validator" role="form">
+<form id="compartirarchivo" name="compartirarchivo" class="form-group" method="POST" action="accion_amarchivo.php" data-toggle="validator" role="form" enctype="multipart/form-data">
     <div class="form-group">
         <label for="archivo">Nombre del Archivo:</label>
         <?php
@@ -27,6 +33,7 @@ if(isset($_GET['parametro']))
         echo '<input type="text" id="idarchivocargado" name="idarchivocargado" hidden value="'.$elObj->getarchivocargado()->getidarchivocargado().'">';
     
     ?>
+
     </div>
     <div class="form-group">
         <label for="cantidad_compartido">Cantidad de Veces Compartido:</label>
@@ -38,11 +45,11 @@ if(isset($_GET['parametro']))
         ?>
         
         <div class="invalid-feedback">
-
+         
         </div>
     </div>
     <div class="form-group">
-    <label for="motivo">Motivo de Eliminacion: </label>
+    <label for="motivo">Motivo: </label>
     <input type="text"  class="form-control" name='motivo' id='motivo'>
     <div class="invalid-feedback">
 
@@ -50,6 +57,7 @@ if(isset($_GET['parametro']))
 </div>
     <div class="form-group" >
         <label for="usuario">Usuario</label>
+        <!-- <select class="custom-select" name='usuario' id='usuario'> -->
         <?php
 
 $select = new AbmUsuario();
@@ -89,9 +97,9 @@ echo  " </select>";
     </div>
 
     <div class="form-group">
-    <input type="text" id='accion' name='accion' hidden value='eliminar'>
-    <input id="btn_eliminar" class="btn btn-primary btn-block" name="btn_eliminar" type="submit" value="Elimiar Archivo">    
-    </div>
+    <input type="text" id='accion' name='accion' hidden value='descompartir'>
+    <input id="btn_descompartir" class="btn btn-primary btn-block" name="btn_descompartir" type="submit" value="Descompartir Archivo">    
+</div>
 </form>
 </div>
 </div>

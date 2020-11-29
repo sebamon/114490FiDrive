@@ -6,8 +6,8 @@ class usuariorol {
    
     public function __construct(){
         
-        $this->usuario="";
-        $this->rol="";
+        $this->usuario=new usuario();
+        $this->rol=new rol();
         $this->mensajeoperacion ="";
         
     }

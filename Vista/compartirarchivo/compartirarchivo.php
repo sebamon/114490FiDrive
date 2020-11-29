@@ -2,15 +2,13 @@
 $Titulo = "Compartir Archivo"; 
 include_once("../estructura/cabecera.php");
 
-include_once("../estructura/menu.php");
-$myLogin = new AbmLogin();
-$myLogin->iniciarSesion();
-if(!$myLogin->isLog())
+if(!$mySession->isLog())
 {
-        header ("location: http://localhost/114490fidrive/vista/tpe/login.php");
-        
+        header ("location: http://localhost/114490fidrive/vista/login/login.php");
+        exit;
 }
-else {
+include_once("../estructura/menu.php");
+
 if(isset($_GET['parametro'])) 
     {
         if($_GET['parametro']=='compartir')
@@ -22,11 +20,12 @@ if(isset($_GET['parametro']))
         
     }
 }
-}
+
 ?>
 
 <div class="col">
-<form id="compartirarchivo" name="compartirarchivo"  method="POST" action="accion_amarchivo.php" data-toggle="validator" role="form" enctype="multipart/form-data">
+<!-- <form id="compartirarchivo" name="compartirarchivo"  method="POST" action="accion/amarchivo.php" data-toggle="validator" role="form" enctype="multipart/form-data"> -->
+<form id="compartirarchivo" name="compartirarchivo"  method="POST" action="accion_compartirarchivo.php" data-toggle="validator" role="form" enctype="multipart/form-data">
     <div class="form-group">
         <label for="archivo">Nombre del Archivo:</label>
         <?php
@@ -56,16 +55,11 @@ if(isset($_GET['parametro']))
     <div class="form-group" >
         <label for="usuario">Usuario</label>
         <?php
-$myLogin = new AbmLogin();
-$myLogin->iniciarSesion();
-if(!$myLogin->isLog())
-{
-        header ("location: http://localhost/114490fidrive/vista/tpe/login.php");
-        
-}
-else {
+
+
     $select = new AbmUsuario();
-    $objSelect = $select->buscar(null);
+    $usuario = array('idusuario'=>$mySession->getidUsuario());
+    $objSelect = $select->buscar($usuario);
 
     echo  " <select class='form-control' name='usuario' id='usuario'>";
     echo  " <option value=' '>Seleccion un Usuario</option>";
@@ -94,7 +88,7 @@ else {
     
 
     echo  " </select>";
-}
+
    ?>
         <div class="invalid-feedback">
 

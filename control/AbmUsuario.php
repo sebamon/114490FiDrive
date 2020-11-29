@@ -56,6 +56,7 @@ class AbmUsuario{
         $param['idusuario'] =null;
         $param['usactivo'] =1;
         $param['usdeshabilitado'] =null;
+       
         
         $elObjtTabla = $this->cargarObjeto($param);
 //        verEstructura($elObjtTabla);
@@ -63,9 +64,19 @@ class AbmUsuario{
            // $resp = 'El Usuario '.$elObjtTabla->getuslogin().' fue creado con Exito';
            $resp=true;
            $abmusuariorol= new AbmUsuarioRol();
-           $nuevoParametro= array('idusuario'=>$elObjtTabla->getidusuario(),'idrol'=>2);
+           if(isset($param['rol']))
+           {
+             $nuevoParametro = array('idusuario'=>$elObjtTabla->getidusuario(),$param['Rol']);
+           }
+           else
+           {
+               $nuevoParametro= array('idusuario'=>$elObjtTabla->getidusuario(),'idrol'=>2);
+            }
            $abmusuariorol->alta($nuevoParametro);
 
+        }
+        else{
+            //$resp='El Usuario ya Existe';
         }
         return $resp;
         

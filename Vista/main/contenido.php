@@ -1,26 +1,23 @@
 <?php 
-$Titulo = "Contenido"; 
+//$Titulo = "Contenido"; 
 include_once("../estructura/cabecera.php");
-//include_once("../estructura/menu.php");
 
-$myLogin = new AbmLogin();
-$myLogin->iniciarSesion();
-if(!$myLogin->isLog())
+if(!$mySession->isLog())
 {
-        header ("location: http://localhost/114490fidrive/vista/tpe/login.php");
+        header ("location: http://localhost/114490fidrive/vista/login/login.php");
         exit;
 }
-else {
+include_once("../estructura/menu.php");
   
 
 $objAbmArchivoCargado= new AbmArchivoCargado();
 $Estado = new AbmArchivoCargadoEstado();
 //$listaTabla = $objAbmArchivoCargado->buscar(null);
 //$elObjE = new archivocargadoestado();
-$parametro['idusuario']=$myLogin->getidUsuario();
+$parametro['idusuario']=$mySession->getidUsuario();
 $listaTablaEstado= $Estado->buscar($parametro);
 
-}
+
 
 ?>
 
@@ -29,7 +26,7 @@ $listaTablaEstado= $Estado->buscar($parametro);
 <form>
 <div class="form-group">
         <label for="nuevo" class="">Nuevo</label>
-        <a href='amarchivo.php?parametro=nuevo'><button type="button" class="btn btn-primary">+</button></a>
+        <a href='../amarchivo/amarchivo.php?parametro=nuevo'><button type="button" class="btn btn-primary">+</button></a>
 </div>
 <table class="table table-striped">
   <thead>
@@ -63,15 +60,15 @@ $listaTablaEstado= $Estado->buscar($parametro);
         echo '<td>'.$objTabla->getarchivocargado()->getusuario()->getusnombre().'</td>';
         echo '<td><a href=../..'.$objTabla->getarchivocargado()->getaclinkacceso().'>'.$objTabla->getarchivocargado()->getacnombre().'</a></td>';
         echo '<td>'.$objTabla->getestadotipo()->getetdescripcion().'</td>';
-        echo '<td><a  class="btn btn-info" href="amarchivo.php?parametro=modificar&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Modificar</a></td>';
+        echo '<td><a  class="btn btn-info" href="../amarchivo/amarchivo.php?parametro=modificar&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Modificar</a></td>';
         switch($objTabla->getestadotipo()->getidestadotipos())
         {
-          case '1': echo '<td><a class="btn btn-primary" href="compartirarchivo.php?parametro=compartir&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Compartir</a></td>';break;
-          case '2': echo '<td><a class="btn btn-outline-primary" href="eliminararchivocompartido.php?parametro=descompartir&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Descompartir</a></td>';break;
-          case '3': echo '<td><a class="btn btn-primary" href="compartirarchivo.php?parametro=compartir&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Compartir</a</td>';break;
+          case '1': echo '<td><a class="btn btn-primary" href="../compartirarchivo/compartirarchivo.php?parametro=compartir&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Compartir</a></td>';break;
+          case '2': echo '<td><a class="btn btn-outline-primary" href="../amarchivo/eliminararchivocompartido.php?parametro=descompartir&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Descompartir</a></td>';break;
+          case '3': echo '<td><a class="btn btn-primary" href="../compartirarchivo/compartirarchivo.php?parametro=compartir&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Compartir</a</td>';break;
           case '4': echo '<td>No Compartible</td>';
         }
-        echo '<td><a class="btn btn-danger" href="eliminararchivo.php?parametro=eliminar&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Eliminar</a></td>';
+        echo '<td><a class="btn btn-danger" href="../amarchivo/eliminararchivo.php?parametro=eliminar&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Eliminar</a></td>';
         echo '</tr>';
         $i++;
     }

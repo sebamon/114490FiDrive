@@ -52,6 +52,18 @@ $('#amarchivo').bootstrapValidator({
                    message: 'Seleccione un usuario'
                 }
              }
+        },acicono: {
+
+            validators: {
+
+                notEmpty: {
+
+                    message: 'Debe Seleccionar un Icono'
+
+                }
+
+            }
+
         }
    }   
 });
@@ -233,3 +245,116 @@ $('#contenido').bootstrapValidator({
         }
    }   
 });
+$('#usuario').bootstrapValidator({
+    message: 'Este valor no es valido',
+
+    feedbackIcons: {
+
+        valid: 'fa fa-check',
+
+        invalid: 'fa fa-time',
+
+        validating: 'fa fa-refresh'
+
+    },
+   
+    fields: {
+
+        usnombre: {
+
+            validators: {
+
+                notEmpty: {
+
+                    message: 'Debe Ingresar el Nombre de la Persona'
+
+                }
+
+            }
+
+        },
+        usapellido: {
+
+            validators: {
+
+                notEmpty: {
+
+                    message: 'Debe Ingresar el Apellido de la Persona'
+
+                }
+
+            }
+
+        },
+        uslogin: {
+
+            validators: {
+
+                notEmpty: {
+
+                    message: 'Debe Ingresar el Nombre de Usuario'
+
+                }
+
+            }
+
+        },
+        usmail: {
+
+            validators: {
+
+                notEmpty: {
+
+                    message: 'Debe Ingresar el Email del Usuario'
+
+                }
+
+            }
+
+        },
+        usclave: {
+
+            validators: {
+
+                notEmpty: {
+
+                    message: 'Debe Ingresar Password'
+
+                }
+
+            }
+
+        },
+        usclave2: {
+
+            validators: {
+
+                notEmpty: {
+
+                    message: 'Debe Repetir Password'
+
+                },  identical: {
+                    compare: function() {
+                        return form.querySelector('[name="usclave"]').value;
+                    },
+                    message: 'El Password debe coincidir'
+                }
+
+            }
+
+        },
+        rol: {
+
+            validators: {
+
+                notEmpty: {
+
+                    message: 'Debe Seleccionar un Rol'
+
+                }
+
+            }
+
+        }
+    }
+    });

@@ -21,6 +21,10 @@ $INICIO = "Location:http://".$_SERVER['HTTP_HOST']."/$PROYECTO/vista/login/login
 // variable que define la pagina principal del proyecto (menu principal)
 $PRINCIPAL = "Location:http://".$_SERVER['HTTP_HOST']."/$PROYECTO/principal.php";
 
+$mySession = new Session();
+$mySession->iniciarSesion();
+
+
 
 //$_SESSION['ROOT']=$ROOT;
 

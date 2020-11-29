@@ -1,6 +1,11 @@
 <?php 
 include_once("../estructura/cabecera.php");
-
+if(!$mySession->isLog())
+{
+        header ("location: http://localhost/114490fidrive/vista/login/login.php");
+        exit;
+}
+include_once("../estructura/menu.php");
 
 $datos = data_submitted();
 $abmusuario = new AbmUsuario();
@@ -24,7 +29,7 @@ if($respuesta=$abmusuario->alta($datos))
 
 ?>
 <div class="row">
-<a class="btn btn-primary" href="usuario.php" role="button">Atras</a>
+<a class="btn btn-primary" href="../main/contenido.php" role="button">Atras</a>
 
 </div>
 </div>

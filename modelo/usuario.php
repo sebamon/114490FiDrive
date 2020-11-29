@@ -20,7 +20,7 @@ class usuario {
         $this->usclave ="";
         $this->usactivo ="";
         $this->usdeshabilitado ="";
-        $this->mensajeoperacion ="";
+        $this->mensajeoperacion = "";
     }
     public function setear($idusuario, $usnombre, $usapellido, $uslogin,$usmail, $usclave, $usactivo, $usdeshabilitado)    {
         $this->setidusuario($idusuario);
@@ -32,13 +32,13 @@ class usuario {
         $this->setusactivo($usactivo);
         $this->setusdeshabilitado($usdeshabilitado);
     }
-    public function seteoSesion($idusuario,$usnombre,$usapellido,$uslogin,$usmail)
+    public function seteoSesion($idusuario,$usnombre,$usapellido/*,$uslogin,$usmail*/)
     {
         $this->setidusuario($idusuario);
         $this->setusnombre($usnombre);
         $this->setusapellido($usapellido);
-        $this->setuslogin($uslogin);
-        $this->setusmail($usmail);
+       /* $this->setuslogin($uslogin);
+        $this->setusmail($usmail);*/
     }
  
     
@@ -151,10 +151,11 @@ class usuario {
                 $this->setidusuario($elid);
                 $resp = true;
             } else {
-                $this->setmensajeoperacion("Tabla->insertar: ".$base->getError());
+                //$this->setmensajeoperacion("Tabla->insertar: ".$base->getError());
+                $this->setmensajeoperacion('No se puedo Ingresar el Usuario');
             }
         } else {
-            $this->setmensajeoperacion("Tabla->insertar: ".$base->getError());
+            $this->setmensajeoperacion("No se pudo conectar con la base de datos");
         }
         return $resp;
     }
@@ -232,7 +233,8 @@ class usuario {
                 if($res>0){
                     $row = $base->Registro();
                     //$this->setear($row['idusuario'], $row['usnombre'], $row['usapellido'], $row['uslogin'],$row['usmail'], $row['usclave'], $row['usactivo'],$row['usdeshabilitado']);
-                    $this->seteoSesion($row['idusuario'],$row['usnombre'], $row['usapellido'], $row['uslogin'],$row['usmail']);
+                    $this->seteoSesion($row['idusuario'],$row['usnombre'], $row['usapellido']);
+                    $this->setusclave('');
                     $resp=true;
                 }
             }

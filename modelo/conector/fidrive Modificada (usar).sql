@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `archivocargado`
 
 --
-drop database if exists `fidrive`;
-create database `fidrive`;
-use `fidrive`;
+drop database if exists `fidrive114490`;
+create database `fidrive114490`;
+use `fidrive114490`;
 CREATE TABLE `archivocargado` (
   `idarchivocargado` int(11) NOT NULL,
   `acnombre` varchar(150) NOT NULL,
@@ -122,6 +122,8 @@ INSERT INTO `usuario` (`idusuario`, `usnombre`, `usapellido`, `uslogin`, `usmail
 (2, 'visitante', 'Visitante', 'FiDrive2','fidrive2@fidrive.com', 'guest',1);
 
 insert into `rol`(`rodescripcion`) values('Administrador'),('Miembro');
+
+insert into `usuariorol`(`idusuario`, `idrol`) values (1,1),(2,2);
 --
 -- Índices para tablas volcadas
 --

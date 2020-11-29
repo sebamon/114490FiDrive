@@ -186,7 +186,7 @@ class AbmArchivoCargado{
      * @param array $param
      * @return boolean
      */
-   /* public function Compartir($param){
+    public function Compartir($param){
         //echo "Estoy en Compartir un archivo tengo los DATOS DEL FORMULARIO EN UN ARRAY, en esto viene EL ID DEL ARCHIVOCARGADO";
         $resp = false;
         if ($this->seteadosCamposClaves($param)){
@@ -235,7 +235,7 @@ class AbmArchivoCargado{
         }
         return $resp;
     }
-*/
+
     public function DesCompartirEliminar($param){
         //echo "Estoy en DesCompartir un archivo tengo los DATOS DEL FORMULARIO EN UN ARRAY, en esto viene EL ID DEL ARCHIVOCARGADO";
         $resp = false;

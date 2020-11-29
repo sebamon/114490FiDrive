@@ -14,7 +14,7 @@ class BaseDatos extends PDO {
     public function __construct(){
         $this->engine = 'mysql';
         $this->host = 'localhost';
-        $this->database = 'fidrive';
+        $this->database = 'fidrive114490';
         $this->user = 'root';
         $this->pass = '';
         $this->debug = true;
@@ -79,7 +79,7 @@ class BaseDatos extends PDO {
      * @return 
      */
     public function getError(){
-        return "\n".$this->error;
+        return $this->error;
         
     }
     

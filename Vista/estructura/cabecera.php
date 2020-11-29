@@ -1,3 +1,8 @@
+<?php  
+
+include_once("../../configuracion.php");
+?>
+
 <html>
 <title><?PHP $Titulo?></title>
 <head>
@@ -19,11 +24,24 @@
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+   
+    <span class="navbar-text">
+      <?php 
+     
+      if($mySession->isLog())
+      {
+       echo '<p>';
+        
+        echo 'Usuario:';
+        echo $mySession->getNombre(); 
+        echo '</p>';
+      }   
+   
+      ?>
+    </span>
+   
+    
 </nav>
-<div class="container-fluid">
 
-<?php  
+<!-- <div class="container-fluid"> -->
 
-include_once("../../configuracion.php");
-
-?>
