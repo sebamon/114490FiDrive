@@ -4,6 +4,7 @@
 Legajo: 114490</br>
 Email: sebastian.mon@est.fi.uncoma.edu.ar</p>
 </footer>
+</div>
 <script src="../js/jquery-3.5.1.slim.min.js"></script>
  <script src="../js/popper.min.js"></script>
  <script src="../js/bootstrap.min.js"></script>

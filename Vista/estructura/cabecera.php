@@ -19,7 +19,9 @@ include_once("../../configuracion.php");
 </head> 
 
 <body>
-<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow "> 
+<div class="container-fluid border border-success">
+
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow border border-danger"> 
     <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Programacion Web Dinamica 2020  -- Esta es la Cabecera</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -30,11 +32,11 @@ include_once("../../configuracion.php");
      
       if($mySession->isLog())
       {
-       echo '<p>';
+       echo '<p><strong>';
         
-        echo 'Usuario:';
-        echo $mySession->getNombre(); 
-        echo '</p>';
+        echo 'Usuario: ';
+        echo $mySession->getNombre().' '.$mySession->getApellido(); 
+        echo '</strong></p>';
       }   
    
       ?>
@@ -43,5 +45,6 @@ include_once("../../configuracion.php");
     
 </nav>
 
-<!-- <div class="container-fluid"> -->
+
+</div>
 

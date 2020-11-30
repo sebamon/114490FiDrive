@@ -11,16 +11,17 @@ if(!$mySession->isLog())
 include_once("../estructura/menu.php");
 
 ?>
-<div class="container-fluid">
+<div class="col border border-primary">
+<div class="row " >
 <form id="usuario" name="usuario"  method="post" action="accion_usuario.php" data-toggle="validator" role="form">
 
-    <div class="row">
+    <div class="row ">
 
-        <div class="form-group col-6">
+        <div class="form-group col-6 " >
             <label for="" class="control-label">Nombre</label>
         </div>
-
-        <div class="form-group col-6">
+ 
+        <div class="form-group col-6 ">
             <input type="text" class="form-control" name="usnombre" id="usnombre">
         </div>
 

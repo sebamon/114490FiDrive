@@ -1,6 +1,6 @@
 <?php 
 //$Titulo = "Contenido"; 
-include_once("../estructura/cabecera.php");
+include_once("../estructura/cabecera2.php");
 
 if(!$mySession->isLog())
 {
@@ -12,8 +12,6 @@ include_once("../estructura/menu.php");
 
 $objAbmArchivoCargado= new AbmArchivoCargado();
 $Estado = new AbmArchivoCargadoEstado();
-//$listaTabla = $objAbmArchivoCargado->buscar(null);
-//$elObjE = new archivocargadoestado();
 $parametro['idusuario']=$mySession->getidUsuario();
 $listaTablaEstado= $Estado->buscar($parametro);
 
@@ -22,12 +20,13 @@ $listaTablaEstado= $Estado->buscar($parametro);
 ?>
 
 <!-- Formulario -->
-<div>
+<div class="container-fluid flex border border-info">
 <form>
 <div class="form-group">
         <label for="nuevo" class="">Nuevo</label>
         <a href='../amarchivo/amarchivo.php?parametro=nuevo'><button type="button" class="btn btn-primary">+</button></a>
 </div>
+<div class="form-group">
 <table class="table table-striped">
   <thead>
     <tr>
@@ -79,12 +78,14 @@ $listaTablaEstado= $Estado->buscar($parametro);
 }
 ?>
 
-
-</form>
-<!-- /Formulario -->
-
 </div>
 
+</form>
+</div>
+<!-- /Formulario -->
+
+
+
 <?php
-include_once("../estructura/pie.php");
+include_once("../estructura/pieBT.php");
 ?>
