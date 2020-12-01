@@ -1,5 +1,5 @@
 <?php 
-include_once("../estructura/cabecera.php");
+include_once("../estructura/cabeceraBT.php");
 
 
 if(!$mySession->isLog())
@@ -7,7 +7,7 @@ if(!$mySession->isLog())
         header ("location: http://localhost/114490fidrive/vista/login/login.php");
         exit;
 }
-include_once("../estructura/menu.php");
+include_once("../estructura/menuBT.php");
 
 $datos = data_submitted();
 $AbmArchivoCargado = new AbmArchivoCargado();
@@ -65,3 +65,6 @@ else
 </div>
 
 
+<?php
+include_once("../estructura/pieBT.php");
+?>

@@ -1,40 +1,58 @@
-<div class="wrapper border border-warning"> 
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse border border-warning">
-<h3 align="center">Menu</h3>
-            <div class="sidebar-sticky pt-3">
-                <ul class="nav flex-column">  
-                <li class="nav-item">
-                        <a class="nav-link active" href="../main/contenido.php">
-                        <i class="fa fa-folder-open" aria-hidden="true"></i>
-                            Contenido<span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                <li class="nav-item">
-                        <a class="nav-link active" href="../amarchivo/amarchivo.php?parametro=nuevo">
-                        <i class="fas fa-plus-square"></i>
-                            AM Archivo<span class="sr-only">(current)</span>
-                            </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="../main/archivoscompartidos.php">
-                        <i class="fas fa-share-alt-square"></i>
-                            Archivos Compartidos<span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <?php 
-                    if($mySession->isLog() and $mySession->isAdmin())
-                    {
-                       echo '<li class="nav-item">';
-                       echo '<a class="nav-link active" href="../usuario/usuario.php">';
-                       echo '<i class="fas fa-share-alt-square" href="../usuario/usuario.php"></i>';
-                            echo 'Gestion de Usuarios<span class="sr-only">(current)</span>';
-                    echo '</a></li>';
-                    }
-                    ?>
-              
-                
-                </ul>
-            </div>
-        </nav>
-<!-- </div> -->
+<body>
 
+  <!-- ======= Mobile nav toggle button ======= -->
+  <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+  <!-- ======= Header ======= -->
+
+  <main id="main">
+
+<!-- ======= Mobile nav toggle button ======= -->
+<button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+<!-- ======= Header ======= -->
+<header id="header">
+  <div class="d-flex flex-column">
+
+    <div class="profile">
+      <img src="../../externos/iPortfolio/assets/img/apple-touch-icon.png" alt="" class="img-fluid rounded-circle">
+      <h1 class="text-light"><a href="#">  
+      <?php 
+
+      if($mySession->isLog())
+      {
+
+        echo $mySession->getNombre().' '.$mySession->getApellido(); 
+      }   
+
+   ?></a></h1>
+      <div class="social-links mt-3 text-center">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+    <?php 
+
+if($mySession->isLog())
+{
+
+        echo '<nav class="nav-menu">';
+          echo '<ul>';
+            echo '<li><a href="../main/contenido.php"><i class="bx bx-grid-alt"></i> <span>Contenido</span></a></li>';
+            echo '<li><a href="../amarchivo/amarchivo.php?parametro=nuevo"><i class="bx bx-file-blank"></i> <span>Nuevo Archivo</span></a></li>';
+            echo '<li><a href="../main/archivoscompartidos.php"><i class="bx bx-share-alt"></i> <span>Archivos Compartidos</span></a></li>';
+            echo '<li><a href="../usuario/usuario.php"><i class="bx bx-user"></i> <span>Gestion de Usuarios</span></a></li>';
+            echo '<li><a href="../login/cerrar_session.php"><i class="bx bx-exit"></i> <span>Cerrar Sesion</span></a></li>';
+          echo '</ul>';
+        echo '</nav><!-- .nav-menu -->';
+        echo '<button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>';
+}   
+
+?>
+    
+
+  </div>
+</header><!-- End Header -->

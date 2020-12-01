@@ -1,5 +1,5 @@
 <?php 
-include_once("../estructura/cabecera.php");
+include_once("../estructura/cabeceraBT.php");
 
 
 if(!$mySession->isLog())
@@ -8,7 +8,7 @@ if(!$mySession->isLog())
         exit;
 }
 
-include_once("../estructura/menu.php");
+include_once("../estructura/menuBT.php");
 
 $datos = data_submitted();
 $AbmArchivoCargado = new AbmArchivoCargado();
@@ -61,4 +61,6 @@ if(isset($datos['accion'])){
 </div>
 </div>
 
-
+<?php
+include_once("../estructura/pieBT.php");
+?>

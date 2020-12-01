@@ -1,5 +1,5 @@
 <?php 
-include_once("../estructura/cabecera.php");
+include_once("../estructura/cabeceraBT.php");
 ?>
 <!-- <div id="contenido" style="height: 400px; width: 89%; border: 2px solid red; border-radius: 5px;margin-left:10.5%;" > -->
 <?php 
@@ -18,7 +18,7 @@ else {
 }
 
 
-
+include_once("../estructura/menuBT.php");
 ?>
 
 

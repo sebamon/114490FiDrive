@@ -1,6 +1,8 @@
 <?php 
-$Titulo = "TP2 Ejercicio 3"; 
-include_once("../estructura/cabecera.php");
+$Titulo = "Login"; 
+//include_once("../estructura/cabeceraBT.php");
+include_once("../estructura/cabeceraLogin.php");
+
 ?>
 
 
@@ -13,7 +15,7 @@ include_once("../estructura/cabecera.php");
 <button type="button" class="close" aria-label="Close">
   <span aria-hidden="true">&times;</span>
 </button>
-<h1 class="h3 mb-3 font-weight-normal">Member Login</h1>
+<h1 class="h3 mb-3 font-weight-normal">Login de Usuario</h1>
   
   <div class="form-group">
   
@@ -37,5 +39,5 @@ include_once("../estructura/cabecera.php");
 
 <?php 
 
-include_once("../estructura/pie.php");
+include_once("../estructura/pieBT.php");
 ?>

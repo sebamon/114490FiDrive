@@ -969,6 +969,7 @@ section {
 
 .portfolio-details .portfolio-details-container {
   position: relative;
+  padding-left: 10px;
 }
 
 .portfolio-details .portfolio-details-carousel {

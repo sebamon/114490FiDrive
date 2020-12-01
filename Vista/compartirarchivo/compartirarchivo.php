@@ -1,13 +1,14 @@
 <?php 
 $Titulo = "Compartir Archivo"; 
-include_once("../estructura/cabecera.php");
+include_once("../estructura/cabeceraBT.php");
 
 if(!$mySession->isLog())
 {
         header ("location: http://localhost/114490fidrive/vista/login/login.php");
         exit;
 }
-include_once("../estructura/menu.php");
+include_once("../estructura/menuBT.php");
+
 
 if(isset($_GET['parametro'])) 
     {
@@ -135,5 +136,5 @@ if(isset($_GET['parametro']))
 
 
 <?php
-include_once("../estructura/pie.php")
+include_once("../estructura/pieBT.php")
 ?>

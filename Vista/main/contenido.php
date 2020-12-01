@@ -1,13 +1,13 @@
 <?php 
 //$Titulo = "Contenido"; 
-include_once("../estructura/cabecera2.php");
+include_once("../estructura/cabeceraBT.php");
 
 if(!$mySession->isLog())
 {
         header ("location: http://localhost/114490fidrive/vista/login/login.php");
         exit;
 }
-include_once("../estructura/menu.php");
+include_once("../estructura/menuBT.php");
   
 
 $objAbmArchivoCargado= new AbmArchivoCargado();
@@ -20,7 +20,6 @@ $listaTablaEstado= $Estado->buscar($parametro);
 ?>
 
 <!-- Formulario -->
-<div class="container-fluid flex border border-info">
 <form>
 <div class="form-group">
         <label for="nuevo" class="">Nuevo</label>
@@ -81,7 +80,7 @@ $listaTablaEstado= $Estado->buscar($parametro);
 </div>
 
 </form>
-</div>
+
 <!-- /Formulario -->
 
 

@@ -1,23 +1,19 @@
 <?php 
 $Titulo = "Usuario"; 
-include_once("../estructura/cabecera.php");
-/*
-if(!$mySession->isLog())
-{
-        header ("location: http://localhost/114490fidrive/vista/login/login.php");
-        exit;
-}*/
-//$mySession
-include_once("../estructura/menu.php");
+include_once("../estructura/cabeceraBT.php");
+include_once("../estructura/menuBT.php");
+        
+
+
+
 
 ?>
-<div class="col border border-primary">
-<div class="row " >
+<h1>Gestion de Usuarios</h1>
 <form id="usuario" name="usuario"  method="post" action="accion_usuario.php" data-toggle="validator" role="form">
 
-    <div class="row ">
+    <div class="row">
 
-        <div class="form-group col-6 " >
+        <div class="form-group col-4 " >
             <label for="" class="control-label">Nombre</label>
         </div>
  
@@ -29,7 +25,7 @@ include_once("../estructura/menu.php");
 
     <div class="row">
 
-        <div class="form-group col-6">
+        <div class="form-group col-4">
             <label for="" class="control-label">Apellido</label>
         </div>
 
@@ -41,7 +37,7 @@ include_once("../estructura/menu.php");
 
     <div class="row">
    
-        <div class="form-group col-6">
+        <div class="form-group col-4">
             <label for="" class="control-label">Usuario</label>
         </div>
             
@@ -53,7 +49,7 @@ include_once("../estructura/menu.php");
 
     <div class="row">
    
-        <div class="form-group col-6">
+        <div class="form-group col-4">
             <label for="" class="control-label">Email</label>
         </div>
 
@@ -65,7 +61,7 @@ include_once("../estructura/menu.php");
 
     <div class="row">
    
-        <div class="form-group col-6">
+        <div class="form-group col-4">
             <label for="" class="control-label">Password</label>
         </div>
 
@@ -78,7 +74,7 @@ include_once("../estructura/menu.php");
 
     <div class="row">
    
-        <div class="form-group col-6">
+        <div class="form-group col-4">
             <label for="" class="control-label">Confirmar Password</label>
         </div>
 
@@ -93,7 +89,7 @@ include_once("../estructura/menu.php");
     {
      echo '   <div class="row">';
 
-     echo '   <div class="form-group col-6">';
+     echo '   <div class="form-group col-4">';
      echo '       <label for="" class="control-label">Rol</label>';
      echo '   </div>';
      $abmRol = new AbmRol();
@@ -115,23 +111,22 @@ include_once("../estructura/menu.php");
 
     <div class="row">
     
-        <div class="form-group col-6">
+        <div class="form-group ">
             <a href="usuario.php" tabindex="-1" role="button" aria-disabled="true">
             <button class="btn btn-secondary btn-block " type="submit">Reset</button>
             </a> 
         </div>    
-        <div class="form-group col-6">
+        <div class="form-group">
             <button class="btn btn-primary btn-block " type="submit">Nuevo</button>
         </div>    
 
     </div>
 
 </form>
-</div>
-</div>
+
 
 
 
 <?php
-include_once("../estructura/pie.php")
+include_once("../estructura/pieBT.php")
 ?>

@@ -1,6 +1,6 @@
 <?php 
 $Titulo = "Elimiar Archivo Compartido"; 
-include_once("../estructura/cabecera.php");
+include_once("../estructura/BTcabecera.php");
 
 
 if(!$mySession->isLog())
@@ -8,7 +8,7 @@ if(!$mySession->isLog())
         header ("location: http://localhost/114490fidrive/vista/login/login.php");
         exit;
 }
-include_once("../estructura/menu.php");
+include_once("../estructura/menuBT.php");
 if(isset($_GET['parametro'])) 
     {
         if($_GET['parametro']=='descompartir')
@@ -107,5 +107,5 @@ echo  " </select>";
 
 
 <?php
-include_once("../estructura/pie.php")
+include_once("../estructura/pieBT.php")
 ?>

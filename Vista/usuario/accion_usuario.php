@@ -1,11 +1,11 @@
 <?php 
-include_once("../estructura/cabecera.php");
+include_once("../estructura/cabeceraBT.php");
 if(!$mySession->isLog())
 {
         header ("location: http://localhost/114490fidrive/vista/login/login.php");
         exit;
 }
-include_once("../estructura/menu.php");
+include_once("../estructura/menuBT.php");
 
 $datos = data_submitted();
 $abmusuario = new AbmUsuario();
@@ -35,3 +35,6 @@ if($respuesta=$abmusuario->alta($datos))
 </div>
 
 
+<?php
+include_once("../estructura/pieBT.php");
+?>
