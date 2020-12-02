@@ -23,8 +23,26 @@ if(isset($_GET['parametro']))
 }
 
 ?>
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
 
-<div class="col">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Programacion Web Avanzada</h2>
+      <ol>
+        <li><a href="../main/contenido.php">Contenido</a></li>
+        <li>FiDrive 114490</li>
+      </ol>
+    </div>
+    
+    </div>
+
+  </div>
+</section>
+<!-- End Breadcrumbs -->
+<div class="container-fluid">
+
+<h1 align="center">Compartir Archivo</h1>
 <!-- <form id="compartirarchivo" name="compartirarchivo"  method="POST" action="accion/amarchivo.php" data-toggle="validator" role="form" enctype="multipart/form-data"> -->
 <form id="compartirarchivo" name="compartirarchivo"  method="POST" action="accion_compartirarchivo.php" data-toggle="validator" role="form" enctype="multipart/form-data">
     <div class="form-group">

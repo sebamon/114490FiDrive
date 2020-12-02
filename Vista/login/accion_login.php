@@ -20,7 +20,26 @@ else {
 
 include_once("../estructura/menuBT.php");
 ?>
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
 
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Programacion Web Avanzada</h2>
+      <ol>
+        <li><a href="../main/contenido.php">Contenido</a></li>
+        <li>FiDrive 114490</li>
+      </ol>
+    </div>
+    
+    </div>
+
+  </div>
+</section>
+<!-- End Breadcrumbs -->
+<div class="container">
+
+<h1>Login</h1>
 
 <p>
 <b>Respuesta: </b> 
@@ -35,5 +54,5 @@ include_once("../estructura/menuBT.php");
 
 <?php 
 
-include_once("../estructura/pie.php");
+include_once("../estructura/pieBT.php");
 ?>

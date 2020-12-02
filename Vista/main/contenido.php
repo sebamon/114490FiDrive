@@ -18,7 +18,26 @@ $listaTablaEstado= $Estado->buscar($parametro);
 
 
 ?>
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
 
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Programacion Web Avanzada</h2>
+      <ol>
+        <li><a href="../main/contenido.php">Contenido</a></li>
+        <li>FiDrive 114490</li>
+      </ol>
+    </div>
+    
+    </div>
+
+  </div>
+</section>
+<!-- End Breadcrumbs -->
+<div class="container-fluid">
+
+<h1 align="center">Contenido de Archivos</h1>
 <!-- Formulario -->
 <form>
 <div class="form-group">
@@ -55,7 +74,7 @@ $listaTablaEstado= $Estado->buscar($parametro);
         echo '<th scope="row">'.$i.'</th>';
         echo '<td>'.$objTabla->getarchivocargado()->getacnombre().'</td>';
         echo '<td>'.$objTabla->getarchivocargado()->getacdescripcion().'</td>';
-        echo '<td>'.$objTabla->getarchivocargado()->getusuario()->getusnombre().'</td>';
+        echo '<td>'.$objTabla->getarchivocargado()->getusuario()->getuslogin().'</td>';
         echo '<td><a href=../..'.$objTabla->getarchivocargado()->getaclinkacceso().'>'.$objTabla->getarchivocargado()->getacnombre().'</a></td>';
         echo '<td>'.$objTabla->getestadotipo()->getetdescripcion().'</td>';
         echo '<td><a  class="btn btn-info" href="../amarchivo/amarchivo.php?parametro=modificar&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Modificar</a></td>';

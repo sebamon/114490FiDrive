@@ -8,7 +8,26 @@ include_once("../estructura/menuBT.php");
 
 
 ?>
-<h1>Gestion de Usuarios</h1>
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Programacion Web Avanzada</h2>
+      <ol>
+        <li><a href="../main/contenido.php">Contenido</a></li>
+        <li>FiDrive 114490</li>
+      </ol>
+    </div>
+    
+    </div>
+
+  </div>
+</section>
+<!-- End Breadcrumbs -->
+<div class="container-fluid">
+
+<h1 align="center">Gestion de Usuarios</h1>
 <form id="usuario" name="usuario"  method="post" action="accion_usuario.php" data-toggle="validator" role="form">
 
     <div class="row">
@@ -111,19 +130,19 @@ include_once("../estructura/menuBT.php");
 
     <div class="row">
     
-        <div class="form-group ">
+        <div class="form-group col-4">
             <a href="usuario.php" tabindex="-1" role="button" aria-disabled="true">
-            <button class="btn btn-secondary btn-block " type="submit">Reset</button>
+            <button class="btn btn-secondary btn-block " type="reset">Reset</button>
             </a> 
         </div>    
-        <div class="form-group">
+        <div class="form-group col-6">
             <button class="btn btn-primary btn-block " type="submit">Nuevo</button>
         </div>    
 
     </div>
 
 </form>
-
+</div>
 
 
 

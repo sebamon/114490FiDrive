@@ -1,6 +1,6 @@
 <?php 
 $Titulo = "Elimiar Archivo Compartido"; 
-include_once("../estructura/BTcabecera.php");
+include_once("../estructura/cabeceraBT.php");
 
 
 if(!$mySession->isLog())
@@ -23,7 +23,26 @@ if(isset($_GET['parametro']))
 ?>
 
 
-<div class="col">
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Programacion Web Avanzada</h2>
+      <ol>
+        <li><a href="../main/contenido.php">Contenido</a></li>
+        <li>FiDrive 114490</li>
+      </ol>
+    </div>
+    
+    </div>
+
+  </div>
+</section>
+<!-- End Breadcrumbs -->
+<div class="container-fluid">
+
+<h1 align="center">Descompartir Archivo</h1>
 <form id="compartirarchivo" name="compartirarchivo" class="form-group" method="POST" action="accion_amarchivo.php" data-toggle="validator" role="form" enctype="multipart/form-data">
     <div class="form-group">
         <label for="archivo">Nombre del Archivo:</label>
@@ -61,7 +80,8 @@ if(isset($_GET['parametro']))
         <?php
 
 $select = new AbmUsuario();
-$objSelect = $select->buscar(null);
+$usuario = array('idusuario'=>$mySession->getidUsuario());
+$objSelect = $select->buscar($usuario);
 
 echo  " <select class='form-control' name='usuario' id='usuario'>";
 echo  " <option value=' '>Seleccion un Usuario</option>";
@@ -72,14 +92,14 @@ foreach($objSelect as $unUsuario){
     {
     
     if($unUsuario==$elObj->getusuario()){
-    echo  " <option value='".$unUsuario->getidusuario()."' selected>".$unUsuario->getusapellido()."</option>";
+    echo  " <option value='".$unUsuario->getidusuario()."' selected>".$unUsuario->getusnombre().' '.$unUsuario->getusapellido()."</option>";
     }
     else {
-        echo  " <option value='".$unUsuario->getidusuario()."'>".$unUsuario->getusapellido()."</option>";
+        echo  " <option value='".$unUsuario->getidusuario()."'>".$unUsuario->getusnombre().' '.$unUsuario->getusapellido()."</option>";
     }
     }
     else {
-        echo  " <option value='".$unUsuario->getidusuario()."'>".$unUsuario->getusapellido()."</option>";
+        echo  " <option value='".$unUsuario->getidusuario()."'>".$unUsuario->getusnombre().' '.$unUsuario->getusapellido()."</option>";
     }
     
 

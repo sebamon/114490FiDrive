@@ -7,9 +7,25 @@ include_once("../estructura/cabeceraLogin.php");
 
 
 
-<div class="row">
-<div class="col col-4"></div>
-<div class="col col-4 border">
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Programacion Web Avanzada</h2>
+      <ol>
+        <li><a href="../main/contenido.php">Contenido</a></li>
+        <li>FiDrive 114490</li>
+      </ol>
+    </div>
+    
+    </div>
+
+  </div>
+</section>
+<!-- End Breadcrumbs -->
+<div class="container">
+
 <form id="login" name="login" class="form-signin text-center" method="POST" action="accion_login.php" data-toggle="validator" role="form">
   
 <button type="button" class="close" aria-label="Close">
@@ -34,8 +50,7 @@ include_once("../estructura/cabeceraLogin.php");
   </div>
 </form>
 </div>
-</div>
-</div>
+
 
 <?php 
 

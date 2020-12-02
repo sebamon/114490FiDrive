@@ -14,12 +14,12 @@ include_once("../estructura/menuBT.php");
 
 <!-- ======= Breadcrumbs ======= -->
 <section id="breadcrumbs" class="breadcrumbs">
-  <div class="container">
+  <div class="container-fluid">
 
     <div class="d-flex justify-content-between align-items-center">
       <h2>Programacion Web Avanzada</h2>
       <ol>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="../main/contenido.php">Contenido</a></li>
         <li>FiDrive 114490</li>
       </ol>
     </div>
@@ -36,6 +36,7 @@ include_once("../estructura/menuBT.php");
 
     <div class="portfolio-details-container">
 
+    <h1 align="center">Alta y Modificacion de Archivos</h1>
     <form id="amarchivo" name="amarchivo" method="post" action="accion_amarchivo.php" data-toggle="validator" role="form" enctype="multipart/form-data">
  
  <div class="form-group">
@@ -121,14 +122,14 @@ include_once("../estructura/menuBT.php");
          {
          
          if($unUsuario==$elObj[0]->getusuario()){
-         echo  " <option value='".$unUsuario->getidusuario()."' selected>".$unUsuario->getusapellido()."</option>";
+         echo  " <option value='".$unUsuario->getidusuario()."' selected>".$unUsuario->getusnombre().' '.$unUsuario->getusapellido()."</option>";
          }
          else {
-             echo  " <option value='".$unUsuario->getidusuario()."'>".$unUsuario->getusapellido()."</option>";
+             echo  " <option value='".$unUsuario->getidusuario()."'>".$unUsuario->getusnombre().' '.$unUsuario->getusapellido()."</option>";
          }
          }
          else {
-             echo  " <option value='".$unUsuario->getidusuario()."'>".$unUsuario->getusapellido()."</option>";
+             echo  " <option value='".$unUsuario->getidusuario()."'>".$unUsuario->getusnombre().' '.$unUsuario->getusapellido()."</option>";
          }
          
      

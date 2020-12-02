@@ -66,7 +66,7 @@ class AbmUsuario{
            $abmusuariorol= new AbmUsuarioRol();
            if(isset($param['rol']))
            {
-             $nuevoParametro = array('idusuario'=>$elObjtTabla->getidusuario(),$param['Rol']);
+             $nuevoParametro = array('idusuario'=>$elObjtTabla->getidusuario(),'idrol'=>$param['rol']);
            }
            else
            {

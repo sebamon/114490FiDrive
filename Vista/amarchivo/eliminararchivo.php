@@ -22,8 +22,25 @@ if(isset($_GET['parametro']))
 }
 ?>
 
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
 
-<div class="col">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Programacion Web Avanzada</h2>
+      <ol>
+        <li><a href="../main/contenido.php">Contenido</a></li>
+        <li>FiDrive 114490</li>
+      </ol>
+    </div>
+    
+    </div>
+
+  </div>
+</section>
+<!-- End Breadcrumbs -->
+<div class="container-fluid">
+<h1 align="center">Eliminar Archivo</h1>
 <form id="eliminararchivo" name="eliminararchivo" method="POST" action="accion_amarchivo.php" data-toggle="validator" role="form">
     <div class="form-group">
         <label for="archivo">Nombre del Archivo:</label>
@@ -71,14 +88,14 @@ foreach($objSelect as $unUsuario){
     {
     
     if($unUsuario==$elObj->getusuario()){
-    echo  " <option value='".$unUsuario->getidusuario()."' selected>".$unUsuario->getusapellido()."</option>";
+    echo  " <option value='".$unUsuario->getidusuario()."' selected>".$unUsuario->getusnombre().' '.$unUsuario->getusapellido()."</option>";
     }
     else {
-        echo  " <option value='".$unUsuario->getidusuario()."'>".$unUsuario->getusapellido()."</option>";
+        echo  " <option value='".$unUsuario->getidusuario()."'>".$unUsuario->getusnombre().' '.$unUsuario->getusapellido()."</option>";
     }
     }
     else {
-        echo  " <option value='".$unUsuario->getidusuario()."'>".$unUsuario->getusapellido()."</option>";
+        echo  " <option value='".$unUsuario->getidusuario()."'>".$unUsuario->getusnombre().' '.$unUsuario->getusapellido()."</option>";
     }
     
 
