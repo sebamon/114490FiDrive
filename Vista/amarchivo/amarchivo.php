@@ -213,7 +213,7 @@ include_once("../estructura/menuBT.php");
             }
          }
          ?>
-         <label class="custom-control-label" for="radioPdf"><i class="far fa-file-pdf"></i> PDF  </label>
+         <label class="custom-control-label" for="radioPdf"><i class="bx bx-file-pdf"></i> PDF  </label>
      </div>
      <div class="custom-control custom-radio custom-control-inline">
      <?php
@@ -285,4 +285,5 @@ include_once("../estructura/menuBT.php");
 
 <?php
 include_once("../estructura/pieBT.php")
+
 ?>

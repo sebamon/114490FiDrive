@@ -9,7 +9,8 @@ if(!$mySession->isLog())
 }
 if(!$mySession->isAdmin())
 {
-    header ("location: http://localhost/114490fidrive/vista/main/contenido.php");
+    header ("location: http://localhost/114490fidrive/vista/usuario/usuario.php");
+    exit;
 }
 include_once("../estructura/menuBT.php");
   

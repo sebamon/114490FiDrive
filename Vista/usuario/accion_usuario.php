@@ -9,7 +9,7 @@ include_once("../estructura/menuBT.php");
 
 $datos = data_submitted();
 $abmusuario = new AbmUsuario();
-
+$datos['usclave']=md5($datos['usclave']);
 if($respuesta=$abmusuario->alta($datos))
 {
     

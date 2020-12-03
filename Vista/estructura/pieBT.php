@@ -47,7 +47,7 @@
     $('#acdescripcion').summernote({
         lang: 'es-ES',
     });
-
+</script>
 </body>
 
 </html>

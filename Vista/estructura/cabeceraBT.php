@@ -35,7 +35,8 @@ include_once("../../configuracion.php");
   <!-- Template Main CSS File -->
   <link href="../../externos/iPortfolio/assets/css/style.css" rel="stylesheet">
 <!--Propios  -->
-<link rel="stylesheet" href="../../externos/summernote-develop/src/styles/summernote-bs4.css">
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
   <!-- =======================================================
   * Template Name: iPortfolio - v1.4.1
   * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/

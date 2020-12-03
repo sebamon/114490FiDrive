@@ -5,7 +5,7 @@ include_once("../estructura/cabeceraBT.php");
 <?php 
 $datos = data_submitted();
 //$mySession = new Session();
-
+$datos['clave']=md5($datos['clave']);
 if($mySession->login($datos))
 {
     $respuesta='Usuario Logueado en el Sistema';

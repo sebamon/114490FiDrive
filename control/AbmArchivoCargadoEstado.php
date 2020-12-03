@@ -22,7 +22,7 @@ class AbmArchivoCargadoEstado{
             $resultado.= "Carpeta temporal: " . $_FILES['archivo']['tmp_name']." <br />";
 
             //Renombramos el archivo.
-            $_FILES['archivo']['name']=$nombre.'.'.$extension;
+            $_FILES['archivo']['name']=$nombre;
 
             // Intentamos copiar el archivo al servidor.
             if (!copy($_FILES['archivo']['tmp_name'], $dir.$_FILES['archivo']['name']))
