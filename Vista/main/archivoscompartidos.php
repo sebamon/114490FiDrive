@@ -47,6 +47,7 @@ $listaTablaEstado= $Estado->buscar($parametro);
       <th scope="col">Compartido Hasta</th>
       <th scope="col">Limite de Descargas</th>
       <th scope="col">Descargas Realizadas</th>
+      <th scope="col">Link</th>
       
     </tr>
     </thead>
@@ -67,6 +68,7 @@ $listaTablaEstado= $Estado->buscar($parametro);
         echo '<td>'.$objTabla->getarchivocargado()->getacefechafincompartir().'</td>';
         echo '<td>'.$objTabla->getarchivocargado()->getaccantidaddescarga().'</td>';
         echo '<td>'.$objTabla->getarchivocargado()->getaccantidadusada().'</td>';
+        echo '<td><a href onclick="ObtenerEnlace()">'.$objTabla->getarchivocargado()->getaclinkacceso().'</a></td>';
        
         echo '</tr>';
         $i++;
