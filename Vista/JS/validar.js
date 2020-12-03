@@ -358,3 +358,40 @@ $('#usuario').bootstrapValidator({
         }
     }
     });
+    $('#login').bootstrapValidator({
+        message: 'Este valor no es valido',
+    
+        feedbackIcons: {
+    
+            valid: 'fa fa-check',
+    
+            invalid: 'fa fa-time',
+    
+            validating: 'fa fa-refresh'
+    
+        },
+       
+        fields: {
+    
+            username: {
+    
+                validators: {
+    
+                    notEmpty: {
+    
+                        message: 'Ingrese Username'
+    
+                    }
+    
+                }
+    
+            },
+            clave:{
+                validators:{
+                    notEmpty:{
+                        message: 'Ingrese Password'
+                    }
+                }
+            }
+        }
+    });

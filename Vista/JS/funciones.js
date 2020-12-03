@@ -205,7 +205,7 @@ function SugerirIcono()
         default: setRadioOff();
 
     }
-    document.getElementById('acnombre').value=$archivo[2];
+    document.getElementById('acnombre').value=$archivo[2]+'.'+$extension;
     document.getElementById('extension').value=$extension;
 
 }

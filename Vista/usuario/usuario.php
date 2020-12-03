@@ -16,6 +16,7 @@ include_once("../estructura/menuBT.php");
       <h2>Programacion Web Avanzada</h2>
       <ol>
         <li><a href="../main/contenido.php">Contenido</a></li>
+        <li><a href="../usuario/gestionusuario.php">Gestion de Usuario</a></li>
         <li>FiDrive 114490</li>
       </ol>
     </div>
