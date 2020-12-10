@@ -44,7 +44,13 @@ if($mySession->isLog())
             echo '<li><a href="../main/contenido.php"><i class="bx bx-grid-alt"></i> <span>Contenido</span></a></li>';
             echo '<li><a href="../amarchivo/amarchivo.php?parametro=nuevo"><i class="bx bx-file-blank"></i> <span>Nuevo Archivo</span></a></li>';
             echo '<li><a href="../main/archivoscompartidos.php"><i class="bx bx-share-alt"></i> <span>Archivos Compartidos</span></a></li>';
-            echo '<li><a href="../usuario/gestionusuario.php"><i class="bx bx-user"></i> <span>Gestion de Usuarios</span></a></li>';
+            if($mySession->isAdmin())
+            {
+              echo '<li><a href="../usuario/gestionusuario.php"><i class="bx bx-user"></i> <span>Gestion de Usuarios</span></a></li>';
+            }
+            else {
+              echo'<li><a href="../usuario/usuario.php?user='.$mySession->getidUsuario().'"><i class="bx bx-user"></i> <span>Mi Perfil</span></a></li>';
+            }
             echo '<li><a href="../login/cerrar_session.php"><i class="bx bx-exit"></i> <span>Cerrar Sesion</span></a></li>';
           echo '</ul>';
         echo '</nav><!-- .nav-menu -->';

@@ -4,6 +4,21 @@ include_once("../estructura/cabeceraBT.php");
 include_once("../estructura/menuBT.php");
         
 
+if($mySession->isLog())
+{
+    $AbmUser = new AbmUsuario();
+    $AbmRol = new AbmRol();
+    $AbmUserRol = new AbmUsuarioRol();
+    
+   if(isset($_GET['user']))
+   {
+    $param= array('idusuario'=>$_GET['user']);
+    $unUser =  $AbmUser->buscar($param);
+    $unUser=$unUser[0];
+    $suRol = $AbmUserRol->ObtenerRol($unUser->getidusuario());
+   
+    }
+}
 
 
 
@@ -38,8 +53,20 @@ include_once("../estructura/menuBT.php");
         </div>
  
         <div class="form-group col-6 ">
-            <input type="text" class="form-control" name="usnombre" id="usnombre">
+        <?php 
+         if(isset($_GET['user']))
+         {
+             echo "<input type='text' name='idusuario' id='idusuario' hidden value='".$unUser->getidusuario()."'>";
+         }
+        if(isset($_GET['user']))
+        {
+            echo '<input type="text" class="form-control" name="usnombre" id="usnombre" value="'.$unUser->getusnombre().'">';
+        }else {
+            echo '<input type="text" class="form-control" name="usnombre" id="usnombre">';
+        } ?>
+            
         </div>
+        
 
     </div>
 
@@ -50,7 +77,15 @@ include_once("../estructura/menuBT.php");
         </div>
 
         <div class="form-group col-6"> 
-            <input type="text" class="form-control" name="usapellido" id="usapellido">
+        <?php 
+       if(isset($_GET['user']))
+        {
+            echo '<input type="text" class="form-control" name="usapellido" id="usapellido"  value="'.$unUser->getusapellido().'">';
+        }
+        else {
+                echo '<input type="text" class="form-control" name="usapellido" id="usapellido">';
+            }
+            ?>
         </div>
 
     </div>
@@ -62,7 +97,15 @@ include_once("../estructura/menuBT.php");
         </div>
             
         <div class="form-group col-6">
-            <input type="text" class="form-control" name="uslogin" id="uslogin">
+        <?php 
+         if(isset($_GET['user']))
+        {
+            echo '<input type="text" class="form-control" name="uslogin" id="uslogin" readonly value="'.$unUser->getuslogin().'">';
+        }
+        else {
+            echo '<input type="text" class="form-control" name="uslogin" id="uslogin">';
+        }
+        ?>
         </div>
 
     </div>
@@ -74,37 +117,47 @@ include_once("../estructura/menuBT.php");
         </div>
 
         <div class="form-group col-6">
-            <input type="email" class="form-control" name="usmail" id="usmail">
+        <?php 
+          if(isset($_GET['user']))
+        {
+            echo  '<input type="email" class="form-control" name="usmail" id="usmail" value="'.$unUser->getusmail().'">';
+        }
+        else {
+            echo  '<input type="email" class="form-control" name="usmail" id="usmail">';
+        }
+           ?>
         </div>
 
     </div>
-
-    <div class="row">
+    <?php 
+          if(!isset($_GET['user']))
+        {
+        echo '<div class="row">';
    
-        <div class="form-group col-4">
-            <label for="" class="control-label">Password</label>
-        </div>
+        echo '<div class="form-group col-4">';
+        echo '    <label for="" class="control-label">Password</label>';
+        echo ' </div>';
 
-        <div class="form-group col-6">
-            <input type="password" class="form-control" name="usclave" id="usclave">
+        echo ' <div class="form-group col-6">';
+        echo '    <input type="password" class="form-control" name="usclave" id="usclave">';
             
-        </div>
+        echo ' </div>';
         
-    </div>
+        echo ' </div>';
 
-    <div class="row">
+        echo ' <div class="row">';
    
-        <div class="form-group col-4">
-            <label for="" class="control-label">Confirmar Password</label>
-        </div>
+        echo ' <div class="form-group col-4">';
+        echo '    <label for="" class="control-label">Confirmar Password</label>';
+        echo ' </div>';
 
-        <div class="form-group col-6">
-            <input type="password" class="form-control" name="usclave2" id="usclave2" data-match="#usclave" data-match-error="Los Password no coincide">
+        echo ' <div class="form-group col-6">';
+        echo '    <input type="password" class="form-control" name="usclave2" id="usclave2" data-match="#usclave" data-match-error="Los Password no coincide">';
            
-        </div>
+        echo ' </div>';
 
-    </div>
-    <?php
+        echo ' </div>';
+        }
     if($mySession->isLog() and $mySession->isAdmin())
     {
      echo '   <div class="row">';
@@ -112,13 +165,19 @@ include_once("../estructura/menuBT.php");
      echo '   <div class="form-group col-4">';
      echo '       <label for="" class="control-label">Rol</label>';
      echo '   </div>';
-     $abmRol = new AbmRol();
-     $roles = $abmRol->buscar(null);
+     $roles = $AbmRol->buscar(null);
      echo '    <div class="form-group col-6">';
      echo  " <select class='form-control' name='rol' id='rol'>";
      echo  " <option value=' '>Seleccion un Rol</option>";
     foreach($roles as $unRol){
+        if($unRol==$suRol){
+
+            echo " <option value='".$unRol->getidrol()."' selected>".$unRol->getrodescripcion()."</option>";
+        
+        }
+        else{
         echo " <option value='".$unRol->getidrol()."'>".$unRol->getrodescripcion()."</option>";
+    }
     }
         echo  " </select>";
     
@@ -129,15 +188,18 @@ include_once("../estructura/menuBT.php");
     }
     ?>
 
-    <div class="row">
-    
-        <div class="form-group col-4">
-            <a href="usuario.php" tabindex="-1" role="button" aria-disabled="true">
-            <button class="btn btn-secondary btn-block " type="reset">Reset</button>
-            </a> 
-        </div>    
-        <div class="form-group col-6">
-            <button class="btn btn-primary btn-block " type="submit">Nuevo</button>
+    <div class="row">    
+        <div class="form-group col-12">
+        <?php
+      if(isset($_GET['user']))
+    {
+        echo '<input type="text" name="accion" id="accion" hidden value="Modificar">';
+        echo   '<button class="btn btn-primary btn-block " type="submit">Modificar</button>';
+        }
+        else {
+            echo '<input type="text" name="accion" id="accion" hidden value="Nuevo">';
+            echo   '<button class="btn btn-primary btn-block " type="submit">Nuevo</button>';        }
+            ?>
         </div>    
 
     </div>
@@ -148,5 +210,5 @@ include_once("../estructura/menuBT.php");
 
 
 <?php
-include_once("../estructura/pieBT.php")
+include_once("../estructura/pieBT.php");
 ?>

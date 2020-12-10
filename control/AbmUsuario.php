@@ -13,7 +13,12 @@ class AbmUsuario{
            
         if( array_key_exists('idusuario',$param)){
             $obj = new usuario();
-            $obj->setear($param['idusuario'], $param['usnombre'], $param['usapellido'], $param['uslogin'], $param['usmail'], $param['usclave'], $param['usactivo'], $param['usdeshabilitado']);
+            if(isset($param['usclave'])){
+            $obj->setear($param['idusuario'], $param['usnombre'], $param['usapellido'], $param['uslogin'], $param['usmail'], $param['usclave'], 1, 0);
+        }
+        else {
+            $obj->setear($param['idusuario'], $param['usnombre'], $param['usapellido'], $param['uslogin'], $param['usmail'], null, 1, 0);
+        }
         }
         return $obj;
     }
@@ -96,6 +101,16 @@ class AbmUsuario{
         }
         
         return $resp;
+    }public function HDUsuario($param){
+        $resp = false;
+        if ($this->seteadosCamposClaves($param)){
+            $elObjtTabla = $this->cargarObjetoConClave($param);
+            if ($elObjtTabla!=null and $elObjtTabla->CambiarEstado($param['activo'])){
+                $resp = true;
+            }
+        }
+        
+        return $resp;
     }
     
     /**
@@ -110,6 +125,13 @@ class AbmUsuario{
             $elObjtTabla = $this->cargarObjeto($param);
             if($elObjtTabla!=null and $elObjtTabla->modificar()){
                 $resp = true;
+                $abmusuariorol= new AbmUsuarioRol();
+                if(isset($param['rol']))
+                {
+                  $nuevoParametro = array('idusuario'=>$elObjtTabla->getidusuario(),'idrol'=>$param['rol']);
+                  $abmusuariorol->modificacion($nuevoParametro);
+                }
+                
             }
         }
         return $resp;
@@ -147,6 +169,61 @@ class AbmUsuario{
      * @param array $param
      * @return boolean
      */
+    public function recuperar_pass($param)
+    {
+        $resp=false;
+        $unUsuario = new usuario();
+        $unUsuario->setusmail($param['email']);
+        if($unUsuario->ExisteEmail()){
+            $unUsuario->setusclave(md5($param['pass']));
+            if($unUsuario->resetearPassword())
+            {
+                $resp=true;
+                $mail = new PHPMailer();
+        
+                $mail->isSMTP();
+
+                // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+            
+                $mail->Host = 'smtp.gmail.com';
+
+                $mail->Port = 587;
+                
+
+                $mail->SMTPAuth = true;
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            
+                $mail->Username = 'sebastian.mon@est.fi.uncoma.edu.ar'; //ACA VA LA DIRECCION DE CORREO
+
+                $mail->Password = '34397372';  //ACA VA LA CONTRASEÑA
+            
+                $mail->setFrom('sebastian.mon@est.fi.uncoma.edu.ar', 'FiDrive');
+            
+                $mail->addReplyTo('sebastian.mon@est.fi.uncoma.edu.ar', 'FiDrive');
+            
+                $mail->addAddress($param['email'], 'Usuario'); //Esta es la direccion que viene del formulario
+                
+                $mail->Subject = 'Recuperar de Password'; // EL asunto viene del formulario
+
+
+                $mail->Body='El Password se ha reseteado, su nueva contraseña es: '.$param['pass']; //EL CUERPO VIENE DEL FORMULARIO
+            
+                $mail->AltBody = 'This is a plain-text message body';
+            
+                if (!$mail->send()) {
+                    echo 'Mailer Error: ' . $mail->ErrorInfo;
+                    $resp=false;
+                } else {
+                    echo 'Message sent!';
+                    $resp=true;
+                }
+
+
+            }
+
+        }
+        return $resp;
+    }
     
     
 }

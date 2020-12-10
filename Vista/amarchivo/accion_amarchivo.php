@@ -4,7 +4,7 @@ include_once("../estructura/cabeceraBT.php");
 
 if(!$mySession->isLog())
 {
-        header ("location: http://localhost/114490fidrive/vista/login/login.php");
+        header ($INICIO);
         exit;
 }
 

@@ -4,7 +4,7 @@ include_once("../estructura/cabeceraBT.php");
 
 if(!$mySession->isLog())
 {
-        header ("location: http://localhost/114490fidrive/vista/login/login.php");
+        header ($INICIO);
         exit;
 }
 if(!$mySession->isAdmin())
@@ -60,6 +60,9 @@ $listaUsuarios = $AbmUser->buscar(null)
       <th scope="col">Usuario</th>
       <th scope="col">Email</th>
       <th scope="col">Rol</th>
+      <th scope="col">Perfil</th>
+      <th scope="col">Password</th>
+      <th scope="col">Activo</th>
       
     </tr>
     </thead>
@@ -81,6 +84,15 @@ $listaUsuarios = $AbmUser->buscar(null)
         echo '<td>'.$unUsuario->getuslogin().'</td>';
         echo '<td>'.$unUsuario->getusmail().'</td>';
         echo '<td>'.$elRol->getrodescripcion().'</td>';
+        echo '<td><a class="btn btn-info" href="usuario.php?user='.$unUsuario->getidUsuario().'">Modificar</a></td>';
+        echo '<td><a class="btn btn-primary" href="../login/recuperar_contrasena.php?user='.$unUsuario->getidUsuario().'">Reset</a></td>';
+        if($unUsuario->getusactivo()){
+        echo '<td> <a class="btn btn-danger" href="habilitar_usuario.php?idusuario='.$unUsuario->getidUsuario().'&activo=0">Deshabilitar
+        </a></td>';
+      }
+      else {
+        echo '<td><a class="btn btn-outline-danger" href="habilitar_usuario.php?idusuario='.$unUsuario->getidUsuario().'&activo=1">Habilitar</a></td>';
+      }
         echo '</tr>';
         $i++;
     }

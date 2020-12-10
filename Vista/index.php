@@ -1,7 +1,7 @@
 <?php 
 $Titulo = "Index"; 
 include_once("../estructura/cabeceraBT.php");
-header("location: login/login.php");// REEMPLAZAR PARA CUANDO HAYA UNA PAGINA INDEX
+header($INICIO);// REEMPLAZAR PARA CUANDO HAYA UNA PAGINA INDEX
 //include_once("../estructura/menu.php");
 ?>
 <div class="col">

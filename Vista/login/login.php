@@ -42,6 +42,7 @@ include_once("../estructura/cabeceraLogin.php");
   <input type="password" id="clave" name="clave" class="form-control" placeholder="Password" >
   </div>
   <div class="row">
+  
   <div class="col-6">
   <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button></div>
   <div class="col-6">
@@ -49,6 +50,9 @@ include_once("../estructura/cabeceraLogin.php");
   </div>
   </div>
 </form>
+<div class="row col-8">
+<a href="recuperar_contrasena.php">Recuperar contraseña</a>
+</div>
 </div>
 
 

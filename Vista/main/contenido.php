@@ -4,7 +4,7 @@ include_once("../estructura/cabeceraBT.php");
 
 if(!$mySession->isLog())
 {
-        header ("location: http://localhost/114490fidrive/vista/login/login.php");
+        header ($INICIO);
         exit;
 }
 include_once("../estructura/menuBT.php");
@@ -75,7 +75,7 @@ $listaTablaEstado= $Estado->buscar($parametro);
         echo '<td>'.$objTabla->getarchivocargado()->getacnombre().'</td>';
         echo '<td>'.$objTabla->getarchivocargado()->getacdescripcion().'</td>';
         echo '<td>'.$objTabla->getarchivocargado()->getusuario()->getuslogin().'</td>';
-        echo '<td><a href=../../archivos/'.$objTabla->getarchivocargado()->getacnombre().'>'.$objTabla->getarchivocargado()->getacnombre().'</a></td>';
+        echo '<td><a href=../../archivos/'.urlencode($objTabla->getarchivocargado()->getacnombre()).'>'.$objTabla->getarchivocargado()->getacnombre().'</a></td>';
         echo '<td>'.$objTabla->getestadotipo()->getetdescripcion().'</td>';
         echo '<td><a  class="btn btn-info" href="../amarchivo/amarchivo.php?parametro=modificar&idarchivocargado='.$objTabla->getarchivocargado()->getidarchivocargado().'">Modificar</a></td>';
         switch($objTabla->getestadotipo()->getidestadotipos())

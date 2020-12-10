@@ -1,22 +1,21 @@
 <?php 
 include_once("../estructura/cabeceraBT.php");
+include_once("../estructura/menuBT.php");
 
 $datos = data_submitted();
-//$mySession = new Session();
-$datos['clave']=md5($datos['clave']);
-if($mySession->login($datos))
-{
-    $respuesta='Usuario Logueado en el Sistema';
-    header("location: ../main/contenido.php");
-    exit;
 
+$datos['pass']=uniqid();
+$AbmUser = new AbmUsuario();
+
+if($AbmUser->recuperar_pass($datos))
+{
+    $respuesta='La contraseña se ha reseteado, la recibira en su correo electronico.';
 }
 else {
-    $respuesta='Las Credenciales son incorrectas';
+    $respuesta='Hubo un problema, puede que la direccion de correo no sea valida';
 }
 
 
-include_once("../estructura/menuBT.php");
 ?>
 <!-- ======= Breadcrumbs ======= -->
 <section id="breadcrumbs" class="breadcrumbs">
@@ -35,22 +34,20 @@ include_once("../estructura/menuBT.php");
   </div>
 </section>
 <!-- End Breadcrumbs -->
-<div class="container">
+<div class="container-fluid">
 
-<h1>Login</h1>
-
+<h1 align="center">Recuperar Contraseña</h1>
+<div class="col alert alert-success" role="alert">
 <p>
 <b>Respuesta: </b> 
-<?php echo $respuesta ?>
+<?php echo $respuesta?>
 </p>
+</br>
 <div class="row">
-<a class="btn btn-primary" href="../login/login.php" role="button">Atras</a>
-</div>
+<a class="btn btn-primary" href="login.php" role="button">Atras</a>
 
 </div>
+</div>
+<?php
 
-
-<?php 
-
-include_once("../estructura/pieBT.php");
 ?>

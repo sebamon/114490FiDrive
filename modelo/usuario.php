@@ -167,11 +167,10 @@ class usuario {
         $sql.=", usapellido='".$this->getusapellido()."'";
         $sql.=", uslogin='".$this->getuslogin()."'";
         $sql.=", usmail='".$this->getusmail()."'";
-        $sql.=", usclave='".$this->getusclave()."'";
         $sql.=", usactivo=".$this->getusactivo();
-        $sql.=" WHERE idusuario=".$this->getusuario();
+        $sql.=" WHERE idusuario=".$this->getidusuario();
         if ($base->Iniciar()) {
-            if ($base->Ejecutar($sql)) {
+            if ($base->Ejecutar($sql)>=0) {
                 $resp = true;
             } else {
                 $this->setmensajeoperacion("Tabla->modificar: ".$base->getError());
@@ -197,6 +196,21 @@ class usuario {
         }
         return $resp;
     }
+    public function CambiarEstado($activo){
+        $resp = false;
+        $base=new BaseDatos();
+        $sql="update usuario set usactivo=".$activo." WHERE idusuario=".$this->getidusuario();
+        if ($base->Iniciar()) {
+            if ($base->Ejecutar($sql)) {
+                return true;
+            } else {
+                $this->setmensajeoperacion("Tabla->eliminar: ".$base->getError());
+            }
+        } else {
+            $this->setmensajeoperacion("Tabla->eliminar: ".$base->getError());
+        }
+        return $resp;
+    }
     
     public static function listar($parametro=""){
         $arreglo = array();
@@ -211,7 +225,7 @@ class usuario {
                 
                 while ($row = $base->Registro()){
                     $obj= new usuario();
-                    $obj->setear($row['idusuario'], $row['usnombre'], $row['usapellido'], $row['uslogin'], $row['usmail'], $row['usclave'], $row['usactivo'], $row['usdeshabilitado']);
+                    $obj->setear($row['idusuario'], $row['usnombre'], $row['usapellido'], $row['uslogin'], $row['usmail'],null, $row['usactivo'], $row['usdeshabilitado']);
                     array_push($arreglo, $obj);
                 }
                
@@ -244,6 +258,44 @@ class usuario {
         return $resp;
     
         
+    }
+    public function resetearPassword()
+    {
+        $resp = false;
+        $base=new BaseDatos();
+        $sql="update usuario set usclave='".$this->getusclave()."' WHERE idusuario='".$this->getidusuario()."';";
+        if ($base->Iniciar()) {
+            if ($base->Ejecutar($sql)) {
+                
+                return true;
+            } else {
+                $this->setmensajeoperacion("Tabla: ".$base->getError());
+            }
+        } else {
+            $this->setmensajeoperacion("Tabla: ".$base->getError());
+        }
+        return $resp;
+    }
+    public function ExisteEmail()
+    {
+        $resp=false;
+        $base=new BaseDatos();
+        $sql="select idusuario from usuario where usmail='".$this->getusmail()."';";
+        if ($base->Iniciar()) {
+            $res = $base->Ejecutar($sql);
+            if($res>-1){
+                if($res>0){
+                    $row = $base->Registro();
+                    //$this->setear($row['idusuario'], $row['usnombre'], $row['usapellido'], $row['uslogin'],$row['usmail'], $row['usclave'], $row['usactivo'],$row['usdeshabilitado']);
+                    $this->setidusuario($row['idusuario']);
+                    $resp=true;
+                }
+            }
+        } else {
+            $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
+        }
+        return $resp;
+    
     }
     
 }

@@ -27,7 +27,8 @@ function my_autoloader($class_name){
     $directorys = array(
         $GLOBALS['ROOT'].'modelo/',
         $GLOBALS['ROOT'].'modelo/conector/',
-        $GLOBALS['ROOT'].'control/'
+        $GLOBALS['ROOT'].'control/',
+        $GLOBALS['ROOT'].'control/PHPMailer/'
         /*
         $_SESSION['ROOT'].'modelo/',
         $_SESSION['ROOT'].'modelo/conector/',
