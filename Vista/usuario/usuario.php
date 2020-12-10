@@ -1,9 +1,6 @@
 <?php 
 $Titulo = "Usuario"; 
 include_once("../estructura/cabeceraBT.php");
-include_once("../estructura/menuBT.php");
-        
-
 if($mySession->isLog())
 {
     $AbmUser = new AbmUsuario();
@@ -12,15 +9,22 @@ if($mySession->isLog())
     
    if(isset($_GET['user']))
    {
-    $param= array('idusuario'=>$_GET['user']);
-    $unUser =  $AbmUser->buscar($param);
-    $unUser=$unUser[0];
-    $suRol = $AbmUserRol->ObtenerRol($unUser->getidusuario());
-   
+       if(($_GET['user'] == $mySession->getidUsuario()) || $mySession->isAdmin())
+       {
+        $param= array('idusuario'=>$_GET['user']);
+        $unUser =  $AbmUser->buscar($param);
+        $unUser=$unUser[0];
+        $suRol = $AbmUserRol->ObtenerRol($unUser->getidusuario());
+        }
+        else
+        {
+            header($PRINCIPAL);
+        }
     }
+    
 }
-
-
+include_once("../estructura/menuBT.php");
+        
 
 ?>
 <!-- ======= Breadcrumbs ======= -->
@@ -56,7 +60,7 @@ if($mySession->isLog())
         <?php 
          if(isset($_GET['user']))
          {
-             echo "<input type='text' name='idusuario' id='idusuario' hidden value='".$unUser->getidusuario()."'>";
+             echo "<input type='text' name='idusuario' id='idusuario' hidden value='".$unUser->getidUsuario()."'>";
          }
         if(isset($_GET['user']))
         {

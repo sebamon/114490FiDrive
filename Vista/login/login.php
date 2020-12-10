@@ -17,7 +17,7 @@ include_once("../estructura/cabeceraLogin.php");
         <li><a href="../main/contenido.php">Contenido</a></li>
         <li>FiDrive 114490</li>
       </ol>
-    </div>
+    </div>  
     
     </div>
 
@@ -26,9 +26,9 @@ include_once("../estructura/cabeceraLogin.php");
 <!-- End Breadcrumbs -->
 <div class="container">
 
-<form id="login" name="login" class="form-signin text-center" method="POST" action="accion_login.php" data-toggle="validator" role="form">
+<form id="login" name="login" class="form-signin text-center" method="POST" action="accion_login.php" data-toggle="validator" role="form" onsubmit="return Encriptar()"> 
   
-<button type="button" class="close" aria-label="Close">
+<button class="close" aria-label="Close">
   <span aria-hidden="true">&times;</span>
 </button>
 <h1 class="h3 mb-3 font-weight-normal">Login de Usuario</h1>
@@ -39,7 +39,7 @@ include_once("../estructura/cabeceraLogin.php");
   <input type="text" id="username" name="username" class="form-control" placeholder="Username" autofocus>
   </div>
   <div class="form-group">
-  <input type="password" id="clave" name="clave" class="form-control" placeholder="Password" >
+  <input type="password" id="clave" name="clave" class="form-control" placeholder="Password" " >
   </div>
   <div class="row">
   

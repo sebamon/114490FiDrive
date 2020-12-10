@@ -19,7 +19,7 @@ include_once($ROOT.'util/funciones.php');
 $INICIO = "Location:http://".$_SERVER['HTTP_HOST']."/$PROYECTO/vista/login/login.php";
 
 // variable que define la pagina principal del proyecto (menu principal)
-$PRINCIPAL = "Location:http://".$_SERVER['HTTP_HOST']."/$PROYECTO/principal.php";
+$PRINCIPAL = "Location:http://".$_SERVER['HTTP_HOST']."/$PROYECTO/vista/main/contenido.php";
 
 $mySession = new Session();
 $mySession->iniciarSesion();
